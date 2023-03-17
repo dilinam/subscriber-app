@@ -64,7 +64,7 @@ const Table = () => {
     pageSize: 10,
   });
 
-  //if you want to avoid useEffect, look at the React Query example instead
+  
   useEffect(() => {
     const fetchData = async () => {
       if (!data.length) {

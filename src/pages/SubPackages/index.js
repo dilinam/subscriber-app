@@ -1,8 +1,9 @@
 import React from 'react'
+import Table from '../../component-ui/Table';
 
 const SubPackages = () => {
   return (
-    <div>SubPackages</div>
+    <div><Table></Table></div>
   )
 }
 

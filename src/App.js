@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import Profile from "./pages/Profile";
 import SubPackages from "./pages/SubPackages";
 import Share from "./pages/Share";
+import SignUp from "./pages/SignUp";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/homePage" element={<HomePage />} />
           <Route path="/subPakages" element={<SubPackages />} />
           <Route path="/share" element={<Share />} />

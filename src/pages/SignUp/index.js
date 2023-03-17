@@ -1,9 +1,9 @@
-import React, { useState,useRef,useEffect } from "react";
+import React from 'react'
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Avatar from "@mui/material/Avatar";
 import Grid from "@mui/material/Grid";
-import Paper from '@mui/material/Paper';
+import Paper from "@mui/material/Paper";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import Checkbox from "@mui/material/Checkbox";
 import FormGroup from "@mui/material/FormGroup";
@@ -12,14 +12,13 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 
-const Login = () => {
-  const paperStyle = {height: '65vh',width:250,padding:20,margin:'100px auto'}
-  const userRef = useRef();
-  const errRef = useRef();
-  const [user,setUser] = useState("");
-  const [pwd,setPwd] = useState("");
-  const [errMsg,setErrMsg] = useState("");
-
+const paperStyle = {
+  height: "70vh",
+  width: 250,
+  padding: 20,
+  margin: "100px auto",
+};
+const SignUp = () => {
   return (
     <Grid>
       <Paper elevation={7} style={paperStyle}>
@@ -28,7 +27,7 @@ const Login = () => {
             <PersonOutlinedIcon />
           </Avatar>
           <Typography variant="h5" gutterBottom>
-            Sign in
+            SignUp
           </Typography>
         </Grid>
 
@@ -48,6 +47,23 @@ const Login = () => {
               size="small"
             />
             <TextField
+              id="email"
+              label="e-mail"
+              type="email"
+              fullWidth
+              required
+              size="small"
+            />
+            <TextField
+              id="contactNo"
+              label="Contact no"
+              type="text"
+              fullWidth
+              required
+              size="small"
+            />
+
+            <TextField
               id="password"
               label="Password"
               type="password"
@@ -56,38 +72,31 @@ const Login = () => {
               size="small"
               required
             />
-            <FormGroup>
-              <FormControlLabel
-                control={<Checkbox defaultChecked size="small" />}
-                label="Remember Me"
-                size="small"
-              />
-            </FormGroup>
+            <TextField
+              id="cpassword"
+              label="Confirm Password"
+              type="password"
+              fullWidth
+              size="small"
+              required
+            />
+
             <Button
               variant="contained"
               href="#contained-buttons"
               fullWidth
               size="small"
             >
-              Sign in
+              Sign Up
             </Button>
             <Typography variant="subtitle2" gutterBottom>
+              Do you have an account ?{" "}
               <Link
                 onClick={() => {
                   console.info("I'm a button.");
                 }}
               >
-                Forgot Password ?
-              </Link>
-            </Typography>
-            <Typography variant="subtitle2" gutterBottom>
-              Don't you have an account ?{" "}
-              <Link
-                onClick={() => {
-                  console.info("I'm a button.");
-                }}
-              >
-                Sign up
+                Sign in
               </Link>
             </Typography>
           </Box>
@@ -95,6 +104,7 @@ const Login = () => {
       </Paper>
     </Grid>
   );
+  
 }
 
-export default Login
+export default SignUp;
