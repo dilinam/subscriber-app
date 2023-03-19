@@ -8,6 +8,7 @@ import Profile from "./pages/Profile";
 import SubPackages from "./pages/SubPackages";
 import Share from "./pages/Share";
 import SignUp from "./pages/SignUp";
+import ViewAllUsers from "./pages/ViewAllUsers";
 
 function App() {
   return (
@@ -15,11 +16,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/homePage" element={<HomePage />} />
-          <Route path="/subPakages" element={<SubPackages />} />
-          <Route path="/share" element={<Share />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="user/signup" element={<SignUp />} />
+          <Route path="user/homePage" element={<HomePage />} />
+          <Route path="user/subPakages" element={<SubPackages />} />
+          <Route path="user/share" element={<Share />} />
+          <Route path="user/profile" element={<Profile />} />
+          <Route path="admin/viewAllUsers" element={<ViewAllUsers />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
