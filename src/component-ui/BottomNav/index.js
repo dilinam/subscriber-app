@@ -9,9 +9,8 @@ import Paper from "@mui/material/Paper";
 
 const BottomNav = () => {
     const [value, setValue] = React.useState(0);
-    const ref = React.useRef(null);
   return (
-    <Box sx={{ pb: 7 }} ref={ref}>
+    <Box>
       <Paper
         sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
         elevation={3}
@@ -25,6 +24,7 @@ const BottomNav = () => {
         >
           <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
           <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
+          <BottomNavigationAction label="Archive" icon={<ArchiveIcon />} />
           <BottomNavigationAction label="Archive" icon={<ArchiveIcon />} />
         </BottomNavigation>
       </Paper>

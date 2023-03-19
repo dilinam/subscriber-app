@@ -11,11 +11,12 @@ import SignUp from "./pages/SignUp";
 import ViewAllUsers from "./pages/ViewAllUsers";
 import TopBar from "./component-ui/TopBar";
 import BottomNav from "./component-ui/BottomNav";
+import { Box } from "@mui/material";
 
 function App() {
   return (
     <ThemeProvider theme={getTheme("dark")}>
-      <TopBar></TopBar>
+      <TopBar />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
@@ -27,7 +28,9 @@ function App() {
           <Route path="admin/viewAllUsers" element={<ViewAllUsers />} />
         </Routes>
       </BrowserRouter>
-      <BottomNav />
+      <Box sx={{ visibility: { xs: "visible", md: "hidden" } }}>
+        <BottomNav />
+      </Box>
     </ThemeProvider>
   );
 }
