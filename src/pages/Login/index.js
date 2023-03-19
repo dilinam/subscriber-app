@@ -13,7 +13,7 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 
 const Login = () => {
-  const paperStyle = {height: '65vh',width:250,padding:20,margin:'100px auto'}
+  const paperStyle = {height:'60%',width:250,padding:20,margin:'100px auto'}
   const userRef = useRef();
   const errRef = useRef();
   const [user,setUser] = useState("");
