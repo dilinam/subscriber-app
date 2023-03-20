@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import MaterialReactTable from "material-react-table";
+import { Box } from "@mui/material";
 const data1 = [
   {
     name: {
@@ -138,34 +139,36 @@ const Table = () => {
   );
 
   return (
-    <MaterialReactTable
-      columns={columns}
-      data={data1}
-      enableRowSelection
-      getRowId={(row) => row.phoneNumber}
-      manualPagination
-      manualSorting
-      muiToolbarAlertBannerProps={
-        isError
-          ? {
-              color: "error",
-              children: "Error loading data",
-            }
-          : undefined
-      }
-      onGlobalFilterChange={setGlobalFilter}
-      onPaginationChange={setPagination}
-      onSortingChange={setSorting}
-      rowCount={rowCount}
-      state={{
-        globalFilter,
-        // isLoading,
-        pagination,
-        // showAlertBanner: isError,
-        // showProgressBars: isRefetching,
-        sorting,
-      }}
-    />
+    <Box sx={{ visibility: { xs: "hidden", md: "visible" } }}>
+      <MaterialReactTable
+        columns={columns}
+        data={data1}
+        enableRowSelection
+        getRowId={(row) => row.phoneNumber}
+        manualPagination
+        manualSorting
+        muiToolbarAlertBannerProps={
+          isError
+            ? {
+                color: "error",
+                children: "Error loading data",
+              }
+            : undefined
+        }
+        onGlobalFilterChange={setGlobalFilter}
+        onPaginationChange={setPagination}
+        onSortingChange={setSorting}
+        rowCount={rowCount}
+        state={{
+          globalFilter,
+          // isLoading,
+          pagination,
+          // showAlertBanner: isError,
+          // showProgressBars: isRefetching,
+          sorting,
+        }}
+      />
+    </Box>
   );
 };
 
