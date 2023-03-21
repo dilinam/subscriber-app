@@ -1,9 +1,15 @@
 import React from 'react'
 import Table from '../../component-ui/Table';
+import TableToCard from '../../component-ui/TableToCard';
 
 const SubPackages = () => {
   return (
-    <div><Table></Table></div>
+    <div>
+      <Table/>
+      <TableToCard/>
+
+    </div>
+
   )
 }
 

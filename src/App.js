@@ -13,6 +13,8 @@ import TopBar from "./component-ui/TopBar";
 import BottomNav from "./component-ui/BottomNav";
 import { Box } from "@mui/material";
 import SideNav from "./component-ui/SideNav";
+import PendingSub from "./pages/PendingSub";
+import PendingWithdraw from "./pages/PendingWithdraw";
 
 function App() {
   return (
@@ -21,9 +23,9 @@ function App() {
         <Box sx={{ mr: 2, display: { xs: "none", md: "flex" }, width: "15%" }}>
           <SideNav />
         </Box>
-        <Box sx={{ display: { xs: "flex", md: "none" }}}>
+        <header sx={{ display: { xs: "flex", md: "none" } }}>
           <TopBar />
-        </Box>
+        </header>
         <Box sx={{ float: "right", width: "80%" }}>
           <Routes>
             <Route path="/" element={<Login />} />
@@ -33,6 +35,11 @@ function App() {
             <Route path="user/share" element={<Share />} />
             <Route path="user/profile" element={<Profile />} />
             <Route path="admin/viewAllUsers" element={<ViewAllUsers />} />
+            <Route path="admin/pendingSub" element={<PendingSub />} />
+            <Route
+              path="admin/pendingWithdraw"
+              element={<PendingWithdraw />}
+            />
           </Routes>
         </Box>
       </BrowserRouter>
