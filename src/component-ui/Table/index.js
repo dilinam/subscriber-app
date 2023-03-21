@@ -59,7 +59,6 @@ const Table = () => {
 
   //table state
   const [globalFilter, setGlobalFilter] = useState("");
-  const [sorting, setSorting] = useState([]);
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize: 10,
@@ -86,8 +85,6 @@ const Table = () => {
       );
       url.searchParams.set("size", `${pagination.pageSize}`);
       url.searchParams.set("globalFilter", globalFilter ?? "");
-      url.searchParams.set("sorting", JSON.stringify(sorting ?? []));
-
       try {
         const response = await fetch(url.href);
         const json = await response.json();
@@ -109,7 +106,6 @@ const Table = () => {
     globalFilter,
     pagination.pageIndex,
     pagination.pageSize,
-    sorting,
   ]);
 
   const columns = useMemo(
@@ -145,6 +141,9 @@ const Table = () => {
         data={data1}
         enableRowSelection
         getRowId={(row) => row.phoneNumber}
+        enableColumnActions={false}
+        enableColumnFilters={false}
+        enableSorting={false}
         manualPagination
         manualSorting
         muiToolbarAlertBannerProps={
@@ -157,7 +156,6 @@ const Table = () => {
         }
         onGlobalFilterChange={setGlobalFilter}
         onPaginationChange={setPagination}
-        onSortingChange={setSorting}
         rowCount={rowCount}
         state={{
           globalFilter,
@@ -165,7 +163,6 @@ const Table = () => {
           pagination,
           // showAlertBanner: isError,
           // showProgressBars: isRefetching,
-          sorting,
         }}
       />
     </Box>

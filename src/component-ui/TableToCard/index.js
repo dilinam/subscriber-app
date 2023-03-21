@@ -8,15 +8,15 @@ import { CardActionArea } from "@mui/material";
 const TableToCard = () => {
   return (
     <Card
-      sx={{ maxWidth: "100%", visibility: { xs: "visible", md: "hidden" } }}
+      sx={{ maxWidth: "100%", visibility: { xs: "visible", md: "hidden" }, m : 1, borderRadius:5 }}
     >
       <CardActionArea>
-        <CardMedia
+        {/* <CardMedia
           component="img"
           height="140"
           image="/static/images/cards/contemplative-reptile.jpg"
           alt="green iguana"
-        />
+        /> */}
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             Lizard

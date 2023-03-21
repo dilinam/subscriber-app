@@ -26,7 +26,7 @@ function App() {
         <header sx={{ display: { xs: "flex", md: "none" } }}>
           <TopBar />
         </header>
-        <Box sx={{ float: "right", width: "80%" }}>
+        <Box sx={{ float: "right", width: { xs: "100%", md: "80%" } }}>
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="user/signup" element={<SignUp />} />
@@ -36,10 +36,7 @@ function App() {
             <Route path="user/profile" element={<Profile />} />
             <Route path="admin/viewAllUsers" element={<ViewAllUsers />} />
             <Route path="admin/pendingSub" element={<PendingSub />} />
-            <Route
-              path="admin/pendingWithdraw"
-              element={<PendingWithdraw />}
-            />
+            <Route path="admin/pendingWithdraw" element={<PendingWithdraw />} />
           </Routes>
         </Box>
       </BrowserRouter>
