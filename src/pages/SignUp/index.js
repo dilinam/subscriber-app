@@ -1,110 +1,203 @@
-import React from 'react'
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
+import * as React from "react";
 import Avatar from "@mui/material/Avatar";
-import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import Checkbox from "@mui/material/Checkbox";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import validateEmail from "../../utils/validate-email";
+import { registerUser } from "../../use-cases/register-user";
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
 
-const paperStyle = {
-  height: "70vh",
-  width: 250,
-  padding: 20,
-  margin: "100px auto",
+const userData = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
 };
-const SignUp = () => {
+
+export default function SignUp() {
+  const [formData, setFormData] = React.useState({ ...userData });
+  const [formErrorMessages, setFormErrorMessages] = React.useState({
+    ...userData,
+  });
+  const [isDialogBoxOpen, setIsDialogBoxOpen] = React.useState(false);
+
+  const handleSubmit = (event) => {
+
+    event.preventDefault();
+
+    let errors = false;
+    let errorMessages = { ...userData };
+
+    if (formData.firstName.trim() === "") {
+      errorMessages.firstName = "First Name is required";
+      errors = true;
+    }
+
+    if (formData.lastName.trim() === "") {
+      errorMessages.lastName = "Last Name is required";
+      errors = true;
+    }
+
+    if (formData.email.trim() === "") {
+      errorMessages.email = "Email is required";
+      errors = true;
+    }
+
+    if (formData.email.trim() !== "" && !validateEmail(formData.email.trim())) {
+      errorMessages.email = "Email is not valid";
+      errors = true;
+    }
+
+    if (formData.password.trim() === "") {
+      errorMessages.password = "Password is required";
+      errors = true;
+    }
+
+    if (errors) {
+      return;
+    }
+
+    registerUser(formData)
+      .then((response) => {
+        setIsDialogBoxOpen(true);
+        setFormData({...userData})
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleFormValueChange = (event) => {
+    setFormData((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }));
+
+    setFormErrorMessages((prev) => ({
+      ...prev,
+      [event.target.name]: "",
+    }));
+  };
+
   return (
-    <Grid>
-      <Paper elevation={7} style={paperStyle}>
-        <Grid align="center">
-          <Avatar sx={{ bgcolor: "#61DBFB" }}>
-            <PersonOutlinedIcon />
-          </Avatar>
-          <Typography variant="h5" gutterBottom>
-            SignUp
-          </Typography>
-        </Grid>
-
-        <form>
-          <Box
-            component="form"
-            sx={{ "& .MuiTextField-root": { m: 1 } }}
-            noValidate
-            autoComplete="off"
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <Box
+        sx={{
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sign up
+        </Typography>
+        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                autoComplete="given-name"
+                name="firstName"
+                required
+                fullWidth
+                id="firstName"
+                label="First Name"
+                autoFocus
+                value={formData.firstName}
+                onChange={handleFormValueChange}
+                error={formErrorMessages.firstName !== ""}
+                helperText={formErrorMessages.firstName}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                fullWidth
+                id="lastName"
+                label="Last Name"
+                name="lastName"
+                autoComplete="family-name"
+                value={formData.lastName}
+                onChange={handleFormValueChange}
+                error={formErrorMessages.lastName !== ""}
+                helperText={formErrorMessages.lastName}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                value={formData.email}
+                onChange={handleFormValueChange}
+                error={formErrorMessages.email !== ""}
+                helperText={formErrorMessages.email}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="new-password"
+                value={formData.password}
+                onChange={handleFormValueChange}
+                error={formErrorMessages.password !== ""}
+                helperText={formErrorMessages.password}
+              />
+            </Grid>
+          </Grid>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
           >
-            <TextField
-              id="username"
-              label="UserName"
-              type="text"
-              fullWidth
-              required
-              size="small"
-            />
-            <TextField
-              id="email"
-              label="e-mail"
-              type="email"
-              fullWidth
-              required
-              size="small"
-            />
-            <TextField
-              id="contactNo"
-              label="Contact no"
-              type="text"
-              fullWidth
-              required
-              size="small"
-            />
-
-            <TextField
-              id="password"
-              label="Password"
-              type="password"
-              autoComplete="current-password"
-              fullWidth
-              size="small"
-              required
-            />
-            <TextField
-              id="cpassword"
-              label="Confirm Password"
-              type="password"
-              fullWidth
-              size="small"
-              required
-            />
-
-            <Button
-              variant="contained"
-              href="#contained-buttons"
-              fullWidth
-              size="small"
-            >
-              Sign Up
-            </Button>
-            <Typography variant="subtitle2" gutterBottom>
-              Do you have an account ?{" "}
-              <Link
-                onClick={() => {
-                  console.info("I'm a button.");
-                }}
-              >
-                Sign in
+            Sign Up
+          </Button>
+          <Grid container justifyContent="flex-end">
+            <Grid item>
+              <Link href="/login" variant="body2">
+                Already have an account? Sign in
               </Link>
-            </Typography>
-          </Box>
-        </form>
-      </Paper>
-    </Grid>
+            </Grid>
+          </Grid>
+        </Box>
+      </Box>
+      <Dialog
+        open={isDialogBoxOpen}
+        onClose={() => setIsDialogBoxOpen(false)}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"User Registration is Successful"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Please verify your email using the link we sent to your email.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setIsDialogBoxOpen(false)}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+    </Container>
   );
-  
 }
-
-export default SignUp;

@@ -1,100 +1,158 @@
-import React, { useState,useRef,useEffect } from "react";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
+import * as React from "react";
 import Avatar from "@mui/material/Avatar";
-import Grid from "@mui/material/Grid";
-import Paper from '@mui/material/Paper';
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import Checkbox from "@mui/material/Checkbox";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { loginUser } from "../../use-cases/login-user";
+import { useNavigate } from "react-router-dom";
+import { Alert } from "@mui/material";
+import { Report } from "@mui/icons-material";
 
-const Login = () => {
-  const paperStyle = {height:'60%',width:250,padding:20,margin:'100px auto'}
-  const userRef = useRef();
-  const errRef = useRef();
-  const [user,setUser] = useState("");
-  const [pwd,setPwd] = useState("");
-  const [errMsg,setErrMsg] = useState("");
+const userData = {
+  email: "",
+  password: "",
+};
+
+export default function SignIn() {
+  const [formData, setFormData] = React.useState({ ...userData });
+  const [formErrorMessages, setFormErrorMessages] = React.useState({
+    ...userData,
+  });
+  const [showErrorMessage, setShowErrorMessage] = React.useState(false);
+
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    let errors = false;
+    let errorMessages = { ...userData };
+
+    if (formData.email.trim() === "") {
+      errorMessages.email = "Email is required";
+      errors = true;
+    }
+
+    if (formData.password.trim() === "") {
+      errorMessages.password = "Password is required";
+      errors = true;
+    }
+
+    if (errors) {
+      return;
+    }
+
+    loginUser(formData)
+      .then((response) => {
+        window.sessionStorage.setItem("TOKEN", response.data.token);
+        navigate("/home");
+      })
+      .catch((error) => {
+        setShowErrorMessage(true)
+      });
+  };
+
+  const handleFormValueChange = (event) => {
+    setFormData((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }));
+
+    setFormErrorMessages((prev) => ({
+      ...prev,
+      [event.target.name]: "",
+    }));
+  };
 
   return (
-    <Grid>
-      <Paper elevation={7} style={paperStyle}>
-        <Grid align="center">
-          <Avatar sx={{ bgcolor: "#61DBFB" }}>
-            <PersonOutlinedIcon />
-          </Avatar>
-          <Typography variant="h5" gutterBottom>
-            Sign in
-          </Typography>
-        </Grid>
-
-        <form>
-          <Box
-            component="form"
-            sx={{ "& .MuiTextField-root": { m: 1 } }}
-            noValidate
-            autoComplete="off"
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <Box
+        sx={{
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sign in
+        </Typography>
+        {showErrorMessage && (
+          <Alert
+            color="error"
+            icon={<Report />}
+            onClose={() => setShowErrorMessage(false)}
           >
-            <TextField
-              id="username"
-              label="UserName"
-              type="text"
-              fullWidth
-              required
-              size="small"
-            />
-            <TextField
-              id="password"
-              label="Password"
-              type="password"
-              autoComplete="current-password"
-              fullWidth
-              size="small"
-              required
-            />
-            <FormGroup>
-              <FormControlLabel
-                control={<Checkbox defaultChecked size="small" />}
-                label="Remember Me"
-                size="small"
-              />
-            </FormGroup>
-            <Button
-              variant="contained"
-              href="#contained-buttons"
-              fullWidth
-              size="small"
-            >
-              Sign in
-            </Button>
-            <Typography variant="subtitle2" gutterBottom>
-              <Link
-                onClick={() => {
-                  console.info("I'm a button.");
-                }}
-              >
-                Forgot Password ?
+            Invalid Username or Password
+          </Alert>
+        )}
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            value={formData.email}
+            onChange={handleFormValueChange}
+            error={formErrorMessages.email !== ""}
+            helperText={formErrorMessages.email}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            value={formData.password}
+            onChange={handleFormValueChange}
+            error={formErrorMessages.password !== ""}
+            helperText={formErrorMessages.password}
+          />
+          <FormControlLabel
+            control={<Checkbox value="remember" color="primary" />}
+            label="Remember me"
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            Sign In
+          </Button>
+          <Grid container>
+            <Grid item xs>
+              <Link href="#" variant="body2">
+                Forgot password?
               </Link>
-            </Typography>
-            <Typography variant="subtitle2" gutterBottom>
-              Don't you have an account ?{" "}
-              <Link
-                onClick={() => {
-                  console.info("I'm a button.");
-                }}
-              >
-                Sign up
+            </Grid>
+            <Grid item>
+              <Link href="/signup" variant="body2">
+                {"Don't have an account? Sign Up"}
               </Link>
-            </Typography>
-          </Box>
-        </form>
-      </Paper>
-    </Grid>
+            </Grid>
+          </Grid>
+        </Box>
+      </Box>
+    </Container>
   );
 }
-
-export default Login
