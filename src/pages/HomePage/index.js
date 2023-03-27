@@ -1,7 +1,8 @@
 import React from 'react'
+import AutomaticSlider from '../../component-ui/AutomaticSlider';
 
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return <div><AutomaticSlider/></div>;
 }
 
 export default HomePage;

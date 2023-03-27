@@ -10,63 +10,69 @@ import SubPackages from "../pages/SubPackages";
 import ViewAllUsers from "../pages/ViewAllUsers";
 
 const routeConfig = [
-    {
-        id: 1,
-        path: '/login',
-        element: <Login />,
-        hideLayout: true,
-        noAuth: true
-    },
-    {
-        id: 2,
-        path: '/signup',
-        element: <SignUp />,
-        hideLayout: true,
-        noAuth: true
-    },
-    ,
-    {
-        id: 3,
-        path: '/email-verification/:verificationToken',
-        element: <EmailVerification />,
-        hideLayout: true,
-        noAuth: true
-    },
-    {
-        id: 4,
-        path: '/home',
-        element: <HomePage />
-    },
-    {
-        id: 5,
-        path: '/share',
-        element: <Share />
-    },
-    {
-        id: 6,
-        path: '/profile',
-        element: <Profile />
-    },
-    {
-        id: 7,
-        path: '/viewAllUsers',
-        element: <ViewAllUsers />
-    },
-    {
-        id: 8,
-        path: '/pendingSub',
-        element: <PendingSub />
-    },
-    {
-        id: 9,
-        path: '/pendingWithdraw',
-        element: <PendingWithdraw />
-    },
-    {
-        id: 10,
-        path: '/subPakages',
-        element: <SubPackages />
-    }
+  {
+    id: 1,
+    path: "/login",
+    element: <Login />,
+    hideLayout: true,
+    noAuth: true,
+  },
+  {
+    id: 2,
+    path: "/signup",
+    element: <SignUp />,
+    hideLayout: true,
+    noAuth: true,
+  },
+  {
+    id: 3,
+    path: "/email-verification/:verificationToken",
+    element: <EmailVerification />,
+    hideLayout: true,
+    noAuth: true,
+  },
+  {
+    id: 4,
+    path: "/home",
+    element: <HomePage />,
+    noAuth: true,
+  },
+  {
+    id: 5,
+    path: "/share",
+    element: <Share />,
+    noAuth: true,
+  },
+  {
+    id: 6,
+    path: "/profile",
+    element: <Profile />,
+    noAuth: true,
+  },
+  {
+    id: 7,
+    path: "/viewAllUsers",
+    element: <ViewAllUsers />,
+    noAuth: true,
+  },
+  {
+    id: 8,
+    path: "/pendingSub",
+    element: <PendingSub />,
+    noAuth: true,
+  },
+  {
+    id: 9,
+    path: "/pendingWithdraw",
+    element: <PendingWithdraw />,
+    noAuth: true,
+  },
+  {
+    id: 10,
+    path: "/subPakages",
+    element: <SubPackages />,
+    noAuth: true,
+  },
 ];
 
 export default routeConfig;

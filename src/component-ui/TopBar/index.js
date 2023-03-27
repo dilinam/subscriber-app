@@ -28,12 +28,10 @@ const TopBar = () => {
       <CssBaseline />
       <AppBar position="static">
         <Toolbar>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1}}
-          >
-            News
+          
+          <img src="logo.jpg" width="60" height="60" sx={{borderRadius: "50%"}}></img>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Dream The Future
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
 
