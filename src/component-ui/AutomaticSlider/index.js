@@ -1,55 +1,78 @@
-import React from 'react'
-import '../../css/automaticslider.css'
+import * as React from "react";
+import { useTheme } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import MobileStepper from "@mui/material/MobileStepper";
+import SwipeableViews from "react-swipeable-views";
+import { autoPlay } from "react-swipeable-views-utils";
+
+const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+
+const images = [
+  {
+    label: "San Francisco – Oakland Bay Bridge, United States",
+    imgPath:
+      "https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60",
+  },
+  {
+    label: "Bird",
+    imgPath:
+      "https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60",
+  },
+  {
+    label: "Bali, Indonesia",
+    imgPath:
+      "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250",
+  },
+  {
+    label: "Goč, Serbia",
+    imgPath:
+      "https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60",
+  },
+];
+
 const AutomaticSlider = () => {
+  const theme = useTheme();
+  const [activeStep, setActiveStep] = React.useState(0);
+  const maxSteps = images.length;
 
+  const handleStepChange = (step) => {
+    setActiveStep(step);
+  };
   return (
-    <div>
-      {showSlides()}
-      <div className="slideshow-container">
-        <div className="mySlides fade">
-          <img src="mountains.jpg" sx={{width:"100%"}} />
-          <div className="text">Caption Text</div>
-        </div>
-
-        <div className="mySlides fade">
-          <img src="mountains.jpg" sx={{width:"100%"}}  />
-          <div className="text">Caption Two</div>
-        </div>
-
-        <div className="mySlides fade">
-          <img src="mountains.jpg" sx={{width:"100%"}}  />
-          <div className="text">Caption Three</div>
-        </div>
-      </div>
-      <br />
-      <div style="text-align:center">
-        <span className="dot"></span>
-        <span className="dot"></span>
-        <span className="dot"></span>
-      </div>
-    </div>
+    <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
+      <AutoPlaySwipeableViews
+        axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+        index={activeStep}
+        onChangeIndex={handleStepChange}
+        enableMouseEvents
+      >
+        {images.map((step, index) => (
+          <div key={step.label}>
+            {Math.abs(activeStep - index) <= 2 ? (
+              <Box
+                component="img"
+                sx={{
+                  height: 255,
+                  display: "block",
+                  maxWidth: 400,
+                  overflow: "hidden",
+                  width: "100%",
+                }}
+                src={step.imgPath}
+                alt={step.label}
+              />
+            ) : null}
+          </div>
+        ))}
+      </AutoPlaySwipeableViews>
+      <MobileStepper
+        steps={maxSteps}
+        position="static"
+        activeStep={activeStep}
+        sx={{ alignItems: "center" }}
+      />
+    </Box>
   );
-}
+};
 
 export default AutomaticSlider;
-
-function showSlides(slideIndex = 0) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {
-    slideIndex = 1;
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].className += " active";
-  setTimeout(showSlides, 2000); // Change image every 2 seconds
-}
-
-

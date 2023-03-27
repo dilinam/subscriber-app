@@ -3,7 +3,7 @@ import AutomaticSlider from '../../component-ui/AutomaticSlider';
 
 const HomePage = () => {
   return <div>
-    {/* <AutomaticSlider/> */}
+    <AutomaticSlider/>
     hoome
     </div>;
 }

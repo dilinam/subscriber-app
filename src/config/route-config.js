@@ -73,6 +73,12 @@ const routeConfig = [
     element: <SubPackages />,
     noAuth: true,
   },
+  {
+    id: 11,
+    path: "/recharge",
+    element: <SubPackages />,
+    noAuth: true,
+  }
 ];
 
 export default routeConfig;
