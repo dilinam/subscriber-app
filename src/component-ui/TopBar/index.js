@@ -12,6 +12,7 @@ import Menu from "@mui/material/Menu";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import Badge from "@mui/material/Badge";
+import Avatar from "@mui/material/Avatar";
 
 const TopBar = () => {
     const [auth, setAuth] = React.useState(true);
@@ -28,13 +29,26 @@ const TopBar = () => {
       <CssBaseline />
       <AppBar position="static">
         <Toolbar>
-          
-          <img src="logo.jpg" width="60" height="60" sx={{borderRadius: "50%"}}></img>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Avatar
+            alt="Remy Sharp"
+            src="logo.jpg"
+            sx={{ width: 50, height: 50 }}
+          />
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, ml:2, display: { xs: "none", md: "flex" } }}
+          >
             Dream The Future
           </Typography>
+          <Typography
+            variant="h5"
+            component="div"
+            sx={{ flexGrow: 1, ml:2, display: { xs: "flex", md: "none" } }}
+          >
+            DTF
+          </Typography>
           <Box sx={{ flexGrow: 1 }} />
-
           <IconButton
             size="large"
             aria-label="show 4 new mails"

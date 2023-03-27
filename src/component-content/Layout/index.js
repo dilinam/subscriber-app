@@ -12,7 +12,7 @@ const Layout = (props) => {
       <header sx={{ display: { xs: "flex", md: "none" } }}>
         <TopBar />
       </header>
-      <Box  sx={{ float: "right", width: { xs: "100%", md: "80%" }}}>{props.children}</Box>
+      <Box  sx={{ float: "right", width: { xs: "100%", md: "100%" }}}>{props.children}</Box>
       <Box sx={{ visibility: { xs: "visible", md: "hidden" } }}>
         <BottomNav />
       </Box>

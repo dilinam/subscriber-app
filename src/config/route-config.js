@@ -69,7 +69,7 @@ const routeConfig = [
   },
   {
     id: 10,
-    path: "/subPakages",
+    path: "/subPackages",
     element: <SubPackages />,
     noAuth: true,
   },
