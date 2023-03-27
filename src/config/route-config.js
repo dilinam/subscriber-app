@@ -4,6 +4,7 @@ import Login from "../pages/Login";
 import PendingSub from "../pages/PendingSub";
 import PendingWithdraw from "../pages/PendingWithdraw";
 import Profile from "../pages/Profile";
+import Recharge from "../pages/Recharge";
 import Share from "../pages/Share";
 import SignUp from "../pages/SignUp";
 import SubPackages from "../pages/SubPackages";
@@ -76,7 +77,7 @@ const routeConfig = [
   {
     id: 11,
     path: "/recharge",
-    element: <SubPackages />,
+    element: <Recharge />,
     noAuth: true,
   }
 ];
