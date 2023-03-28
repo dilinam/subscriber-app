@@ -7,26 +7,11 @@ import FormControl from "@mui/material/FormControl";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Grid } from "@mui/material";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Modal from "@mui/material/Modal";
+import Link from "@mui/material/Link";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
 
 const Recharge = () => {
   const [amount, setAmount] = useState("");
-  const[open, setOpen] = useState(false);
   const handleChange = (e) => {
     setAmount(e.target.value);
   };
@@ -34,11 +19,6 @@ const Recharge = () => {
     setAmount((pre) => e.target.value);
   };
   
-  const handleRecharge = () => {
-    setOpen(true);
-  };
-  const handleClose = () => setOpen(false);
-
   return (
     <div>
       <Grid
@@ -71,6 +51,9 @@ const Recharge = () => {
             </FormControl>
           </div>
         </Box>
+        <Typography variant="subtitle1">
+          Quick Recharge
+        </Typography>
         <Box sx={{ "& button": { m: 1, width: 90 } }}>
           <div>
             <Button
@@ -153,42 +136,14 @@ const Recharge = () => {
         </Box>
       </Grid>
       <Box>
-        <Button fullWidth variant="contained" onClick={handleRecharge}>
+        <Button
+          fullWidth
+          variant="contained"
+          href="http://localhost:3000/rechargeQR"
+        >
           Recharge
         </Button>
       </Box>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            1. Subscribe Browns 1 Package selling price is 100 USDT, the income
-            is 5 times the income can earn 500 USDT, you can receive 1 USDT per
-            day. <br />
-            2. The daily earnings are put in the equivalent value of USDT coins.{" "}
-            <br />
-            3. You can upgrade to any higher package at any time while still in
-            the purchased package 4. Once this package is sold, it is
-            non-refundable and non- exchangeable.
-            <br />
-          </Typography>
-          <FormGroup>
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="I have read in details "
-            />
-          </FormGroup>
-          <Button fullWidth variant="contained" onClick={handleClose}>
-            Done
-          </Button>
-        </Box>
-      </Modal>
     </div>
   );
 };

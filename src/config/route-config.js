@@ -5,6 +5,7 @@ import PendingSub from "../pages/PendingSub";
 import PendingWithdraw from "../pages/PendingWithdraw";
 import Profile from "../pages/Profile";
 import Recharge from "../pages/Recharge";
+import RechargeQR from "../pages/RechargeQR";
 import Share from "../pages/Share";
 import SignUp from "../pages/SignUp";
 import SubPackages from "../pages/SubPackages";
@@ -79,7 +80,13 @@ const routeConfig = [
     path: "/recharge",
     element: <Recharge />,
     noAuth: true,
-  }
+  },
+  {
+    id: 12,
+    path: "/rechargeQR",
+    element: <RechargeQR />,
+    noAuth: true,
+  },
 ];
 
 export default routeConfig;
