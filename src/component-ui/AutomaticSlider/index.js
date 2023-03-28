@@ -39,7 +39,7 @@ const AutomaticSlider = () => {
     setActiveStep(step);
   };
   return (
-    <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
+    <Box>
       <AutoPlaySwipeableViews
         axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={activeStep}
@@ -52,9 +52,8 @@ const AutomaticSlider = () => {
               <Box
                 component="img"
                 sx={{
-                  height: 255,
+                  height:200,
                   display: "block",
-                  maxWidth: 400,
                   overflow: "hidden",
                   width: "100%",
                 }}
@@ -69,7 +68,6 @@ const AutomaticSlider = () => {
         steps={maxSteps}
         position="static"
         activeStep={activeStep}
-        sx={{ alignItems: "center" }}
       />
     </Box>
   );
