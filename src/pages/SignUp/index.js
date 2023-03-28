@@ -12,12 +12,14 @@ import Container from "@mui/material/Container";
 import validateEmail from "../../utils/validate-email";
 import { registerUser } from "../../use-cases/register-user";
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
+import { useSearchParams } from "react-router-dom";
 
 const userData = {
   firstName: "",
   lastName: "",
   email: "",
   password: "",
+  userRef: ""
 };
 
 export default function SignUp() {
@@ -26,6 +28,14 @@ export default function SignUp() {
     ...userData,
   });
   const [isDialogBoxOpen, setIsDialogBoxOpen] = React.useState(false);
+  const [searchParams] = useSearchParams();
+
+  React.useEffect(() => {
+    const ref = searchParams.get("ref")
+    if(ref) {
+      setFormData(prev => ({...prev, userRef: ref}))
+    }
+  }, [])
 
   const handleSubmit = (event) => {
 
@@ -63,7 +73,15 @@ export default function SignUp() {
       return;
     }
 
-    registerUser(formData)
+    const requestData = {...formData, userRef: undefined}
+
+    if(formData.userRef !== "") {
+      requestData.parentRef = {
+        ref: formData.userRef
+      }
+    }
+
+    registerUser(requestData)
       .then((response) => {
         setIsDialogBoxOpen(true);
         setFormData({...userData})
@@ -160,6 +178,18 @@ export default function SignUp() {
                 onChange={handleFormValueChange}
                 error={formErrorMessages.password !== ""}
                 helperText={formErrorMessages.password}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                id="userRef"
+                label="Referral"
+                name="userRef"
+                value={formData.userRef}
+                onChange={handleFormValueChange}
+                error={formErrorMessages.userRef !== ""}
+                helperText={formErrorMessages.userRef}
               />
             </Grid>
           </Grid>
