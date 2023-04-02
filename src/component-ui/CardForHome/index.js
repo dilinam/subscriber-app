@@ -8,12 +8,12 @@ import CardActions from "@mui/material/CardActions";
 
 const CardForHome = (props) => {
   return (
-    <Card sx={{ m: 1, borderRadius: 5 }}>
-      <CardContent >
+    <Card sx={{ m: 2, borderRadius: 5 }}>
+      <CardContent sx={{ ml: 5  }}>
         <Typography sx={{ fontSize: 14 }} color="text.secondary">
           {props.name}
         </Typography>
-        <Typography color="text.secondary">
+        <Typography variant="h5" color="text.secondary">
           {props.value}
         </Typography>
       </CardContent>
