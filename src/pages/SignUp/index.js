@@ -70,6 +70,7 @@ export default function SignUp() {
     }
 
     if (errors) {
+      setFormErrorMessages(errorMessages)
       return;
     }
 
@@ -87,7 +88,15 @@ export default function SignUp() {
         setFormData({...userData})
       })
       .catch((error) => {
-        console.log(error);
+        if(error?.response?.data) {
+          setFormErrorMessages(prev => {
+            const newErrors = {...prev};
+            Object.keys(error.response.data).forEach(key => {
+              newErrors[key] = error.response.data[key]
+            });
+            return newErrors
+          });
+        }
       });
   };
 

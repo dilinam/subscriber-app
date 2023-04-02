@@ -1,60 +1,24 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import MaterialReactTable from "material-react-table";
-import { Box } from "@mui/material";
-const data1 = [
-  {
-    name: {
-      firstName: "John",
-      lastName: "Doe",
-    },
-    address: "261 Erdman Ford",
-    city: "East Daphne",
-    state: "Kentucky",
-  },
-  {
-    name: {
-      firstName: "Jane",
-      lastName: "Doe",
-    },
-    address: "769 Dominic Grove",
-    city: "Columbus",
-    state: "Ohio",
-  },
-  {
-    name: {
-      firstName: "Joe",
-      lastName: "Doe",
-    },
-    address: "566 Brakus Inlet",
-    city: "South Linda",
-    state: "West Virginia",
-  },
-  {
-    name: {
-      firstName: "Kevin",
-      lastName: "Vandy",
-    },
-    address: "722 Emie Stream",
-    city: "Lincoln",
-    state: "Nebraska",
-  },
-  {
-    name: {
-      firstName: "Joshua",
-      lastName: "Rolluffs",
-    },
-    address: "32188 Larkin Turnpike",
-    city: "Charleston",
-    state: "South Carolina",
-  },
-];
+import { Box, IconButton, Tooltip } from "@mui/material";
+import { DoNotDisturb, Edit, PanToolAlt } from "@mui/icons-material";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogTitle from "@mui/material/DialogTitle";
+import Button from "@mui/material/Button";
 
-const Table = () => {
+const Table = ({
+  fetchDataList,
+  headers,
+  rowIdField,
+  handleStatus,
+  setEditingRow,
+  tableRefreshFlag
+}) => {
   //data and fetching state
   const [data, setData] = useState([]);
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [isRefetching, setIsRefetching] = useState(false);
   const [rowCount, setRowCount] = useState(0);
 
   //table state
@@ -64,108 +28,127 @@ const Table = () => {
     pageSize: 10,
   });
 
-  
-  useEffect(() => {
-    const fetchData = async () => {
-      if (!data.length) {
-        setIsLoading(true);
-      } else {
-        setIsRefetching(true);
-      }
+  const [statusChangeRowId, setStatusChangeRowId] = useState(null);
 
-      const url = new URL(
-        "/api/data",
-        process.env.NODE_ENV === "production"
-          ? "https://www.material-react-table.com"
-          : "http://localhost:3000"
+  const fetchData = async () => {
+    console.log(globalFilter)
+    setIsLoading(true);
+
+    try {
+      const data = await fetchDataList(
+        pagination.pageIndex,
+        pagination.pageSize,
+        globalFilter || ''
       );
-      url.searchParams.set(
-        "start",
-        `${pagination.pageIndex * pagination.pageSize}`
-      );
-      url.searchParams.set("size", `${pagination.pageSize}`);
-      url.searchParams.set("globalFilter", globalFilter ?? "");
-      try {
-        const response = await fetch(url.href);
-        const json = await response.json();
-        // setData(json.data);
-        setData(data)
-        setRowCount(json.meta.totalRowCount);
-      } catch (error) {
-        setIsError(true);
-        console.error(error);
-        return;
-      }
+      setData(data.data.data);
+      setRowCount(data.data.count);
       setIsError(false);
       setIsLoading(false);
-      setIsRefetching(false);
-    };
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    globalFilter,
-    pagination.pageIndex,
-    pagination.pageSize,
-  ]);
+    } catch (error) {
+      setIsError(true);
+      setIsLoading(false);
+      return;
+    }
+  };
 
-  const columns = useMemo(
-    () => [
-      {
-        accessorKey: "name.firstName", //access nested data with dot notation
-        header: "First Name",
-      },
-      {
-        accessorKey: "name.lastName",
-        header: "Last Name",
-      },
-      {
-        accessorKey: "address", //normal accessorKey
-        header: "Address",
-      },
-      {
-        accessorKey: "city",
-        header: "City",
-      },
-      {
-        accessorKey: "state",
-        header: "State",
-      },
-    ],
-    []
-  );
+  useEffect(() => {
+    fetchData();
+  }, [globalFilter, pagination.pageIndex, pagination.pageSize, tableRefreshFlag]);
+
+  const setStateChangeRow = (rowId, isActive) => {
+    setStatusChangeRowId({ rowId, isActive });
+  };
+
+  const handleStatusChange = () => {
+    handleStatus && handleStatus(statusChangeRowId.rowId).then();
+    setStatusChangeRowId(null);
+  };
 
   return (
-    <Box sx={{ visibility: { xs: "hidden", md: "visible" } }}>
-      <MaterialReactTable
-        columns={columns}
-        data={data1}
-        enableRowSelection
-        getRowId={(row) => row.phoneNumber}
-        enableColumnActions={false}
-        enableColumnFilters={false}
-        enableSorting={false}
-        manualPagination
-        manualSorting
-        muiToolbarAlertBannerProps={
-          isError
-            ? {
-                color: "error",
-                children: "Error loading data",
-              }
-            : undefined
-        }
-        onGlobalFilterChange={setGlobalFilter}
-        onPaginationChange={setPagination}
-        rowCount={rowCount}
-        state={{
-          globalFilter,
-          // isLoading,
-          pagination,
-          // showAlertBanner: isError,
-          // showProgressBars: isRefetching,
-        }}
-      />
-    </Box>
+    <>
+      <Box sx={{ visibility: { xs: "hidden", md: "visible" } }} margin={2}>
+        <MaterialReactTable
+          columns={headers}
+          data={data}
+          getRowId={(row) => row[rowIdField]}
+          enableColumnActions={false}
+          enableColumnFilters={false}
+          enableSorting={false}
+          manualPagination
+          manualSorting
+          manualFiltering
+          muiToolbarAlertBannerProps={
+            isError
+              ? {
+                  color: "error",
+                  children: "Data Loading Error",
+                }
+              : undefined
+          }
+          muiLinearProgressProps={() => ({
+            sx: {
+              display: "none", //hide bottom progress bar
+            },
+          })}
+          onGlobalFilterChange={setGlobalFilter}
+          onPaginationChange={setPagination}
+          rowCount={rowCount}
+          state={{
+            globalFilter,
+            isLoading,
+            pagination,
+            showAlertBanner: isError,
+          }}
+          enableEditing
+          renderRowActions={({ row }) => (
+            <Box sx={{ display: "flex", gap: "1rem" }}>
+              {setEditingRow && (
+                <Tooltip arrow placement="left" title={"Edit"}>
+                  <IconButton onClick={() => setEditingRow(row.original)}>
+                    <Edit />
+                  </IconButton>
+                </Tooltip>
+              )}
+              {handleStatus && (
+                <Tooltip
+                  arrow
+                  placement="left"
+                  title={row.original.isActive ? "Disable" : "Enable"}
+                >
+                  <IconButton
+                    onClick={() =>
+                      setStateChangeRow(
+                        row.original[rowIdField],
+                        row.original.isActive
+                      )
+                    }
+                  >
+                    {row.original.isActive ? <DoNotDisturb /> : <PanToolAlt />}
+                  </IconButton>
+                </Tooltip>
+              )}
+            </Box>
+          )}
+        />
+      </Box>
+      <Dialog
+        open={statusChangeRowId != null}
+        onClose={() => setStatusChangeRowId(null)}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Do you want to{" "}
+          {statusChangeRowId?.isActive ? "deactivate" : "activate"} user?
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={() => setStatusChangeRowId(null)}>No</Button>
+          <Button onClick={handleStatusChange} autoFocus>
+            Yes
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </>
   );
 };
 

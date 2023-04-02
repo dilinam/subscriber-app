@@ -9,7 +9,7 @@ import RechargeQR from "../pages/RechargeQR";
 import Share from "../pages/Share";
 import SignUp from "../pages/SignUp";
 import SubPackages from "../pages/SubPackages";
-import ViewAllUsers from "../pages/ViewAllUsers";
+import UserList from "../pages/ViewAllUsers";
 
 const routeConfig = [
   {
@@ -53,9 +53,9 @@ const routeConfig = [
   },
   {
     id: 7,
-    path: "/viewAllUsers",
-    element: <ViewAllUsers />,
-    noAuth: true,
+    path: "/users",
+    element: <UserList />,
+    // noAuth: true,
   },
   {
     id: 8,
