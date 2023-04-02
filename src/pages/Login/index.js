@@ -12,7 +12,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { loginUser } from "../../use-cases/login-user";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Alert } from "@mui/material";
 import { Report } from "@mui/icons-material";
 
@@ -27,8 +27,19 @@ export default function SignIn() {
     ...userData,
   });
   const [showErrorMessage, setShowErrorMessage] = React.useState(false);
+  const [commonError, setCommonError] = React.useState('');
 
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  React.useEffect(() => {
+    const error = searchParams.get("error")
+    if(error) {
+      if(error === 'session-expired') {
+        setCommonError('Session Expired')
+      }
+    }
+  }, [])
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -96,6 +107,15 @@ export default function SignIn() {
             onClose={() => setShowErrorMessage(false)}
           >
             Invalid Username or Password
+          </Alert>
+        )}
+        {setCommonError && (
+          <Alert
+            color="error"
+            icon={<Report />}
+            onClose={() => setCommonError('')}
+          >
+            {commonError}
           </Alert>
         )}
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
