@@ -10,7 +10,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import Paper from "@mui/material/Paper";
 
 const BottomNav = () => {
-    const [value, setValue] = React.useState("recents");
+    const [value, setValue] = React.useState("");
     const handleChange = (event, newValue) => {
       setValue(newValue);
     };
@@ -26,26 +26,31 @@ const BottomNav = () => {
             label="Home"
             value="home"
             icon={<HomeIcon fontSize="large" />}
+            href={`http://localhost:3000/${value}`}
           />
           <BottomNavigationAction
             label="Packages"
-            value="packages"
+            value="subPackages"
             icon={<Inventory2OutlinedIcon fontSize="large" />}
+            href={`http://localhost:3000/${value}`}
           />
           <BottomNavigationAction
             label="Recharge"
             value="recharge"
             icon={<AddCircleOutlineIcon fontSize="large" />}
+            href={`http://localhost:3000/${value}`}
           />
           <BottomNavigationAction
             label="Withdraw"
             value="withdraw"
             icon={<CurrencyExchangeIcon fontSize="large" />}
+            href={`http://localhost:3000/${value}`}
           />
           <BottomNavigationAction
             label="Me"
             value="me"
             icon={<AccountCircleIcon fontSize="large" />}
+            href={`http://localhost:3000/profile`}
           />
         </BottomNavigation>
       </Paper>

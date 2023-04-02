@@ -51,9 +51,7 @@ const Recharge = () => {
             </FormControl>
           </div>
         </Box>
-        <Typography variant="subtitle1">
-          Quick Recharge
-        </Typography>
+        <Typography variant="subtitle1">Quick Recharge</Typography>
         <Box sx={{ "& button": { m: 1, width: 90 } }}>
           <div>
             <Button
@@ -135,9 +133,9 @@ const Recharge = () => {
           </div>
         </Box>
       </Grid>
-      <Box>
+      <Box align = "center">
         <Button
-          fullWidth
+          sx={{mt : "10%" , width : "80%"}}
           variant="contained"
           href="http://localhost:3000/rechargeQR"
         >

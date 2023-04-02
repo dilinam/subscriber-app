@@ -5,12 +5,14 @@ import CardForHome from '../../component-ui/CardForHome';
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ImgStack from '../../component-ui/ImgStack';
 
 const HomePage = () => {
   return (
     <div>
       <AutomaticSlider />
-      <CardForHome value="$100" name="Available Balance" />
+      <ImgStack/>
+      {/* <CardForHome value="$100" name="Available Balance" />
       <Stack spacing={1} direction="column" sx={{ m: 2 }}>
         <Button
           variant="outlined"
@@ -41,7 +43,7 @@ const HomePage = () => {
         >
           Packages
         </Button>
-      </Stack>
+      </Stack> */}
     </div>
   );
 }

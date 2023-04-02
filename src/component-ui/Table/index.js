@@ -159,7 +159,7 @@ const Table = () => {
         rowCount={rowCount}
         state={{
           globalFilter,
-          isLoading,
+          // isLoading,
           pagination,
           // showAlertBanner: isError,
           // showProgressBars: isRefetching,
