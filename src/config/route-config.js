@@ -10,6 +10,7 @@ import SignUp from "../pages/SignUp";
 import SubPackages from "../pages/SubPackages";
 import UserDetails from "../pages/UserDetails";
 import UserList from "../pages/ViewAllUsers";
+import Withdraw from "../pages/Withdraw";
 
 const routeConfig = [
   {
@@ -82,9 +83,15 @@ const routeConfig = [
     noAuth: true,
   },
   {
-    id: 11,
+    id: 12,
     path: "/userDetails",
     element: <UserDetails />,
+    noAuth: true,
+  },
+  {
+    id: 13,
+    path: "/withdraw",
+    element: <Withdraw />,
     noAuth: true,
   },
 ];

@@ -30,7 +30,7 @@ const CardForHome = (props) => {
           size="large"
           sx={{ ml: 5, mr: 5, borderRadius: 2 }}
         >
-          <Link href="http://localhost:3000/recharge">Withdraw</Link>
+          <Link href="http://localhost:3000/withdraw">Withdraw</Link>
         </Button>
       </CardActions>
     </Card>

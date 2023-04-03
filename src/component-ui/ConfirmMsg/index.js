@@ -23,8 +23,8 @@ const ConfirmMsg = (props) => {
       };
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Slide in alert dialog
+      <Button variant="contained" fullWidth onClick={handleClickOpen}>
+       {props.buttonName}
       </Button>
       <Dialog
         open={open}
@@ -40,8 +40,8 @@ const ConfirmMsg = (props) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Disagree</Button>
-          <Button onClick={handleClose}>Agree</Button>
+          <Button onClick={handleClose}>Yes </Button>
+          <Button onClick={handleClose}>No </Button>
         </DialogActions>
       </Dialog>
     </div>
