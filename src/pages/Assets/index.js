@@ -4,13 +4,14 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
+import { Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { Grid } from "@mui/material";
-import Link from "@mui/material/Link";
+import CardForHome from "../../component-ui/CardForHome";
+import Stack from "@mui/material/Stack";
 
 
-const Recharge = () => {
+const Assets = () => {
   const [amount, setAmount] = useState("");
   const handleChange = (e) => {
     setAmount(e.target.value);
@@ -18,10 +19,37 @@ const Recharge = () => {
   const handleClick = (e) => {
     setAmount((pre) => e.target.value);
   };
-  
+
   return (
     <div>
-      <Grid
+      <Typography variant="h5" gutterBottom align = "center">
+        ASSETS
+      </Typography>
+      <CardForHome value="100.00" name="Available Balance" />
+      <Stack spacing={1} direction="column" sx={{ m: 2, mb: 10 }}>
+        <Button
+          variant="outlined"
+          size="large"
+          sx={{ display: "flex", justifyContent: "flex-start" }}
+        >
+          Asset Details
+        </Button>
+        <Button
+          variant="outlined"
+          size="large"
+          sx={{ display: "flex", justifyContent: "flex-start" }}
+        >
+          Expences Record
+        </Button>
+        <Button
+          variant="outlined"
+          size="large"
+          sx={{ display: "flex", justifyContent: "flex-start" }}
+        >
+          Activity Income
+        </Button>
+      </Stack>
+      {/* <Grid
         container
         spacing={0}
         direction="column"
@@ -133,17 +161,17 @@ const Recharge = () => {
           </div>
         </Box>
       </Grid>
-      <Box align = "center">
+      <Box align="center">
         <Button
-          sx={{mt : "10%" , width : "80%"}}
+          sx={{ mt: "10%", width: "80%" }}
           variant="contained"
           href="http://localhost:3000/rechargeQR"
         >
           Recharge
         </Button>
-      </Box>
+      </Box>*/}
     </div>
   );
 };
 
-export default Recharge;
+export default Assets;

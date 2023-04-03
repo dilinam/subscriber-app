@@ -3,7 +3,7 @@ import HomePage from "../pages/HomePage";
 import Login from "../pages/Login";
 import PendingWithdraw from "../pages/PendingWithdraw";
 import Profile from "../pages/Profile";
-import Recharge from "../pages/Recharge";
+import Assets from "../pages/Assets";
 import RechargeQR from "../pages/RechargeQR";
 import Share from "../pages/Share";
 import SignUp from "../pages/SignUp";
@@ -11,6 +11,7 @@ import SubPackages from "../pages/SubPackages";
 import UserDetails from "../pages/UserDetails";
 import UserList from "../pages/ViewAllUsers";
 import Withdraw from "../pages/Withdraw";
+import Me from "../pages/Me";
 
 const routeConfig = [
   {
@@ -78,8 +79,8 @@ const routeConfig = [
   },
   {
     id: 11,
-    path: "/recharge",
-    element: <Recharge />,
+    path: "/assets",
+    element: <Assets />,
     noAuth: true,
   },
   {
@@ -90,8 +91,8 @@ const routeConfig = [
   },
   {
     id: 13,
-    path: "/withdraw",
-    element: <Withdraw />,
+    path: "/me",
+    element: <Me />,
     noAuth: true,
   },
 ];

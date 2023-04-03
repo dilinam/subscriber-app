@@ -1,17 +1,15 @@
 import { Box } from '@mui/system';
 import React from 'react'
-import Table from '../../component-ui/Table';
 import TableToCard from '../../component-ui/TableToCard';
+import Typography from "@mui/material/Typography";
 
 const SubPackages = () => {
   return (
     <div>
-      <Box sx={{ display: { xs: "none", md: "flex" } }}>
-        <Table />
-      </Box>
-      <Box sx={{ display: { xs: "flex", md: "none" } }}>
-        <TableToCard />
-      </Box>
+      <Typography variant="h5" gutterBottom align="center">
+        PACKAGE SUBSCRIPTION
+      </Typography>
+      <TableToCard />
     </div>
   );
 }

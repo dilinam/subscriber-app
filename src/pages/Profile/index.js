@@ -8,9 +8,12 @@ import {
   Divider,
   Typography,
 } from "@mui/material";
-import CardForHome from "../../component-ui/CardForHome";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import GroupsIcon from "@mui/icons-material/Groups";
+import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import CreditCardIcon from "@mui/icons-material/CreditCard";
 import Stack from "@mui/material/Stack";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import * as React from "react";
 
 const user = {
@@ -30,26 +33,24 @@ const Profile = () => {
             sx={{
               alignItems: "center",
               display: "flex",
-              flexDirection: "column",
             }}
           >
             <Avatar
               src={user.avatar}
               sx={{
                 height: 80,
-                mb: 2,
+                m: 3,
                 width: 80,
               }}
             />
-            <Typography gutterBottom variant="h5">
-              {user.name}
-            </Typography>
-            <Typography color="text.secondary" variant="body2">
-              {user.city} {user.country}
-            </Typography>
-            <Typography color="text.secondary" variant="body2">
-              {user.timezone}
-            </Typography>
+            <Box>
+              <Typography gutterBottom variant="h6">
+                hasitha1999
+              </Typography>
+              <Typography color="text.secondary" variant="body2">
+                ID : 00000410
+              </Typography>
+            </Box>
           </Box>
         </CardContent>
         <Divider />
@@ -62,37 +63,85 @@ const Profile = () => {
       <Button href="http://localhost:3000/userDetails">
         Update profile info
       </Button>
-      <CardForHome value="$100" name="Available Balance" />
+      <Card sx={{ m: 2, borderRadius: 5 }}>
+        <CardContent sx={{ ml: 5 }}>
+          <Typography sx={{ fontSize: 18 }} color="text.secondary">
+            Your Package
+          </Typography>
+          <Typography variant="h5" color="text.secondary">
+            100 USDT package
+          </Typography>
+        </CardContent>
+        <CardContent sx={{ ml: 5 }}>
+          <Typography sx={{ fontSize: 18 }} color="text.secondary">
+            Availabale balance (USDT)
+          </Typography>
+          <Typography variant="h5" color="text.secondary">
+            361.00 USDT
+          </Typography>
+        </CardContent>
+      </Card>
+
       <Stack spacing={1} direction="column" sx={{ m: 2, mb: 10 }}>
         <Button
-          variant="outlined"
+          color="secondary"
+          startIcon={<AssignmentIcon sx={{ mr: 2 }} />}
           size="large"
-          endIcon={<ArrowForwardIosIcon />}
-          sx={{ display : "flex" ,justifyContent: "flex-end"}}
+          sx={{
+            display: "flex",
+            justifyContent: "flex-start",
+            fontSize: "20px",
+          }}
         >
-          Withdraw
+          Expences Record
         </Button>
         <Button
-          variant="outlined"
+          color="secondary"
+          startIcon={<TrendingUpIcon sx={{ mr: 2 }} />}
           size="large"
-          endIcon={<ArrowForwardIosIcon sx={{ ml: 25 }} />}
-          sx={{ float: "left" }}
+          sx={{
+            display: "flex",
+            justifyContent: "flex-start",
+            fontSize: "20px",
+          }}
         >
-          Packages
+          Activity Income
         </Button>
         <Button
-          variant="outlined"
+          color="secondary"
           size="large"
-          endIcon={<ArrowForwardIosIcon sx={{ ml: 25 }} />}
+          startIcon={<CreditCardIcon sx={{ mr: 2 }} />}
+          sx={{
+            display: "flex",
+            justifyContent: "flex-start",
+            fontSize: "20px",
+          }}
         >
-          Recharge
+          Card Management
         </Button>
         <Button
-          variant="outlined"
+          color="secondary"
+          startIcon={<HeadsetMicIcon sx={{ mr: 2 }} />}
           size="large"
-          endIcon={<ArrowForwardIosIcon sx={{ ml: 25 }} />}
+          sx={{
+            display: "flex",
+            justifyContent: "flex-start",
+            fontSize: "20px",
+          }}
         >
-          Packages
+          Customer Service
+        </Button>
+        <Button
+          color="secondary"
+          size="large"
+          startIcon={<GroupsIcon sx={{ mr: 2 }} />}
+          sx={{
+            display: "flex",
+            justifyContent: "flex-start",
+            fontSize: "20px",
+          }}
+        >
+          About DTF Team
         </Button>
       </Stack>
     </div>

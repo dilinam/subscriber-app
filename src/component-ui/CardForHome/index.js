@@ -10,11 +10,11 @@ const CardForHome = (props) => {
   return (
     <Card sx={{ m: 2, borderRadius: 5 }}>
       <CardContent sx={{ ml: 5 }}>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary">
-          {props.name}
+        <Typography sx={{ fontSize: 18 }} color="text.secondary">
+          {props.name} (USDT)
         </Typography>
         <Typography variant="h5" color="text.secondary">
-          {props.value}
+          {props.value} USDT
         </Typography>
       </CardContent>
       <CardActions display={"flex"}>
