@@ -1,7 +1,6 @@
 import EmailVerification from "../pages/EmailVerification";
 import HomePage from "../pages/HomePage";
 import Login from "../pages/Login";
-import PendingSub from "../pages/PendingSub";
 import PendingWithdraw from "../pages/PendingWithdraw";
 import Profile from "../pages/Profile";
 import Recharge from "../pages/Recharge";
@@ -9,6 +8,7 @@ import RechargeQR from "../pages/RechargeQR";
 import Share from "../pages/Share";
 import SignUp from "../pages/SignUp";
 import SubPackages from "../pages/SubPackages";
+import UserDetails from "../pages/UserDetails";
 import UserList from "../pages/ViewAllUsers";
 
 const routeConfig = [
@@ -55,12 +55,12 @@ const routeConfig = [
     id: 7,
     path: "/users",
     element: <UserList />,
-    // noAuth: true,
+    noAuth: true,
   },
   {
     id: 8,
-    path: "/pendingSub",
-    element: <PendingSub />,
+    path: "/rechargeQR",
+    element: <RechargeQR />,
     noAuth: true,
   },
   {
@@ -82,9 +82,9 @@ const routeConfig = [
     noAuth: true,
   },
   {
-    id: 12,
-    path: "/rechargeQR",
-    element: <RechargeQR />,
+    id: 11,
+    path: "/userDetails",
+    element: <UserDetails />,
     noAuth: true,
   },
 ];

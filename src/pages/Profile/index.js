@@ -8,8 +8,10 @@ import {
   Divider,
   Typography,
 } from "@mui/material";
-import UserDetails from "../../component-ui/UserDetails";
-
+import CardForHome from "../../component-ui/CardForHome";
+import Stack from "@mui/material/Stack";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import * as React from "react";
 
 const user = {
   avatar: "/assets/avatars/avatar-anika-visser.png",
@@ -57,7 +59,42 @@ const Profile = () => {
           </Button>
         </CardActions>
       </Card>
-      <UserDetails/>
+      <Button href="http://localhost:3000/userDetails">
+        Update profile info
+      </Button>
+      <CardForHome value="$100" name="Available Balance" />
+      <Stack spacing={1} direction="column" sx={{ m: 2, mb: 10 }}>
+        <Button
+          variant="outlined"
+          size="large"
+          endIcon={<ArrowForwardIosIcon />}
+          sx={{ display : "flex" ,justifyContent: "flex-end"}}
+        >
+          Withdraw
+        </Button>
+        <Button
+          variant="outlined"
+          size="large"
+          endIcon={<ArrowForwardIosIcon sx={{ ml: 25 }} />}
+          sx={{ float: "left" }}
+        >
+          Packages
+        </Button>
+        <Button
+          variant="outlined"
+          size="large"
+          endIcon={<ArrowForwardIosIcon sx={{ ml: 25 }} />}
+        >
+          Recharge
+        </Button>
+        <Button
+          variant="outlined"
+          size="large"
+          endIcon={<ArrowForwardIosIcon sx={{ ml: 25 }} />}
+        >
+          Packages
+        </Button>
+      </Stack>
     </div>
   );
 };

@@ -9,8 +9,10 @@ const Layout = (props) => {
       <Box sx={{ mr: 2, display: { xs: "none", md: "flex" }, width: "15%" }}>
         <SideNav />
       </Box>
-      <header sx={{ display: { xs: "flex", md: "none" } }}>
-        <TopBar />
+      <header>
+        <Box sx={{ visibility: { xs: "visible", md: "hidden" } }}>
+          <TopBar name="hasitha" />
+        </Box>
       </header>
       <Box sx={{ float: "right", width: { xs: "100%", md: "100%" } }}>
         {props.children}

@@ -11,8 +11,8 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import AppBar from '@mui/material/AppBar';
-import Typography from '@mui/material/Typography';
 import TopBar from '../TopBar';
+
 const SideNav = () => {
   return (
     <Box sx={{ display: "flex" }}>
@@ -21,7 +21,7 @@ const SideNav = () => {
         sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
       >
         <Toolbar>
-          <TopBar></TopBar>
+          <TopBar name= "hasitha"/>
         </Toolbar>
       </AppBar>
       <Drawer

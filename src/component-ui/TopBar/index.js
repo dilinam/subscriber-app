@@ -9,12 +9,11 @@ import CssBaseline from "@mui/material/CssBaseline";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import Badge from "@mui/material/Badge";
 import Avatar from "@mui/material/Avatar";
+import LoginIcon from "@mui/icons-material/Login";
+import Link from "@mui/material/Link";
 
-const TopBar = () => {
+const TopBar = (props) => {
     const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -37,38 +36,22 @@ const TopBar = () => {
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, ml:2, display: { xs: "none", md: "flex" } }}
+            sx={{ flexGrow: 1, ml: 2, display: { xs: "none", md: "flex" } }}
           >
             Dream The Future
           </Typography>
           <Typography
             variant="h5"
             component="div"
-            sx={{ flexGrow: 1, ml:2, display: { xs: "flex", md: "none" } }}
+            sx={{ flexGrow: 1, ml: 2, display: { xs: "flex", md: "none" } }}
           >
             DTF
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
-          <IconButton
-            size="large"
-            aria-label="show 4 new mails"
-            color="inherit"
-          >
-            <Badge badgeContent={4} color="error">
-              <MailIcon />
-            </Badge>
-          </IconButton>
-          <IconButton
-            size="large"
-            aria-label="show 17 new notifications"
-            color="inherit"
-          >
-            <Badge badgeContent={17} color="error">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
+
           {auth ? (
-            <div>
+            <Box sx={{ display: "flex" }}>
+              <Typography variant="h6">{props.name}</Typography>
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -94,12 +77,22 @@ const TopBar = () => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem>
+                  <Link href="http://localhost:3000/profile" underline="none">
+                    Profile
+                  </Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link href="http://localhost:3000/sign" underline="none">
+                    Logout
+                  </Link>
+                </MenuItem>
               </Menu>
-            </div>
+            </Box>
           ) : (
-            <Button color="inherit">Login</Button>
+            <Button color="inherit" endIcon={<LoginIcon />}>
+              Login
+            </Button>
           )}
         </Toolbar>
       </AppBar>

@@ -3,13 +3,13 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { Box } from "@mui/system";
 import CardActions from "@mui/material/CardActions";
+import Link from "@mui/material/Link";
 
 const CardForHome = (props) => {
   return (
     <Card sx={{ m: 2, borderRadius: 5 }}>
-      <CardContent sx={{ ml: 5  }}>
+      <CardContent sx={{ ml: 5 }}>
         <Typography sx={{ fontSize: 14 }} color="text.secondary">
           {props.name}
         </Typography>
@@ -23,14 +23,14 @@ const CardForHome = (props) => {
           size="large"
           sx={{ ml: 5, mr: 5, borderRadius: 2 }}
         >
-          Recharge
+          <Link href="http://localhost:3000/recharge">Recharge</Link>
         </Button>
         <Button
           variant="outlined"
           size="large"
           sx={{ ml: 5, mr: 5, borderRadius: 2 }}
         >
-          Withdraw
+          <Link href="http://localhost:3000/recharge">Withdraw</Link>
         </Button>
       </CardActions>
     </Card>
