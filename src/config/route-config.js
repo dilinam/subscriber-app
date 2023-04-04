@@ -12,6 +12,10 @@ import UserDetails from "../pages/UserDetails";
 import UserList from "../pages/ViewAllUsers";
 import Withdraw from "../pages/Withdraw";
 import Me from "../pages/Me";
+import ExpensesRecord from "../pages/ExpensesRecord";
+import Recharge from "../pages/Recharge";
+import ActivityIncome from "../pages/ActivityIncome";
+import AssetDetails from "../pages/AssetDetails";
 
 const routeConfig = [
   {
@@ -93,6 +97,36 @@ const routeConfig = [
     id: 13,
     path: "/me",
     element: <Me />,
+    noAuth: true,
+  },
+  {
+    id: 14,
+    path: "/expensesRecord",
+    element: <ExpensesRecord />,
+    noAuth: true,
+  },
+  {
+    id: 15,
+    path: "/withdraw",
+    element: <Withdraw />,
+    noAuth: true,
+  },
+  {
+    id: 16,
+    path: "/recharge",
+    element: <Recharge />,
+    noAuth: true,
+  },
+  {
+    id: 17,
+    path: "/activityIncome",
+    element: <ActivityIncome />,
+    noAuth: true,
+  },
+  {
+    id: 18,
+    path: "/assetDetails",
+    element: <AssetDetails />,
     noAuth: true,
   },
 ];

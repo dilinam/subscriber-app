@@ -27,7 +27,7 @@ const user = {
 const Profile = () => {
   return (
     <div>
-      <Card>
+      <Card sx={{ m: 1, borderRadius: 3 }}>
         <CardContent>
           <Box
             sx={{
@@ -55,15 +55,16 @@ const Profile = () => {
         </CardContent>
         <Divider />
         <CardActions>
-          <Button fullWidth variant="text">
-            Upload picture
+          <Button
+            fullWidth
+            variant="text"
+            href="http://localhost:3000/userDetails"
+          >
+            Update profile info
           </Button>
         </CardActions>
       </Card>
-      <Button href="http://localhost:3000/userDetails">
-        Update profile info
-      </Button>
-      <Card sx={{ m: 2, borderRadius: 5 }}>
+      <Card sx={{ m: 1, borderRadius: 3 }}>
         <CardContent sx={{ ml: 5 }}>
           <Typography sx={{ fontSize: 18 }} color="text.secondary">
             Your Package

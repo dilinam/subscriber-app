@@ -12,17 +12,10 @@ import Stack from "@mui/material/Stack";
 
 
 const Assets = () => {
-  const [amount, setAmount] = useState("");
-  const handleChange = (e) => {
-    setAmount(e.target.value);
-  };
-  const handleClick = (e) => {
-    setAmount((pre) => e.target.value);
-  };
 
   return (
     <div>
-      <Typography variant="h5" gutterBottom align = "center">
+      <Typography variant="h5" gutterBottom align="center">
         ASSETS
       </Typography>
       <CardForHome value="100.00" name="Available Balance" />
@@ -31,6 +24,7 @@ const Assets = () => {
           variant="outlined"
           size="large"
           sx={{ display: "flex", justifyContent: "flex-start" }}
+          href={`http://localhost:3000/assetDetails`}
         >
           Asset Details
         </Button>
@@ -38,6 +32,7 @@ const Assets = () => {
           variant="outlined"
           size="large"
           sx={{ display: "flex", justifyContent: "flex-start" }}
+          href={`http://localhost:3000/expensesRecord`}
         >
           Expences Record
         </Button>
@@ -45,131 +40,12 @@ const Assets = () => {
           variant="outlined"
           size="large"
           sx={{ display: "flex", justifyContent: "flex-start" }}
+          href={`http://localhost:3000/activityIncome`}
         >
           Activity Income
         </Button>
       </Stack>
-      {/* <Grid
-        container
-        spacing={0}
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Box>
-          <Typography variant="subtitle1" gutterBottom>
-            USDT(TRC20-2)
-          </Typography>
-          <div>
-            <FormControl sx={{ m: 2 }}>
-              <InputLabel htmlFor="outlined-adornment-amount">
-                Amount
-              </InputLabel>
-              <OutlinedInput
-                id="amount"
-                startAdornment={
-                  <InputAdornment position="start">$</InputAdornment>
-                }
-                label="Amount"
-                name="amount"
-                onChange={handleChange}
-                value={amount}
-                type="number"
-              />
-            </FormControl>
-          </div>
-        </Box>
-        <Typography variant="subtitle1">Quick Recharge</Typography>
-        <Box sx={{ "& button": { m: 1, width: 90 } }}>
-          <div>
-            <Button
-              variant="outlined"
-              size="medium"
-              value="10"
-              onClick={handleClick}
-            >
-              10
-            </Button>
-            <Button
-              variant="outlined"
-              size="medium"
-              value="20"
-              onClick={handleClick}
-            >
-              20
-            </Button>
-            <Button
-              variant="outlined"
-              size="medium"
-              value="50"
-              onClick={handleClick}
-            >
-              50
-            </Button>
-          </div>
-          <div>
-            <Button
-              variant="outlined"
-              size="medium"
-              value="100"
-              onClick={handleClick}
-            >
-              100
-            </Button>
-            <Button
-              variant="outlined"
-              size="medium"
-              value="200"
-              onClick={handleClick}
-            >
-              200
-            </Button>
-            <Button
-              variant="outlined"
-              size="medium"
-              value="500"
-              onClick={handleClick}
-            >
-              500
-            </Button>
-          </div>
-          <div>
-            <Button
-              variant="outlined"
-              size="medium"
-              value="1000"
-              onClick={handleClick}
-            >
-              1000
-            </Button>
-            <Button
-              variant="outlined"
-              size="medium"
-              value="5000"
-              onClick={handleClick}
-            >
-              5000
-            </Button>
-            <Button
-              variant="outlined"
-              size="medium"
-              value="10000"
-              onClick={handleClick}
-            >
-              10000
-            </Button>
-          </div>
-        </Box>
-      </Grid>
-      <Box align="center">
-        <Button
-          sx={{ mt: "10%", width: "80%" }}
-          variant="contained"
-          href="http://localhost:3000/rechargeQR"
-        >
-          Recharge
-        </Button>
-      </Box>*/}
+      {/* */}
     </div>
   );
 };

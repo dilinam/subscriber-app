@@ -56,7 +56,7 @@ const TableToCard = () => {
             variant="contained"
             sx={{ marginLeft: "auto", order: "2" }}
           >
-            Active
+            Join
           </Button>
         </Box>
       </Card>
