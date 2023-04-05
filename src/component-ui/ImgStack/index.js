@@ -4,9 +4,9 @@ import ImageListItem from "@mui/material/ImageListItem";
 
 const ImgStack = () => {
   return (
-    <ImageList sx={{ width: "100%", height: "20%" }} cols={1}>
+    <ImageList sx={{ width: "90%", height: "20%" ,m:2 }} cols={1}>
       {itemData.map((item) => (
-        <ImageListItem key={item.img}>
+        <ImageListItem key={item.img} sx={{mb:2}}>
           <img
             src={`${item.img}?w=164&fit=crop&auto=format`}
             srcSet={`${item.img}?w=164&fit=crop&auto=format&dpr=2 2x`}

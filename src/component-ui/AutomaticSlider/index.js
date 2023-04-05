@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import MobileStepper from "@mui/material/MobileStepper";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
+import { Button } from "@mui/material";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -39,7 +40,7 @@ const AutomaticSlider = () => {
     setActiveStep(step);
   };
   return (
-    <Box>
+    <Box sx={{ m: 2 }}>
       <AutoPlaySwipeableViews
         axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={activeStep}
@@ -52,7 +53,7 @@ const AutomaticSlider = () => {
               <Box
                 component="img"
                 sx={{
-                  height:200,
+                  height: 200,
                   display: "block",
                   overflow: "hidden",
                   width: "100%",
@@ -64,11 +65,16 @@ const AutomaticSlider = () => {
           </div>
         ))}
       </AutoPlaySwipeableViews>
-      <MobileStepper
-        steps={maxSteps}
-        position="static"
-        activeStep={activeStep}
-      />
+      <Box>
+        <MobileStepper
+          steps={maxSteps}
+          position="absolute"
+          activeStep={activeStep}
+          backButton={<Button></Button>}
+          nextButton={<Button></Button>}
+          sx={{ display: "flex", justifyContent: "space-between" }}
+        />
+      </Box>
     </Box>
   );
 };

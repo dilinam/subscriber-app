@@ -18,6 +18,14 @@ import ActivityIncome from "../pages/ActivityIncome";
 import AssetDetails from "../pages/AssetDetails";
 import AboutUs from "../pages/AboutUs";
 import CardManagement from "../pages/CardManagement";
+import TeamActivity from "../pages/TeamActivity";
+import PromotionBonus from "../pages/PromotionBonus";
+import NewRegistration from "../pages/NewRegistration";
+import NewTopUps from "../pages/NewTopUps";
+import TotalWithdrawals from "../pages/TotalWithdrawals";
+import PromotionCode from "../pages/PromotionCode";
+import MyTeam from "../pages/MyTeam";
+import CustomerService from "../pages/CustomerService";
 
 const routeConfig = [
   {
@@ -141,6 +149,54 @@ const routeConfig = [
     id: 20,
     path: "/cardManagement",
     element: <CardManagement />,
+    noAuth: true,
+  },
+  {
+    id: 21,
+    path: "/teamActivity",
+    element: <TeamActivity />,
+    noAuth: true,
+  },
+  {
+    id: 22,
+    path: "/promotionBonus",
+    element: <PromotionBonus />,
+    noAuth: true,
+  },
+  {
+    id: 23,
+    path: "/newRegistration",
+    element: <NewRegistration />,
+    noAuth: true,
+  },
+  {
+    id: 24,
+    path: "/newTopUps",
+    element: <NewTopUps />,
+    noAuth: true,
+  },
+  {
+    id: 25,
+    path: "/totalWithdrawals",
+    element: <TotalWithdrawals />,
+    noAuth: true,
+  },
+  {
+    id: 26,
+    path: "/promotionCode",
+    element: <PromotionCode />,
+    noAuth: true,
+  },
+  {
+    id: 27,
+    path: "/myTeam",
+    element: <MyTeam />,
+    noAuth: true,
+  },
+  {
+    id: 28,
+    path: "/customerService",
+    element: <CustomerService />,
     noAuth: true,
   },
 ];

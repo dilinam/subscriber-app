@@ -51,7 +51,9 @@ const TopBar = (props) => {
 
           {auth ? (
             <Box sx={{ display: "flex" }}>
-              <Typography variant="h6">{props.name}</Typography>
+              <Typography variant="h6" gutterBottom>
+                {props.name}
+              </Typography>
               <IconButton
                 size="large"
                 aria-label="account of current user"

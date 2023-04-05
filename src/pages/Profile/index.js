@@ -132,6 +132,7 @@ const Profile = () => {
             justifyContent: "flex-start",
             fontSize: "20px",
           }}
+          href="http://localhost:3000/customerService"
         >
           Customer Service
         </Button>
