@@ -43,7 +43,7 @@ const UserDetails = () => {
       ...prevState,
       [event.target.name]: event.target.value,
     }));
-  }, []);
+  });
 
   const handleSubmit = ((event) => {
     event.preventDefault();

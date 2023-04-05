@@ -16,6 +16,8 @@ import ExpensesRecord from "../pages/ExpensesRecord";
 import Recharge from "../pages/Recharge";
 import ActivityIncome from "../pages/ActivityIncome";
 import AssetDetails from "../pages/AssetDetails";
+import AboutUs from "../pages/AboutUs";
+import CardManagement from "../pages/CardManagement";
 
 const routeConfig = [
   {
@@ -127,6 +129,18 @@ const routeConfig = [
     id: 18,
     path: "/assetDetails",
     element: <AssetDetails />,
+    noAuth: true,
+  },
+  {
+    id: 19,
+    path: "/aboutUs",
+    element: <AboutUs />,
+    noAuth: true,
+  },
+  {
+    id: 20,
+    path: "/cardManagement",
+    element: <CardManagement />,
     noAuth: true,
   },
 ];

@@ -52,7 +52,7 @@ const Table = ({
   };
 
   useEffect(() => {
-    fetchData();
+    // fetchData();
   }, [globalFilter, pagination.pageIndex, pagination.pageSize, tableRefreshFlag]);
 
   const setStateChangeRow = (rowId, isActive) => {
@@ -66,7 +66,7 @@ const Table = ({
 
   return (
     <>
-      <Box sx={{ visibility: { xs: "hidden", md: "visible" } }} margin={2}>
+      <Box>
         <MaterialReactTable
           columns={headers}
           data={data}

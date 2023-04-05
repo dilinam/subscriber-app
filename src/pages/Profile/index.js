@@ -93,6 +93,7 @@ const Profile = () => {
             justifyContent: "flex-start",
             fontSize: "20px",
           }}
+          href={`http://localhost:3000/expensesRecord`}
         >
           Expences Record
         </Button>
@@ -105,6 +106,7 @@ const Profile = () => {
             justifyContent: "flex-start",
             fontSize: "20px",
           }}
+          href={`http://localhost:3000/activityIncome`}
         >
           Activity Income
         </Button>
@@ -117,6 +119,7 @@ const Profile = () => {
             justifyContent: "flex-start",
             fontSize: "20px",
           }}
+          href="http://localhost:3000/cardManagement"
         >
           Card Management
         </Button>
@@ -141,6 +144,7 @@ const Profile = () => {
             justifyContent: "flex-start",
             fontSize: "20px",
           }}
+          href="http://localhost:3000/aboutUs"
         >
           About DTF Team
         </Button>
