@@ -144,6 +144,7 @@ export default function SignUp() {
                 onChange={handleFormValueChange}
                 error={formErrorMessages.firstName !== ""}
                 helperText={formErrorMessages.firstName}
+                color="secondary"
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -158,6 +159,7 @@ export default function SignUp() {
                 onChange={handleFormValueChange}
                 error={formErrorMessages.lastName !== ""}
                 helperText={formErrorMessages.lastName}
+                color="secondary"
               />
             </Grid>
             <Grid item xs={12}>
@@ -172,6 +174,7 @@ export default function SignUp() {
                 onChange={handleFormValueChange}
                 error={formErrorMessages.email !== ""}
                 helperText={formErrorMessages.email}
+                color="secondary"
               />
             </Grid>
             <Grid item xs={12}>
@@ -187,6 +190,7 @@ export default function SignUp() {
                 onChange={handleFormValueChange}
                 error={formErrorMessages.password !== ""}
                 helperText={formErrorMessages.password}
+                color="secondary"
               />
             </Grid>
             <Grid item xs={12}>
@@ -199,6 +203,7 @@ export default function SignUp() {
                 onChange={handleFormValueChange}
                 error={formErrorMessages.userRef !== ""}
                 helperText={formErrorMessages.userRef}
+                color="secondary"
               />
             </Grid>
           </Grid>
@@ -212,7 +217,7 @@ export default function SignUp() {
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <Link href="/login" variant="body2">
+              <Link href="/login" variant="body2" color="#fff">
                 Already have an account? Sign in
               </Link>
             </Grid>

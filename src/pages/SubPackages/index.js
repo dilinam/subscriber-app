@@ -6,9 +6,12 @@ import Typography from "@mui/material/Typography";
 const SubPackages = () => {
   return (
     <div>
-      <Typography variant="h5" gutterBottom align="center" sx={{m:3}}>
+      <Typography variant="h5" gutterBottom align="center" sx={{ m: 3 }}>
         PACKAGE SUBSCRIPTION
       </Typography>
+      <TableToCard />
+      <TableToCard />
+      <TableToCard />
       <TableToCard />
     </div>
   );

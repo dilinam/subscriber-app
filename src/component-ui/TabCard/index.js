@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 const TabCard = (props) => {
   return (
     <div>
-      <Card sx={{ borderRadius: 1 }}>
+      <Card sx={{ borderRadius: 1, mb:2 }}>
         <CardContent>
           <Typography sx={{ fontSize: 18, mb: 2 }} color="text.secondary">
             Recharge <br /> {props.date}

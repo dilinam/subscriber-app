@@ -25,12 +25,13 @@ const PromotionCode = () => {
       </Box>
       <Card sx={{ borderRadius: 1, m: 2 }}>
         <CardContent>
-          <Box sx={{ align : "center" }}>
+          <Box sx={{ align: "center" }}>
             <Typography variant="h6">Invitaion Code</Typography>
             <Typography color="text.secondary" variant="caption">
               TPXqEvFBzYi5tBwViGtFu6dTeKZEgS3qeU
             </Typography>
             <CopyToClipboard
+              sx={{ color: "#49A8EF" }}
               text={"TPXqEvFBzYi5tBwViGtFu6dTeKZEgS3qeU"}
               onCopy={() => {
                 setIsCopied(true);
@@ -44,10 +45,14 @@ const PromotionCode = () => {
               </Button>
             </CopyToClipboard>
             <Typography variant="h6">Promotional Link</Typography>
-            <Link href="https://www.w3schools.com/cssref/css3_pr_justify-content.php">
-              Link
+            <Link
+              href="https://www.w3schools.com/cssref/css3_pr_justify-content.php"
+              sx={{ color: "#49A8EF" }}
+            >
+              https://www.w3schools.com/cssref/......
             </Link>
             <CopyToClipboard
+              sx={{ color: "#49A8EF" }}
               text={
                 "https://www.w3schools.com/cssref/css3_pr_justify-content.php"
               }

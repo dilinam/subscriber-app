@@ -113,7 +113,7 @@ export default function SignIn() {
           <Alert
             color="error"
             icon={<Report />}
-            onClose={() => setCommonError('')}
+            onClose={() => setCommonError("")}
           >
             {commonError}
           </Alert>
@@ -161,12 +161,12 @@ export default function SignIn() {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <Link href="#" variant="body2" color="#fff">
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
-              <Link href="/signup" variant="body2">
+              <Link href="/signup" variant="body2" color="#fff">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

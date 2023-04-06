@@ -23,6 +23,7 @@ const Me = () => {
               justifyContent: "flex-start",
               fontSize: "20px",
             }}
+            href={`http://localhost:3000/assetDetails`}
           >
             Trending Commission
           </Button>
@@ -92,7 +93,7 @@ const Me = () => {
       </Stack>
       <Box align="center">
         <Button
-          sx={{ mt: "10%", width: "80%" }}
+          sx={{ mt: "10%", width: "80%", border: "1px solid #fff" }}
           variant="contained"
           href="http://localhost:3000/login"
         >

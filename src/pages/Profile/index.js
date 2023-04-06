@@ -27,7 +27,7 @@ const user = {
 const Profile = () => {
   return (
     <div>
-      <Card sx={{ m: 1, borderRadius: 3 }}>
+      <Card sx={{ m: 1, borderRadius: 3, border: "1px solid #f2e22c" }}>
         <CardContent>
           <Box
             sx={{
@@ -59,25 +59,26 @@ const Profile = () => {
             fullWidth
             variant="text"
             href="http://localhost:3000/userDetails"
+            color="secondary"
           >
             Update profile info
           </Button>
         </CardActions>
       </Card>
-      <Card sx={{ m: 1, borderRadius: 3 }}>
+      <Card sx={{ m: 1, borderRadius: 3, border: "1px solid #f2e22c" }}>
         <CardContent sx={{ ml: 5 }}>
-          <Typography sx={{ fontSize: 18 }} color="text.secondary">
+          <Typography sx={{ fontSize: 18 }} color="Subtitle1">
             Your Package
           </Typography>
-          <Typography variant="h5" color="text.secondary">
+          <Typography variant="h5" color="Subtitle1">
             100 USDT package
           </Typography>
         </CardContent>
         <CardContent sx={{ ml: 5 }}>
-          <Typography sx={{ fontSize: 18 }} color="text.secondary">
+          <Typography sx={{ fontSize: 18 }} color="Subtitle1">
             Availabale balance (USDT)
           </Typography>
-          <Typography variant="h5" color="text.secondary">
+          <Typography variant="h5" color="Subtitle1">
             361.00 USDT
           </Typography>
         </CardContent>

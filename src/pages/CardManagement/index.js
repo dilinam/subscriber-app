@@ -8,8 +8,22 @@ import {
   CardHeader,
   TextField,
   Unstable_Grid2 as Grid,
+  MenuItem,
 } from "@mui/material";
-
+const Accounts = [
+  {
+    value: "Binance",
+    label: "Binance",
+  },
+  {
+    value: "Huobi",
+    label: "Huobi",
+  },
+  {
+    value: "OKX",
+    label: "OKX",
+  }
+];
 
 const CardManagement = () => {
     const [values, setValues] = React.useState("sdfadsfasdgfsdgsdafg");
@@ -30,6 +44,21 @@ const CardManagement = () => {
         <CardContent sx={{ pt: 0 }}>
           <Box sx={{ mb: 5 }}>
             <Grid container spacing={3}>
+              <Grid xs={12} md={6}>
+                <TextField
+                  id="outlined-select-currency"
+                  select
+                  fullWidth
+                  label="Account"
+                  defaultValue="Binance"
+                >
+                  {Accounts.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Grid>
               <Grid xs={12} md={6}>
                 <TextField
                   fullWidth

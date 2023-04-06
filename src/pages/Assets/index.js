@@ -22,6 +22,7 @@ const Assets = () => {
       <Stack spacing={1} direction="column" sx={{ m: 2, mb: 10 }}>
         <Button
           variant="outlined"
+          color="primaryVariant"
           size="large"
           sx={{ display: "flex", justifyContent: "flex-start" }}
           href={`http://localhost:3000/assetDetails`}
@@ -31,6 +32,7 @@ const Assets = () => {
         <Button
           variant="outlined"
           size="large"
+          color="primaryVariant"
           sx={{ display: "flex", justifyContent: "flex-start" }}
           href={`http://localhost:3000/expensesRecord`}
         >
@@ -39,6 +41,7 @@ const Assets = () => {
         <Button
           variant="outlined"
           size="large"
+          color="primaryVariant"
           sx={{ display: "flex", justifyContent: "flex-start" }}
           href={`http://localhost:3000/activityIncome`}
         >

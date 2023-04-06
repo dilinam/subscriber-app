@@ -24,11 +24,12 @@ const ExpensesRecord = () => {
              indicatorColor="secondary"
              aria-label="secondary tabs example"
            >
-             <Tab value="1" label="Item One" sx={{ width: "50%" }} />
-             <Tab value="2" label="Item Two" sx={{ width: "50%" }} />
+             <Tab value="1" label="Recharge" sx={{ width: "50%" }} />
+             <Tab value="2" label="Withdraw" sx={{ width: "50%" }} />
            </Tabs>
          </Box>
          <TabPanel value="1">
+           <TabCard date="04:56 05/04/2023" order="000000151" value="100.00" />
            <TabCard date="04:56 05/04/2023" order="000000151" value="100.00" />
          </TabPanel>
          <TabPanel value="2">Item Two</TabPanel>

@@ -51,9 +51,6 @@ const TopBar = (props) => {
 
           {auth ? (
             <Box sx={{ display: "flex" }}>
-              <Typography variant="h6" gutterBottom>
-                {props.name}
-              </Typography>
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -80,12 +77,20 @@ const TopBar = (props) => {
                 onClose={handleClose}
               >
                 <MenuItem>
-                  <Link href="http://localhost:3000/profile" underline="none">
+                  <Link
+                    href="http://localhost:3000/profile"
+                    underline="none"
+                    color="#fff"
+                  >
                     Profile
                   </Link>
                 </MenuItem>
                 <MenuItem>
-                  <Link href="http://localhost:3000/sign" underline="none">
+                  <Link
+                    href="http://localhost:3000/login"
+                    underline="none"
+                    color="#fff"
+                  >
                     Logout
                   </Link>
                 </MenuItem>
