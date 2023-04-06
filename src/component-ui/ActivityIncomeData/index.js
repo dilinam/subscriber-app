@@ -6,7 +6,7 @@ import Grid from "@mui/material/Grid";
 const ActivityIncomeData = (props) => {
   return (
     <div>
-      <Box sx={{ width: "100%", maxWidth: 500 }}>
+      <Box sx={{ width: "100%" }}>
         <Typography variant="subtitle1" gutterBottom>
           <Grid container justifyContent="space-between">
             <Grid>{props.time}</Grid>

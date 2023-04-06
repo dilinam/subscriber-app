@@ -8,8 +8,11 @@ const PromotionBonus = () => {
       <Typography gutterBottom variant="h5" align="center">
         Promotion Bonus
       </Typography>
-      <Promotion level="1" members="5" value="50" />
-      <Promotion level="2" members="10" value="150" />
+      <Typography gutterBottom variant="h5" align="center">
+        Level 1 Total Active
+      </Typography>
+      <Promotion  members="5" value="50" />
+      <Promotion members="10" value="150" />
     </div>
   );
 }

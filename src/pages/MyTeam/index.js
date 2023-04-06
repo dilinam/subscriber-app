@@ -32,7 +32,7 @@ const MyTeam = () => {
       </Box>
       <Box>
         <MyTeamCard level="1" name="hasitha lakmal" date="2023-04-06" />
-        <MyTeamCard level="1" name="hasitha lakmal" date="2023-04-06" />
+        <MyTeamCard level="1" name="Krishan chinthaka" date="2023-04-06" />
         <MyTeamCard level="1" name="hasitha lakmal" date="2023-04-06" />
         <MyTeamCard level="1" name="hasitha lakmal" date="2023-04-06" />
         <MyTeamCard level="1" name="hasitha lakmal" date="2023-04-06" />

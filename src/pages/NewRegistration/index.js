@@ -12,7 +12,8 @@ const NewRegistration = () => {
       <Typography gutterBottom variant="h6" align="center">
         Today new registration {value}
       </Typography>
-      <TeamActivityBelowButtons level="1" value ="3"/>
+      <TeamActivityBelowButtons level="1" value="3" sx={{borderColor: "primaryVariant"}}/>
+      <TeamActivityBelowButtons level="2" value="5" />
     </div>
   );
 }

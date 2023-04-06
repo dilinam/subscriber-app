@@ -26,7 +26,7 @@ const TableToCard = () => {
   const handleClose = () => setOpen(false);
   return (
     <div>
-      <Card sx={{ m: 1, borderRadius: 3 }}>
+      <Card sx={{ m: 1, borderRadius: 3, border: "1px solid #f2e22c" }}>
         <CardContent>
           <Box sx={{ display: "flex" }}>
             <Avatar
@@ -38,7 +38,12 @@ const TableToCard = () => {
               }}
             />
             <Box sx={{ ml: "3" }}>
-              <Typography gutterBottom variant="h6" sx={{ mr: 2 }}>
+              <Typography
+                gutterBottom
+                variant="h6"
+                sx={{ mr: 2 }}
+                color="secondary"
+              >
                 Package name : 100USDT
               </Typography>
               <Typography gutterBottom variant="body1">
@@ -54,7 +59,7 @@ const TableToCard = () => {
           <Button
             onClick={handleOpen}
             variant="contained"
-            sx={{ marginLeft: "auto", order: "2" }}
+            sx={{ marginLeft: "auto", order: "2", border: "1px solid #fff" }}
           >
             Join
           </Button>

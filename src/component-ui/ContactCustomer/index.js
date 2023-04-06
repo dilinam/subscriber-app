@@ -25,7 +25,7 @@ const ContactCustomer = (props) => {
           </Typography>
         </CardContent>
         <CardContent>
-          <Button variant="outlined" href={props.url} target='blank'>
+          <Button variant="contained" href={props.url} target="blank">
             contact
           </Button>
         </CardContent>
