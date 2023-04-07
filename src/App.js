@@ -8,7 +8,9 @@ import Auth from "./component-content/Auth";
 function App() {
 
   return (
-    <ThemeProvider theme={getTheme("dark")}>
+    <ThemeProvider
+      theme={getTheme("dark")}
+    >
       <BrowserRouter>
         <Routes>
           {routeConfig.map((route) => (
