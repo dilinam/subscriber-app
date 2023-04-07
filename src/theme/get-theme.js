@@ -8,6 +8,7 @@ export const getTheme = (mode) => {
       primary: {
         main: deepPurple[900],
         // main: "#f2ef2c",
+        dark: "#ba000d",
         contrastText: "#fff",
       },
       primaryVariant: {
