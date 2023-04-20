@@ -165,7 +165,7 @@ const routeConfig = [
   },
   {
     id: 21,
-    path: "/teamActivity",
+    path: "me/teamActivity",
     element: <TeamActivity />,
     noAuth: true,
   },

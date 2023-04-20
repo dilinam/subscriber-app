@@ -58,6 +58,7 @@ const Withdraw = () => {
                variant="outlined"
                size="medium"
                value="10"
+               color="primaryVariant"
                onClick={handleClick}
              >
                10
@@ -66,6 +67,7 @@ const Withdraw = () => {
                variant="outlined"
                size="medium"
                value="20"
+               color="primaryVariant"
                onClick={handleClick}
              >
                20
@@ -74,6 +76,7 @@ const Withdraw = () => {
                variant="outlined"
                size="medium"
                value="50"
+               color="primaryVariant"
                onClick={handleClick}
              >
                50
@@ -84,6 +87,7 @@ const Withdraw = () => {
                variant="outlined"
                size="medium"
                value="100"
+               color="primaryVariant"
                onClick={handleClick}
              >
                100
@@ -92,6 +96,7 @@ const Withdraw = () => {
                variant="outlined"
                size="medium"
                value="200"
+               color="primaryVariant"
                onClick={handleClick}
              >
                200
@@ -100,6 +105,7 @@ const Withdraw = () => {
                variant="outlined"
                size="medium"
                value="500"
+               color="primaryVariant"
                onClick={handleClick}
              >
                500
@@ -110,6 +116,7 @@ const Withdraw = () => {
                variant="outlined"
                size="medium"
                value="1000"
+               color="primaryVariant"
                onClick={handleClick}
              >
                1000
@@ -118,6 +125,7 @@ const Withdraw = () => {
                variant="outlined"
                size="medium"
                value="5000"
+               color="primaryVariant"
                onClick={handleClick}
              >
                5000
@@ -126,6 +134,7 @@ const Withdraw = () => {
                variant="outlined"
                size="medium"
                value="10000"
+               color="primaryVariant"
                onClick={handleClick}
              >
                10000
@@ -133,8 +142,12 @@ const Withdraw = () => {
            </div>
          </Box>
        </Grid>
-       <Box align="center" sx ={{m:"5%"}}>
-         <ConfirmMsg buttonName = "Withdraw"  title = "Withdrawal Confirmation" msg = "This action activate within 24h in working days.Are you confirm this transation ?"/>
+       <Box align="center" sx={{ m: "5%" }}>
+         <ConfirmMsg
+           buttonName="Withdraw"
+           title="Withdrawal Confirmation"
+           msg="This action activate within 24h in working days.Are you confirm this transation ?"
+         />
        </Box>
      </div>
    );

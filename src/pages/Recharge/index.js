@@ -55,6 +55,7 @@ const Recharge = () => {
               variant="outlined"
               size="medium"
               value="10"
+              color="primaryVariant"
               onClick={handleClick}
             >
               10
@@ -63,6 +64,7 @@ const Recharge = () => {
               variant="outlined"
               size="medium"
               value="20"
+              color="primaryVariant"
               onClick={handleClick}
             >
               20
@@ -71,6 +73,7 @@ const Recharge = () => {
               variant="outlined"
               size="medium"
               value="50"
+              color="primaryVariant"
               onClick={handleClick}
             >
               50
@@ -81,6 +84,7 @@ const Recharge = () => {
               variant="outlined"
               size="medium"
               value="100"
+              color="primaryVariant"
               onClick={handleClick}
             >
               100
@@ -89,6 +93,7 @@ const Recharge = () => {
               variant="outlined"
               size="medium"
               value="200"
+              color="primaryVariant"
               onClick={handleClick}
             >
               200
@@ -97,6 +102,7 @@ const Recharge = () => {
               variant="outlined"
               size="medium"
               value="500"
+              color="primaryVariant"
               onClick={handleClick}
             >
               500
@@ -107,6 +113,7 @@ const Recharge = () => {
               variant="outlined"
               size="medium"
               value="1000"
+              color="primaryVariant"
               onClick={handleClick}
             >
               1000
@@ -115,6 +122,7 @@ const Recharge = () => {
               variant="outlined"
               size="medium"
               value="5000"
+              color="primaryVariant"
               onClick={handleClick}
             >
               5000
@@ -123,6 +131,7 @@ const Recharge = () => {
               variant="outlined"
               size="medium"
               value="10000"
+              color="primaryVariant"
               onClick={handleClick}
             >
               10000

@@ -8,8 +8,13 @@ import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import CampaignIcon from "@mui/icons-material/Campaign";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { useNavigate } from "react-router-dom";
 
 const Me = () => {
+  let navigate = useNavigate();
+  const routeChange = (value) => {
+    navigate(value);
+  };
   return (
     <div>
       <Stack spacing={1} direction="column" sx={{ m: 2, mb: 10 }}>
@@ -23,7 +28,9 @@ const Me = () => {
               justifyContent: "flex-start",
               fontSize: "20px",
             }}
-            href={`http://localhost:3000/assetDetails`}
+            onClick={() => {
+              routeChange(`/assetDetails`);
+            }}
           >
             Trending Commission
           </Button>
@@ -39,7 +46,9 @@ const Me = () => {
               justifyContent: "flex-start",
               fontSize: "20px",
             }}
-            href="http://localhost:3000/teamActivity"
+            onClick={() => {
+              routeChange(`teamActivity`);
+            }}
           >
             Team Activity
           </Button>
@@ -95,7 +104,9 @@ const Me = () => {
         <Button
           sx={{ mt: "10%", width: "80%", border: "1px solid #fff" }}
           variant="contained"
-          href="http://localhost:3000/login"
+          onClick={() => {
+            routeChange(`/login`);
+          }}
         >
           Logout
         </Button>

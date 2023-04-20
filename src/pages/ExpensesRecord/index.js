@@ -32,8 +32,9 @@ const ExpensesRecord = () => {
            <TabCard date="04:56 05/04/2023" order="000000151" value="100.00" />
            <TabCard date="04:56 05/04/2023" order="000000151" value="100.00" />
          </TabPanel>
-         <TabPanel value="2">Item Two</TabPanel>
-         <TabPanel value="3">Item Three</TabPanel>
+         <TabPanel value="2">
+           <TabCard date="04:56 05/04/2023" order="000000151" value="100.00" />
+         </TabPanel>
        </TabContext>
      </Box>
    );

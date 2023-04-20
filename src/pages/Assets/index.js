@@ -9,9 +9,13 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import CardForHome from "../../component-ui/CardForHome";
 import Stack from "@mui/material/Stack";
-
+import { useNavigate } from "react-router-dom";
 
 const Assets = () => {
+  let navigate = useNavigate();
+  const routeChange = (value) => {
+    navigate(value);
+  };
 
   return (
     <div>
@@ -25,7 +29,9 @@ const Assets = () => {
           color="primaryVariant"
           size="large"
           sx={{ display: "flex", justifyContent: "flex-start" }}
-          href={`http://localhost:3000/assetDetails`}
+          onClick={() => {
+            routeChange(`/assetDetails`);
+          }}
         >
           Asset Details
         </Button>
@@ -34,7 +40,9 @@ const Assets = () => {
           size="large"
           color="primaryVariant"
           sx={{ display: "flex", justifyContent: "flex-start" }}
-          href={`http://localhost:3000/expensesRecord`}
+          onClick={() => {
+            routeChange(`/expensesRecord`);
+          }}
         >
           Expences Record
         </Button>
@@ -43,7 +51,9 @@ const Assets = () => {
           size="large"
           color="primaryVariant"
           sx={{ display: "flex", justifyContent: "flex-start" }}
-          href={`http://localhost:3000/activityIncome`}
+          onClick={() => {
+            routeChange(`/activityIncome`);
+          }}
         >
           Activity Income
         </Button>
