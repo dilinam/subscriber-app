@@ -5,12 +5,16 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabPanel from "@mui/lab/TabPanel";
 import TabCard from "../../component-ui/TabCard";
+import { getRechagesUser } from "../../use-cases/get-recharges-user";
 
 const ExpensesRecord = () => {
   const [value, setValue] = React.useState("1");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+  const getRechages = async (id) => {
+    await getRechagesUser(id);
   };
 
    return (

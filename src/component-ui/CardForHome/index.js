@@ -11,6 +11,7 @@ const CardForHome = (props) => {
    const routeChange = (value) => {
      navigate(value);
    };
+   
 
   return (
     <Card sx={{ m: 2, borderRadius: 5, border: "1px solid #f2e22c" }}>

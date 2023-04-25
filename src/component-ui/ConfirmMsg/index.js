@@ -24,7 +24,7 @@ const ConfirmMsg = (props) => {
   return (
     <div>
       <Button variant="contained" fullWidth onClick={handleClickOpen}>
-       {props.buttonName}
+        {props.buttonName}
       </Button>
       <Dialog
         open={open}
@@ -40,8 +40,16 @@ const ConfirmMsg = (props) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Yes </Button>
-          <Button onClick={handleClose}>No </Button>
+          <Button 
+          onClick={handleClose} 
+          variant="contained">
+            Yes
+          </Button>
+          <Button 
+          onClick={handleClose} 
+          variant="contained">
+            No
+          </Button>
         </DialogActions>
       </Dialog>
     </div>

@@ -4,15 +4,17 @@ import ImageListItem from "@mui/material/ImageListItem";
 
 const ImgStack = () => {
   return (
-    <ImageList sx={{ width: "90%", height: "20%" ,m:2 }} cols={1}>
+    <ImageList sx={{ height: "20%", m: 2}} cols={1}>
       {itemData.map((item) => (
-        <ImageListItem key={item.img} sx={{mb:2}}>
+        <ImageListItem key={item.img}>
+          <h4>{item.heading}</h4>
           <img
             src={`${item.img}?w=164&fit=crop&auto=format`}
             srcSet={`${item.img}?w=164&fit=crop&auto=format&dpr=2 2x`}
             alt={item.title}
             loading="lazy"
           />
+          <p>{item.description}</p>
         </ImageListItem>
       ))}
     </ImageList>
@@ -23,51 +25,30 @@ export default ImgStack
 
 const itemData = [
   {
-    img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
+    heading: "Crypto Mining",
+    img: "/img/home1.jpeg",
     title: "Breakfast",
+    description:
+      "Mining is the process of creating new Bitcoin and  other cryptocurrencies and verifying transactions involving those coins. It involves vast, distributed networks of computers that check and secure blockchains, which are digital ledgers that track cryptocurrency transactions.",
   },
   {
-    img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
+    heading: "Crypto & Forex Trading",
+    img: "/img/home2.jpeg",
     title: "Burger",
+    description:
+      "Dubai and australia is the country that uses cryptocurrency trading the most, thus we collaborate with the two most well-known companies, IC Markets and Binance. OnmaxDT is prepared to spread its wings over numerous nations, paving the way for numerous trading prospects. You can now rely on our firm, DTF, to receive an effective, equitable, and trustworthy service.",
   },
   {
-    img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
+    heading: "Crypto Education",
+    img: "/img/home3.jpeg",
     title: "Camera",
+    description:
+      "The Dream the future education program focuses on harnessing the power of optimistic thinking to create a better world. We make sure that our clients are aware of the financial potential and rewards available through modern web marketing.",
   },
   {
-    img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
+    heading: "Crypto investment",
+    img: "/img/home4.jpeg",
     title: "Coffee",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1533827432537-70133748f5c8",
-    title: "Hats",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62",
-    title: "Honey",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1516802273409-68526ee1bdd6",
-    title: "Basketball",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1518756131217-31eb79b20e8f",
-    title: "Fern",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1597645587822-e99fa5d45d25",
-    title: "Mushrooms",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1567306301408-9b74779a11af",
-    title: "Tomato basil",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1471357674240-e1a485acb3e1",
-    title: "Sea star",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1589118949245-7d38baf380d6",
-    title: "Bike",
+    description: "Cryptocurrency is digital currency secured by blockchain technology. Cryptocurrency investing can take many forms, from buying cryptocurrency directly to investing in crypto currencies and companies. A crypto exchange may buy cryptocurrency through us or other brokers when prices are low and resell them when prices rise",
   },
 ];

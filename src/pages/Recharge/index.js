@@ -7,6 +7,7 @@ import FormControl from "@mui/material/FormControl";
 import { Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 
 const Recharge = () => {
   const [amount, setAmount] = useState("");
@@ -15,6 +16,10 @@ const Recharge = () => {
   };
   const handleClick = (e) => {
     setAmount((pre) => e.target.value);
+  };
+  let navigate = useNavigate();
+  const routeChange = (value) => {
+    navigate(value);
   };
   return (
     <div>
@@ -143,7 +148,9 @@ const Recharge = () => {
         <Button
           sx={{ mt: "10%", width: "80%" }}
           variant="contained"
-          href="http://localhost:3000/rechargeQR"
+          onClick={() => {
+            routeChange(`/rechargeQR`);
+          }}
         >
           Recharge
         </Button>

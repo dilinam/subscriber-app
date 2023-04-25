@@ -11,6 +11,7 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Modal from "@mui/material/Modal";
+import { useNavigate } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -31,6 +32,12 @@ const RechargeQR = () => {
       setOpen(true);
     };
     const handleClose = () => setOpen(false);
+    let navigate = useNavigate();
+    
+    const routeChange = (value) => {
+      navigate(value);
+
+    };
   return (
     <div>
       <Card sx={{ m: 1, borderRadius: 5 }}>
@@ -57,7 +64,7 @@ const RechargeQR = () => {
               }, 1000);
             }}
           >
-            <Button size="small" endIcon={<ContentCopyIcon />} marginLeft= "5">
+            <Button size="small" endIcon={<ContentCopyIcon />} marginLeft="5">
               Copy
             </Button>
           </CopyToClipboard>
@@ -88,7 +95,12 @@ const RechargeQR = () => {
             aria-describedby="modal-modal-description"
           >
             <Box sx={style}>
-              <Typography id="modal-modal-title" variant="h6" component="h2" align = "center">
+              <Typography
+                id="modal-modal-title"
+                variant="h6"
+                component="h2"
+                align="center"
+              >
                 Details
               </Typography>
               <Typography id="modal-modal-description" sx={{ mt: 2 }}>
@@ -119,7 +131,13 @@ const RechargeQR = () => {
             </Box>
           </Modal>
           <br />
-          <Button fullWidth variant="contained">
+          <Button
+            fullWidth
+            variant="contained"
+            onClick={() => {
+              routeChange(`/recharge`);
+            }}
+          >
             Recharge
           </Button>
         </CardContent>
