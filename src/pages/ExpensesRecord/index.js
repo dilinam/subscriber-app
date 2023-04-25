@@ -5,12 +5,16 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabPanel from "@mui/lab/TabPanel";
 import TabCard from "../../component-ui/TabCard";
+import { getRechagesUser } from "../../use-cases/get-recharges-user";
 
 const ExpensesRecord = () => {
   const [value, setValue] = React.useState("1");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+  const getRechages = async (id) => {
+    await getRechagesUser(id);
   };
 
    return (
@@ -32,8 +36,9 @@ const ExpensesRecord = () => {
            <TabCard date="04:56 05/04/2023" order="000000151" value="100.00" />
            <TabCard date="04:56 05/04/2023" order="000000151" value="100.00" />
          </TabPanel>
-         <TabPanel value="2">Item Two</TabPanel>
-         <TabPanel value="3">Item Three</TabPanel>
+         <TabPanel value="2">
+           <TabCard date="04:56 05/04/2023" order="000000151" value="100.00" />
+         </TabPanel>
        </TabContext>
      </Box>
    );

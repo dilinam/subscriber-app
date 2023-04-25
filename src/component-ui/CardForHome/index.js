@@ -4,8 +4,15 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import CardActions from "@mui/material/CardActions";
+import { useNavigate } from "react-router-dom";
 
 const CardForHome = (props) => {
+   let navigate = useNavigate();
+   const routeChange = (value) => {
+     navigate(value);
+   };
+   
+
   return (
     <Card sx={{ m: 2, borderRadius: 5, border: "1px solid #f2e22c" }}>
       <CardContent>
@@ -16,13 +23,17 @@ const CardForHome = (props) => {
           {props.value} USDT
         </Typography>
       </CardContent>
-      <CardActions sx = {{display : "flex",alignItems: "center",justifyContent: "center"}}>
+      <CardActions
+        sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+      >
         <Button
           variant="outlined"
           size="large"
           color="primaryVariant"
           sx={{ ml: 5, mr: 5, mb: 3, borderRadius: 2 }}
-          href="http://localhost:3000/recharge"
+          onClick={() => {
+            routeChange(`/recharge`);
+          }}
         >
           Recharge
         </Button>
@@ -31,7 +42,9 @@ const CardForHome = (props) => {
           size="large"
           color="primaryVariant"
           sx={{ ml: 5, mr: 5, mb: 3, borderRadius: 2 }}
-          href="http://localhost:3000/withdraw"
+          onClick={() => {
+            routeChange(`/withdraw`);
+          }}
         >
           Withdraw
         </Button>

@@ -20,7 +20,7 @@ const style = {
   p: 4,
 };
 
-const TableToCard = () => {
+const TableToCard = (props) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -30,7 +30,7 @@ const TableToCard = () => {
         <CardContent>
           <Box sx={{ display: "flex" }}>
             <Avatar
-              src="Browns1.jpg"
+              src={`img/${props.imgname}`}
               sx={{
                 height: 50,
                 mr: 1,
@@ -44,7 +44,7 @@ const TableToCard = () => {
                 sx={{ mr: 2 }}
                 color="secondary"
               >
-                Package name : 100USDT
+                Package name : {props.package}USDT
               </Typography>
               <Typography gutterBottom variant="body1">
                 5 x Revenue

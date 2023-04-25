@@ -32,6 +32,7 @@ import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import PaidIcon from "@mui/icons-material/Paid";
 import HomeIcon from "@mui/icons-material/Home";
 import DescriptionIcon from "@mui/icons-material/Description";
+import ViewAllNotAccepted from "../pages/ViewAllNotAccepted";
 
 const routeConfig = [
   {
@@ -60,9 +61,9 @@ const routeConfig = [
     path: "/home",
     element: <HomePage />,
     icon: <HomeIcon fontSize="large" />,
-    label: 'Home',
+    label: "Home",
     noAuth: true,
-    menu: true
+    menu: true,
   },
   {
     id: 5,
@@ -93,18 +94,18 @@ const routeConfig = [
     path: "/assets",
     element: <Assets />,
     icon: <PaidIcon fontSize="large" />,
-    label: 'Assets',
+    label: "Assets",
     noAuth: true,
-    menu: true
+    menu: true,
   },
   {
     id: 11,
     path: "/subPackages",
     element: <SubPackages />,
     icon: <Inventory2OutlinedIcon fontSize="large" />,
-    label: 'Sub Packages',
+    label: "Packages",
     noAuth: true,
-    menu: true
+    menu: true,
   },
   {
     id: 12,
@@ -117,9 +118,9 @@ const routeConfig = [
     path: "/me",
     element: <Me />,
     icon: <DescriptionIcon fontSize="large" />,
-    label: 'Me',
+    label: "Me",
     noAuth: true,
-    menu: true
+    menu: true,
   },
   {
     id: 14,
@@ -165,7 +166,7 @@ const routeConfig = [
   },
   {
     id: 21,
-    path: "/teamActivity",
+    path: "me/teamActivity",
     element: <TeamActivity />,
     noAuth: true,
   },
@@ -216,10 +217,16 @@ const routeConfig = [
     path: "/profile",
     element: <Profile />,
     icon: <AccountCircleIcon fontSize="large" />,
-    label: 'Profile',
+    label: "Profile",
     noAuth: true,
-    menu: true
-  }
+    menu: true,
+  },
+  {
+    id: 30,
+    path: "/viewAllNotAccepted",
+    element: <ViewAllNotAccepted />,
+    noAuth: true,
+  },
 ];
 
 export default routeConfig;

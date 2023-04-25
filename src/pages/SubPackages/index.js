@@ -9,10 +9,18 @@ const SubPackages = () => {
       <Typography variant="h5" gutterBottom align="center" sx={{ m: 3 }}>
         PACKAGE SUBSCRIPTION
       </Typography>
-      <TableToCard />
-      <TableToCard />
-      <TableToCard />
-      <TableToCard />
+      <TableToCard imgname="bronze1.jpeg" package="100" />
+      <TableToCard imgname="bronze2.jpeg" package="100" />
+      <TableToCard imgname="bronze3.jpeg" package="100" />
+      <TableToCard imgname="silver1.jpeg" package="100" />
+      <TableToCard imgname="silver2.jpeg" package="100" />
+      <TableToCard imgname="silver3.jpeg" package="100" />
+      <TableToCard imgname="gold1.jpeg" package="100" />
+      <TableToCard imgname="gold2.jpeg" package="100" />
+      <TableToCard imgname="gold3.jpeg" package="100" />
+      <TableToCard imgname="platinum1.jpeg" package="100" />
+      <TableToCard imgname="platinum2.jpeg" package="100" />
+      <TableToCard imgname="platinum3.jpeg" package="100" />
     </div>
   );
 }

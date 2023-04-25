@@ -7,6 +7,7 @@ import FormControl from "@mui/material/FormControl";
 import { Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 
 const Recharge = () => {
   const [amount, setAmount] = useState("");
@@ -15,6 +16,10 @@ const Recharge = () => {
   };
   const handleClick = (e) => {
     setAmount((pre) => e.target.value);
+  };
+  let navigate = useNavigate();
+  const routeChange = (value) => {
+    navigate(value);
   };
   return (
     <div>
@@ -55,6 +60,7 @@ const Recharge = () => {
               variant="outlined"
               size="medium"
               value="10"
+              color="primaryVariant"
               onClick={handleClick}
             >
               10
@@ -63,6 +69,7 @@ const Recharge = () => {
               variant="outlined"
               size="medium"
               value="20"
+              color="primaryVariant"
               onClick={handleClick}
             >
               20
@@ -71,6 +78,7 @@ const Recharge = () => {
               variant="outlined"
               size="medium"
               value="50"
+              color="primaryVariant"
               onClick={handleClick}
             >
               50
@@ -81,6 +89,7 @@ const Recharge = () => {
               variant="outlined"
               size="medium"
               value="100"
+              color="primaryVariant"
               onClick={handleClick}
             >
               100
@@ -89,6 +98,7 @@ const Recharge = () => {
               variant="outlined"
               size="medium"
               value="200"
+              color="primaryVariant"
               onClick={handleClick}
             >
               200
@@ -97,6 +107,7 @@ const Recharge = () => {
               variant="outlined"
               size="medium"
               value="500"
+              color="primaryVariant"
               onClick={handleClick}
             >
               500
@@ -107,6 +118,7 @@ const Recharge = () => {
               variant="outlined"
               size="medium"
               value="1000"
+              color="primaryVariant"
               onClick={handleClick}
             >
               1000
@@ -115,6 +127,7 @@ const Recharge = () => {
               variant="outlined"
               size="medium"
               value="5000"
+              color="primaryVariant"
               onClick={handleClick}
             >
               5000
@@ -123,6 +136,7 @@ const Recharge = () => {
               variant="outlined"
               size="medium"
               value="10000"
+              color="primaryVariant"
               onClick={handleClick}
             >
               10000
@@ -134,7 +148,9 @@ const Recharge = () => {
         <Button
           sx={{ mt: "10%", width: "80%" }}
           variant="contained"
-          href="http://localhost:3000/rechargeQR"
+          onClick={() => {
+            routeChange(`/rechargeQR`);
+          }}
         >
           Recharge
         </Button>

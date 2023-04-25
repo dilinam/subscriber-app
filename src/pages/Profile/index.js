@@ -15,8 +15,11 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import Stack from "@mui/material/Stack";
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 
-const user = {
+
+const Profile = () => {
+  const user = {
   avatar: "/assets/avatars/avatar-anika-visser.png",
   city: "Los Angeles",
   country: "USA",
@@ -24,7 +27,9 @@ const user = {
   name: "Anika Visser",
   timezone: "GTM-7",
 };
-const Profile = () => {
+  let navigate = useNavigate();
+  const routeChange = (value) => {
+    navigate(value);}
   return (
     <div>
       <Card sx={{ m: 1, borderRadius: 3, border: "1px solid #f2e22c" }}>
@@ -58,8 +63,10 @@ const Profile = () => {
           <Button
             fullWidth
             variant="text"
-            href="http://localhost:3000/userDetails"
             color="secondary"
+             onClick={() => {
+              routeChange(`/userDetails`);
+            }}
           >
             Update profile info
           </Button>
@@ -94,7 +101,9 @@ const Profile = () => {
             justifyContent: "flex-start",
             fontSize: "20px",
           }}
-          href={`http://localhost:3000/expensesRecord`}
+          onClick={() => {
+              routeChange(`/expensesRecord`);
+            }}
         >
           Expences Record
         </Button>
@@ -107,7 +116,9 @@ const Profile = () => {
             justifyContent: "flex-start",
             fontSize: "20px",
           }}
-          href={`http://localhost:3000/activityIncome`}
+          onClick={() => {
+            routeChange(`/activityIncome`);
+          }}
         >
           Activity Income
         </Button>
@@ -120,7 +131,9 @@ const Profile = () => {
             justifyContent: "flex-start",
             fontSize: "20px",
           }}
-          href="http://localhost:3000/cardManagement"
+          onClick={() => {
+            routeChange(`/cardManagement`);
+          }}
         >
           Card Management
         </Button>
@@ -133,7 +146,9 @@ const Profile = () => {
             justifyContent: "flex-start",
             fontSize: "20px",
           }}
-          href="http://localhost:3000/customerService"
+          onClick={() => {
+              routeChange(`/customerService`);
+            }}
         >
           Customer Service
         </Button>
@@ -146,7 +161,9 @@ const Profile = () => {
             justifyContent: "flex-start",
             fontSize: "20px",
           }}
-          href="http://localhost:3000/aboutUs"
+          onClick={() => {
+              routeChange(`/aboutUs`);
+            }}
         >
           About DTF Team
         </Button>
@@ -155,4 +172,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Profile
