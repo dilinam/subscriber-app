@@ -9,7 +9,7 @@ const TabCard = (props) => {
       <Card sx={{ borderRadius: 1, mb:2 }}>
         <CardContent>
           <Typography sx={{ fontSize: 18, mb: 2 }} color="text.secondary">
-            Recharge <br /> {props.date}
+            {props.type} <br /> {props.date}
           </Typography>
           <Typography sx={{ fontSize: 18, mb: 2 }} color="text.secondary">
             Order number : {props.order}

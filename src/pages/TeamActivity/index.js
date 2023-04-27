@@ -11,9 +11,14 @@ import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import FolderSpecialIcon from "@mui/icons-material/FolderSpecial";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { useNavigate } from "react-router-dom";
 
 
 const TeamActivity = () => {
+  let navigate = useNavigate();
+  const routeChange = (value) => {
+    navigate(value);
+  };
   return (
     <div>
       <Typography gutterBottom variant="h6" align="center">
@@ -28,7 +33,9 @@ const TeamActivity = () => {
             justifyContent: "space-between",
             fontSize: "20px",
           }}
-          href="http://localhost:3000/promotionBonus"
+          onClick={() => {
+            routeChange(`/promotionBonus`);
+          }}
         >
           Promotion Bonous
           <ArrowForwardIosIcon />
@@ -41,7 +48,9 @@ const TeamActivity = () => {
             justifyContent: "space-between",
             fontSize: "20px",
           }}
-          href="http://localhost:3000/promotionCode"
+          onClick={() => {
+            routeChange(`/promotionCode`);
+          }}
         >
           Promotion Code
           <ArrowForwardIosIcon />
@@ -54,7 +63,9 @@ const TeamActivity = () => {
             justifyContent: "space-between",
             fontSize: "20px",
           }}
-          href="http://localhost:3000/myTeam"
+          onClick={() => {
+            routeChange(`/myTeam`);
+          }}
         >
           My Team
           <ArrowForwardIosIcon />
@@ -110,7 +121,9 @@ const TeamActivity = () => {
           }}
           variant="outlined"
           startIcon={<PersonAddAlt1Icon />}
-          href="http://localhost:3000/newRegistration"
+          onClick={() => {
+            routeChange(`/newRegistration`);
+          }}
         >
           New Registration
           <ArrowForwardIosIcon />
@@ -125,7 +138,9 @@ const TeamActivity = () => {
           }}
           variant="outlined"
           startIcon={<FolderSpecialIcon />}
-          href="http://localhost:3000/newTopUps"
+          onClick={() => {
+            routeChange(`/newTopUps`);
+          }}
         >
           New Top - Ups
           <ArrowForwardIosIcon />
@@ -140,7 +155,9 @@ const TeamActivity = () => {
           }}
           variant="outlined"
           startIcon={<CurrencyExchangeIcon />}
-          href="http://localhost:3000/totalWithdrawals"
+          onClick={() => {
+            routeChange(`/totalWithdrawals`);
+          }}
         >
           Total Withdrawals
           <ArrowForwardIosIcon />

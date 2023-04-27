@@ -6,17 +6,28 @@ import TabContext from "@mui/lab/TabContext";
 import TabPanel from "@mui/lab/TabPanel";
 import TabCard from "../../component-ui/TabCard";
 import { getRechagesUser } from "../../use-cases/get-recharges-user";
+import { useState, useEffect } from "react";
+import { getWithdrwalsUser } from "../../use-cases/get-withdrwals-user";
 
 const ExpensesRecord = () => {
-  const [value, setValue] = React.useState("1");
+  const [value, setValue] = useState("1");
+  const [rdata,setRData] = useState([]);
+  const [wdata,setWData] = useState([]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const getRechages = async (id) => {
-    await getRechagesUser(id);
-  };
-
+  
+  useEffect(() => {
+    getRechagesUser(1)
+      .then((res) => res.data)
+      .then((data) => setRData(data));
+    getWithdrwalsUser(1)
+      .then((res) => res.data)
+      .then((data) => setWData(data));
+    
+  }, []);
+  
    return (
      <Box sx={{ width: "100%", typography: "body1" }}>
        <TabContext value={value}>
@@ -33,11 +44,24 @@ const ExpensesRecord = () => {
            </Tabs>
          </Box>
          <TabPanel value="1">
-           <TabCard date="04:56 05/04/2023" order="000000151" value="100.00" />
-           <TabCard date="04:56 05/04/2023" order="000000151" value="100.00" />
+           {rdata.map((rechargeData) => (
+             <TabCard
+               date={rechargeData.dateTime}
+               order={rechargeData.id}
+               value={rechargeData.amount}
+               type="Recharge"
+             />
+           ))}
          </TabPanel>
          <TabPanel value="2">
-           <TabCard date="04:56 05/04/2023" order="000000151" value="100.00" />
+           {wdata.map((withdrawalData) => (
+             <TabCard
+               date={withdrawalData.dateTime}
+               order={withdrawalData.id}
+               value={withdrawalData.amount}
+               type="Withdrawal"
+             />
+           ))}
          </TabPanel>
        </TabContext>
      </Box>

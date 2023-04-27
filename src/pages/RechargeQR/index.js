@@ -12,6 +12,9 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Modal from "@mui/material/Modal";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { Save } from '@mui/icons-material';
+
 
 const style = {
   position: "absolute",
@@ -38,12 +41,17 @@ const RechargeQR = () => {
       navigate(value);
 
     };
+    const save = (amount) =>{
+        console.log("save"+amount);
+    };
+    const location = useLocation();
+    const amount = location.state.recharge;
   return (
     <div>
       <Card sx={{ m: 1, borderRadius: 5 }}>
         <CardContent>
           <Typography color="text.secondary" variant="h5">
-            Deposit USDT{" "}
+            Deposit USDT 
           </Typography>
           <br />
           <Box align="center">
@@ -136,6 +144,7 @@ const RechargeQR = () => {
             variant="contained"
             onClick={() => {
               routeChange(`/recharge`);
+              save(amount);
             }}
           >
             Recharge

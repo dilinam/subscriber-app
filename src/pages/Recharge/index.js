@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
@@ -8,6 +8,7 @@ import { Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
+import { getRechagesUser } from "../../use-cases/get-recharges-user";
 
 const Recharge = () => {
   const [amount, setAmount] = useState("");
@@ -18,9 +19,17 @@ const Recharge = () => {
     setAmount((pre) => e.target.value);
   };
   let navigate = useNavigate();
-  const routeChange = (value) => {
-    navigate(value);
+  const routeChange = (value, amount) => {
+    navigate(value, {
+      state: {
+        recharge: amount,
+      },
+    });
   };
+  useEffect(() => {
+    const data = getRechagesUser(1);
+    console.log(data);
+  }, []);
   return (
     <div>
       <Grid
@@ -149,7 +158,7 @@ const Recharge = () => {
           sx={{ mt: "10%", width: "80%" }}
           variant="contained"
           onClick={() => {
-            routeChange(`/rechargeQR`);
+            routeChange(`/rechargeQR`, amount);
           }}
         >
           Recharge
