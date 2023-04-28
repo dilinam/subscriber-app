@@ -148,6 +148,7 @@ const Withdraw = () => {
            buttonName="Withdraw"
            title="Withdrawal Confirmation"
            msg="This action activate within 24h in working days.Are you confirm this transation ?"
+           amount = {amount}
          />
        </Box>
      </div>
