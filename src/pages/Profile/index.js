@@ -14,22 +14,22 @@ import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import Stack from "@mui/material/Stack";
-import * as React from "react";
+import {useEffect,useState} from "react";
 import { useNavigate } from "react-router-dom";
+import { getAccountBalance } from "../../use-cases/get-account-balance";
+import { getUserDetails } from "../../use-cases/get-user-details";
 
 
 const Profile = () => {
-  const user = {
-  avatar: "/assets/avatars/avatar-anika-visser.png",
-  city: "Los Angeles",
-  country: "USA",
-  jobTitle: "Senior Developer",
-  name: "Anika Visser",
-  timezone: "GTM-7",
-};
+
   let navigate = useNavigate();
+  const [user,setUser] = useState({});
   const routeChange = (value) => {
     navigate(value);}
+  useEffect(()=>{
+    getUserDetails().then((res) => setUser(res.data));
+  },[]);
+  console.log(user)
   return (
     <div>
       <Card sx={{ m: 1, borderRadius: 3, border: "1px solid #f2e22c" }}>
@@ -50,10 +50,10 @@ const Profile = () => {
             />
             <Box>
               <Typography gutterBottom variant="h6">
-                hasitha1999
+                {user.firstName} {user.lastName}
               </Typography>
               <Typography color="text.secondary" variant="body2">
-                ID : 00000410
+                {user.id}
               </Typography>
             </Box>
           </Box>
@@ -64,7 +64,7 @@ const Profile = () => {
             fullWidth
             variant="text"
             color="secondary"
-             onClick={() => {
+            onClick={() => {
               routeChange(`/userDetails`);
             }}
           >
@@ -86,7 +86,7 @@ const Profile = () => {
             Availabale balance (USDT)
           </Typography>
           <Typography variant="h5" color="Subtitle1">
-            361.00 USDT
+            {user.totalBalance} USDT
           </Typography>
         </CardContent>
       </Card>
@@ -102,8 +102,8 @@ const Profile = () => {
             fontSize: "20px",
           }}
           onClick={() => {
-              routeChange(`/expensesRecord`);
-            }}
+            routeChange(`/expensesRecord`);
+          }}
         >
           Expences Record
         </Button>
@@ -147,8 +147,8 @@ const Profile = () => {
             fontSize: "20px",
           }}
           onClick={() => {
-              routeChange(`/customerService`);
-            }}
+            routeChange(`/customerService`);
+          }}
         >
           Customer Service
         </Button>
@@ -162,8 +162,8 @@ const Profile = () => {
             fontSize: "20px",
           }}
           onClick={() => {
-              routeChange(`/aboutUs`);
-            }}
+            routeChange(`/aboutUs`);
+          }}
         >
           About DTF Team
         </Button>

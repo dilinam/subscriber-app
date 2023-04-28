@@ -6,6 +6,8 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
+import { getUserDetails } from "../../use-cases/get-user-details";
+import { saveAsset } from "../../use-cases/save-recharge";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -13,6 +15,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const ConfirmMsg = (props) => {
       const [open, setOpen] = React.useState(false);
+      const [user, setUser] = React.useState({});
 
       const handleClickOpen = () => {
         setOpen(true);
@@ -21,6 +24,13 @@ const ConfirmMsg = (props) => {
       const handleClose = () => {
         setOpen(false);
       };
+      const save= () => {
+        setOpen(false);
+        saveAsset(user,props.amount, 1);
+      };
+      React.useEffect(() => {
+         getUserDetails().then((res) => setUser(res.data));
+       }, []);
   return (
     <div>
       <Button variant="contained" fullWidth onClick={handleClickOpen}>
@@ -41,7 +51,7 @@ const ConfirmMsg = (props) => {
         </DialogContent>
         <DialogActions>
           <Button 
-          onClick={handleClose} 
+          onClick={save} 
           variant="contained">
             Yes
           </Button>
