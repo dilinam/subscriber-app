@@ -56,7 +56,7 @@ const ExpensesRecord = () => {
          <TabPanel value="2">
            {wdata.map((withdrawalData) => (
              <TabCard
-               date={withdrawalData.dateTime}
+               date={withdrawalData.dateTime.replace("T", " ")}
                order={withdrawalData.id}
                value={withdrawalData.amount}
                type="Withdrawal"

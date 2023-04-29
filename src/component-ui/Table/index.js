@@ -13,7 +13,7 @@ const Table = ({
   rowIdField,
   handleStatus,
   setEditingRow,
-  tableRefreshFlag
+  tableRefreshFlag,
 }) => {
   //data and fetching state
   const [data, setData] = useState([]);
@@ -31,14 +31,14 @@ const Table = ({
   const [statusChangeRowId, setStatusChangeRowId] = useState(null);
 
   const fetchData = async () => {
-    console.log(globalFilter)
+    console.log(globalFilter);
     setIsLoading(true);
 
     try {
       const data = await fetchDataList(
         pagination.pageIndex,
         pagination.pageSize,
-        globalFilter || ''
+        globalFilter || ""
       );
       setData(data.data.data);
       setRowCount(data.data.count);
@@ -52,8 +52,13 @@ const Table = ({
   };
 
   useEffect(() => {
-    // fetchData();
-  }, [globalFilter, pagination.pageIndex, pagination.pageSize, tableRefreshFlag]);
+    fetchData();
+  }, [
+    globalFilter,
+    pagination.pageIndex,
+    pagination.pageSize,
+    tableRefreshFlag,
+  ]);
 
   const setStateChangeRow = (rowId, isActive) => {
     setStatusChangeRowId({ rowId, isActive });
