@@ -8,7 +8,7 @@ import { CardActions } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { packageActive } from '../../use-cases/package-activate';
-import { getPackageUser } from '../../use-cases/get-package-user';
+import { getPackageUser } from "../../use-cases/get-package-user";
 
 const style = {
   position: "absolute",
@@ -32,16 +32,24 @@ const TableToCard = (props) => {
     setPackageId(props.id)
   }
   useEffect(() => {
-    getPackageUser(1).then((res) => console.log(res.data));
-    if(packageId>0){
+    if(packageId>0 ){
       packageActive(packageId);
-        console.log(packageId);
     }
   }, [packageId]);
   const disabled = () =>{
-    return true;
+
+    if (packageUser.id == props.id) {
+      return true;
+    } else {
+      return false;
+    };
   }
-  
+    const [packageUser, setPackageUser] = useState({});
+    useEffect(() => {
+      getPackageUser()
+        .then((res) => setPackageUser(res.data.activePackage))
+    }, []); 
+  console.log()  
   return (
     <div>
       <Card sx={{ m: 1, borderRadius: 3, border: "1px solid #f2e22c" }}>
@@ -71,6 +79,7 @@ const TableToCard = (props) => {
                 color="secondary"
               >
                 {props.package}USDT
+                {console.log(packageUser.id)}
               </Typography>
               <Typography gutterBottom variant="body1">
                 5 x Revenue
@@ -86,7 +95,7 @@ const TableToCard = (props) => {
             onClick={handleOpen}
             variant="contained"
             sx={{ marginLeft: "auto", order: "2", border: "1px solid #fff" }}
-            // disabled = {disabled}
+            disabled={disabled()}
           >
             Join
           </Button>

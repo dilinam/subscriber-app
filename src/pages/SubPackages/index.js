@@ -1,9 +1,11 @@
 import { Box } from '@mui/system';
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import TableToCard from '../../component-ui/TableToCard';
 import Typography from "@mui/material/Typography";
 
+
 const SubPackages = () => {
+
   return (
     <div>
       <Typography variant="h5" gutterBottom align="center" sx={{ m: 3 }}>
@@ -45,9 +47,24 @@ const SubPackages = () => {
         id={6}
         name="Bronze 1"
       />
-      <TableToCard imgname="gold1.jpeg" package="100" id={7} name="Bronze 1" />
-      <TableToCard imgname="gold2.jpeg" package="100" id={8} name="Bronze 1" />
-      <TableToCard imgname="gold3.jpeg" package="100" id={9} name="Bronze 1" />
+      <TableToCard
+        imgname="gold1.jpeg"
+        package="100"
+        id={7}
+        name="Bronze 1"
+      />
+      <TableToCard
+        imgname="gold2.jpeg"
+        package="100"
+        id={8}
+        name="Bronze 1"
+      />
+      <TableToCard
+        imgname="gold3.jpeg"
+        package="100"
+        id={9}
+        name="Bronze 1"
+      />
       <TableToCard
         imgname="platinum1.jpeg"
         package="100"
