@@ -3,12 +3,12 @@ import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import ActivityIncomeData from "../../component-ui/ActivityIncomeData";
-import { getRevenueUser } from "../../use-cases/get-revenue-user";
+import { getRefComUser } from "../../use-cases/get-RefCom-user";
 
 const ActivityIncome = () => {
   const [data,setData] = useState([]);
   useEffect(()=>{
-    getRevenueUser(1).then((rev) => setData(rev.data));
+    getRefComUser(1).then((rev) => setData(rev.data));
 
   },[])
   console.log(data)

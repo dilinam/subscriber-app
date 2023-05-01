@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Box from "@mui/material/Box";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
@@ -10,19 +10,24 @@ import Button from "@mui/material/Button";
 import CardForHome from "../../component-ui/CardForHome";
 import Stack from "@mui/material/Stack";
 import { useNavigate } from "react-router-dom";
+import { getUserDetails } from "../../use-cases/get-user-details";
 
 const Assets = () => {
+  const [user, setUser] = useState({});
   let navigate = useNavigate();
   const routeChange = (value) => {
     navigate(value);
   };
+  useEffect(() => {
+    getUserDetails().then((res) => setUser(res.data));
+  }, []);
 
   return (
     <div>
       <Typography variant="h5" gutterBottom align="center">
         ASSETS
       </Typography>
-      <CardForHome value="100.00" name="Available Balance" />
+      <CardForHome value={user.totalBalance} name="Available Balance" />
       <Stack spacing={1} direction="column" sx={{ m: 2, mb: 10 }}>
         <Button
           variant="outlined"
