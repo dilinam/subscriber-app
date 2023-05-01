@@ -1,29 +1,34 @@
-import React, { useMemo } from "react";
+import React, { useMemo ,useEffect,useState} from "react";
 import MaterialReactTable from "material-react-table";
+import { getRevenueDate } from "../../use-cases/get-revnue-date";
 
-const data = [{ date: "02/04/2023", dailyRevenue :"2.50",totalRevenue:"10.00"}];
-
-const AssetTable = () => {
+const AssetTable = (props) => {
+  const [data,setData] = useState([]);
     const columns = useMemo(
       () => [
         {
-          accessorKey: "date",
+          accessorKey: "dateTime",
           header: "Date",
-          size: 50,
+          size: 80,
         },
         {
-          accessorKey: "dailyRevenue",
+          accessorKey: "amount",
           header: "Daily Revenue",
           size: 40,
         },
-        {
-          accessorKey: "totalRevenue",
-          header: "Total Revenue",
-          size: 40,
-        },
+        // {
+        //   accessorKey: "totalRevenue",
+        //   header: "Total Revenue",
+        //   size: 40,
+        // },
       ],
       []
     );
+    useEffect(()=>{
+      getRevenueDate(props.timeStamp).then((res)=>setData(res.data))
+      console.log(data);
+    },[])
+    
 
 return (
     <MaterialReactTable

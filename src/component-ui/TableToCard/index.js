@@ -1,4 +1,4 @@
-import React from 'react'
+import {useEffect,useState} from 'react'
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Avatar from "@mui/material/Avatar";
@@ -7,6 +7,8 @@ import Button from "@mui/material/Button";
 import { CardActions } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
+import { packageActive } from '../../use-cases/package-activate';
+import { getPackageUser } from '../../use-cases/get-package-user';
 
 const style = {
   position: "absolute",
@@ -21,9 +23,25 @@ const style = {
 };
 
 const TableToCard = (props) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [packageId,setPackageId] = useState();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const save = () =>{
+    setOpen(false); 
+    setPackageId(props.id)
+  }
+  useEffect(() => {
+    getPackageUser(1).then((res) => console.log(res.data));
+    if(packageId>0){
+      packageActive(packageId);
+        console.log(packageId);
+    }
+  }, [packageId]);
+  const disabled = () =>{
+    return true;
+  }
+  
   return (
     <div>
       <Card sx={{ m: 1, borderRadius: 3, border: "1px solid #f2e22c" }}>
@@ -44,7 +62,15 @@ const TableToCard = (props) => {
                 sx={{ mr: 2 }}
                 color="secondary"
               >
-                Package name : {props.package}USDT
+                {props.name}
+              </Typography>
+              <Typography
+                gutterBottom
+                variant="h6"
+                sx={{ mr: 2 }}
+                color="secondary"
+              >
+                {props.package}USDT
               </Typography>
               <Typography gutterBottom variant="body1">
                 5 x Revenue
@@ -60,6 +86,7 @@ const TableToCard = (props) => {
             onClick={handleOpen}
             variant="contained"
             sx={{ marginLeft: "auto", order: "2", border: "1px solid #fff" }}
+            // disabled = {disabled}
           >
             Join
           </Button>
@@ -76,17 +103,31 @@ const TableToCard = (props) => {
             Text in a modal
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            1. Subscribe Browns 1 Package selling price is 100 USDT, the income
-            is 5 times the income can earn 500 USDT, you can receive 1 USDT per
-            day. <br />
+            1. Subscribe Browns 1 Package selling price is {props.package} USDT,
+            the income is 5 times the income can earn {props.package * 5}USDT,
+            you can receive 1 USDT per day. <br />
             2. The daily earnings are put in the equivalent value of USDT coins.{" "}
             <br />
             3. You can upgrade to any higher package at any time while still in
-            the purchased package 4. Once this package is sold, it is
-            non-refundable and non- exchangeable.
+            the purchased package <br />
+            4. Once this package is sold, it is non-refundable and
+            non- exchangeable.
             <br />
           </Typography>
-          <Button>click me</Button>
+          <Button
+            onClick={save}
+            variant="contained"
+            sx={{ margin: "10", order: "2", border: "1px solid #fff" }}
+          >
+            Join
+          </Button>
+          <Button
+            onClick={handleClose}
+            variant="contained"
+            sx={{ marginLeft: "auto", order: "2", border: "1px solid #fff" }}
+          >
+            Cancel
+          </Button>
         </Box>
       </Modal>
     </div>
