@@ -3,7 +3,10 @@ import Typography from "@mui/material/Typography";
 import TeamActivityBelowButtons from "../../component-ui/TeamActivityBelowButtons";
 
 const NewRegistration = () => {
-     const [value, setValue] = useState("05");
+     const [value, setValue] = useState(0);
+     const data = (newdata) => {
+       setValue((prev) => prev + newdata);
+     };
   return (
     <div>
       <Typography gutterBottom variant="h5" align="center">
@@ -12,8 +15,14 @@ const NewRegistration = () => {
       <Typography gutterBottom variant="h6" align="center">
         Today new registration {value}
       </Typography>
-      <TeamActivityBelowButtons level="1" value="3" sx={{borderColor: "primaryVariant"}}/>
-      <TeamActivityBelowButtons level="2" value="5" />
+      <TeamActivityBelowButtons
+        level="1"
+        sx={{ borderColor: "primaryVariant" }}
+        page="1"
+        total={data}
+      />
+      <TeamActivityBelowButtons level="2" page="1" total={data} />
+      <TeamActivityBelowButtons level="3" page="1" total={data} />
     </div>
   );
 }
