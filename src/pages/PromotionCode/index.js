@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Typography from "@mui/material/Typography";
 import { Card, CardContent } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
@@ -7,9 +7,14 @@ import { useState } from "react";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/system";
 import Link from "@mui/material/Link";
+import { getRefUser } from '../../use-cases/get-ref-user';
 
 const PromotionCode = () => {
     const [isCopied, setIsCopied] = useState(false);
+    const [ref,setRef] = useState()
+    useEffect(()=>{
+      getRefUser().then((res) => setRef(res.data))
+    },[])
   return (
     <div>
       <Box sx={{ m: 3 }}>
@@ -28,11 +33,11 @@ const PromotionCode = () => {
           <Box sx={{ align: "center" }}>
             <Typography variant="h6">Invitaion Code</Typography>
             <Typography color="text.secondary" variant="caption">
-              TPXqEvFBzYi5tBwViGtFu6dTeKZEgS3qeU
+              {ref}
             </Typography>
             <CopyToClipboard
               sx={{ color: "#49A8EF" }}
-              text={"TPXqEvFBzYi5tBwViGtFu6dTeKZEgS3qeU"}
+              text={ref}
               onCopy={() => {
                 setIsCopied(true);
                 setTimeout(() => {
@@ -46,16 +51,14 @@ const PromotionCode = () => {
             </CopyToClipboard>
             <Typography variant="h6">Promotional Link</Typography>
             <Link
-              href="https://www.w3schools.com/cssref/css3_pr_justify-content.php"
+              href={`http://localhost:3000/signup/`}
               sx={{ color: "#49A8EF" }}
             >
-              https://www.w3schools.com/cssref/......
+              http://localhost:3000/signup/{ref}
             </Link>
             <CopyToClipboard
               sx={{ color: "#49A8EF" }}
-              text={
-                "https://www.w3schools.com/cssref/css3_pr_justify-content.php"
-              }
+              text={`http://localhost:3000/signup/`}
               onCopy={() => {
                 setIsCopied(true);
                 setTimeout(() => {
