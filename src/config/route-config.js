@@ -1,7 +1,7 @@
 import EmailVerification from "../pages/EmailVerification";
 import HomePage from "../pages/HomePage";
 import Login from "../pages/Login";
-import PendingWithdraw from "../pages/PendingWithdraw";
+
 import Profile from "../pages/Profile";
 import Assets from "../pages/Assets";
 import RechargeQR from "../pages/RechargeQR";
@@ -9,7 +9,7 @@ import Share from "../pages/Share";
 import SignUp from "../pages/SignUp";
 import SubPackages from "../pages/SubPackages";
 import UserDetails from "../pages/UserDetails";
-import UserList from "../pages/ViewAllUsers";
+
 import Withdraw from "../pages/Withdraw";
 import Me from "../pages/Me";
 import ExpensesRecord from "../pages/ExpensesRecord";
@@ -33,6 +33,8 @@ import PaidIcon from "@mui/icons-material/Paid";
 import HomeIcon from "@mui/icons-material/Home";
 import DescriptionIcon from "@mui/icons-material/Description";
 import ViewAllNotAccepted from "../pages/ViewAllNotAccepted";
+import UserList from "../pages/ViewAllUsers";
+import PendingWithdraw from "../pages/PendingWithdraw";
 
 const routeConfig = [
   {
@@ -166,7 +168,7 @@ const routeConfig = [
   },
   {
     id: 21,
-    path: "me/teamActivity",
+    path: "/teamActivity",
     element: <TeamActivity />,
     noAuth: true,
   },

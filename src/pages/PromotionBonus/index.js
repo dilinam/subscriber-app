@@ -11,8 +11,12 @@ const PromotionBonus = () => {
       <Typography gutterBottom variant="h5" align="center">
         Level 1 Total Active
       </Typography>
-      <Promotion  members="5" value="50" />
-      <Promotion members="10" value="150" />
+      <Promotion members="5" value="50" />
+      <Promotion members="10" value="100" />
+      <Promotion members="20" value="200" />
+      <Promotion members="30" value="300" />
+      <Promotion members="50" value="500" />
+      <Promotion members="100" value="1000" />
     </div>
   );
 }

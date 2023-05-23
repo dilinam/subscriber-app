@@ -47,7 +47,7 @@ const Me = () => {
               fontSize: "20px",
             }}
             onClick={() => {
-              routeChange(`teamActivity`);
+              routeChange(`/teamActivity`);
             }}
           >
             Team Activity

@@ -14,25 +14,25 @@ import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import Stack from "@mui/material/Stack";
-import {useEffect,useState} from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAccountBalance } from "../../use-cases/get-account-balance";
 import { getUserDetails } from "../../use-cases/get-user-details";
 import { getPackageUser } from "../../use-cases/get-package-user";
 
 
 const Profile = () => {
-
   let navigate = useNavigate();
-  const [user,setUser] = useState({});
+  const [user, setUser] = useState({});
   const [packageUser, setPackageUser] = useState({});
   const routeChange = (value) => {
-    navigate(value);}
-  useEffect(()=>{
+    navigate(value);
+  };
+  useEffect(() => {
     getUserDetails().then((res) => setUser(res.data));
     getPackageUser().then((res) => setPackageUser(res.data));
-  },[]);
-  console.log(packageUser.activePackage.price);
+    console.log("TEST");
+  }, []);
+  console.log(packageUser.activePackage?.price);
   return (
     <div>
       <Card sx={{ m: 1, borderRadius: 3, border: "1px solid #f2e22c" }}>
@@ -81,7 +81,8 @@ const Profile = () => {
             Your Package
           </Typography>
           <Typography variant="h5" color="Subtitle1">
-            {packageUser.activePackage.name} {packageUser.activePackage.price} USDT
+            {packageUser.activePackage?.name} {packageUser.activePackage?.price}{" "}
+            USDT
           </Typography>
         </CardContent>
         <CardContent sx={{ ml: 5 }}>
@@ -175,4 +176,4 @@ const Profile = () => {
   );
 };
 
-export default Profile
+export default Profile;

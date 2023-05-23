@@ -49,7 +49,7 @@ const TableToCard = (props) => {
       getPackageUser()
         .then((res) => setPackageUser(res.data.activePackage))
     }, []); 
-  console.log()  
+    
   return (
     <div>
       <Card sx={{ m: 1, borderRadius: 3, border: "1px solid #f2e22c" }}>
@@ -78,8 +78,7 @@ const TableToCard = (props) => {
                 sx={{ mr: 2 }}
                 color="secondary"
               >
-                {props.package}USDT
-                {console.log(packageUser.id)}
+                {props.package} USDT
               </Typography>
               <Typography gutterBottom variant="body1">
                 5 x Revenue
@@ -89,7 +88,7 @@ const TableToCard = (props) => {
         </CardContent>
         <Box sx={{ display: "flex", mr: 3, m: 2 }}>
           <Typography color="subtiltle1" variant="body2">
-            Daily Revenue : 1 USDT
+            Daily Revenue : {props.package * 0.01} USDT
           </Typography>
           <Button
             onClick={handleOpen}

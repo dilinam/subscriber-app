@@ -1,11 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Card,
   CardContent
 } from "@mui/material";
 import Typography from "@mui/material/Typography";
+import { getRefUsersByPrevioudayAndLevel } from '../../use-cases/get-refusers-bydate-level';
+import { getNewTops } from '../../use-cases/getNewTops';
 
 const TeamActivityBelowButtons = (props) => {
+  const [value,setValue] = useState(0);
+  useEffect(async ()=>{
+    if(props.page == "1"){
+await getRefUsersByPrevioudayAndLevel(props.level).then((res) =>
+  setValue(res.data)
+);
+    }else{
+      await getNewTops(props.level).then((res) => setValue(res.data));
+    }
+    
+  },[]);
+  useEffect(()=>{props.total(value)},[value])
   return (
     <div>
       <Card sx={{ borderRadius: 1, m: 2 }}>
@@ -16,7 +30,7 @@ const TeamActivityBelowButtons = (props) => {
           }}
         >
           <Typography variant="h6">Level - {props.level}</Typography>
-          <Typography variant="h6">{props.value}</Typography>
+          <Typography variant="h6">{value}</Typography>
         </CardContent>
       </Card>
     </div>

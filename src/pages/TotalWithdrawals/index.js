@@ -12,7 +12,7 @@ const TotalWithdrawals = () => {
       <Typography gutterBottom variant="h6" align="center">
         Total Withdrawals {value}
       </Typography>
-      <TeamActivityBelowButtons level="1" value="300" />
+      <TeamActivityBelowButtons level="1"  />
     </div>
   );
 };
