@@ -11,8 +11,10 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import validateEmail from "../../utils/validate-email";
 import { registerUser } from "../../use-cases/register-user";
-import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
+import { Alert, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
 import { useSearchParams } from "react-router-dom";
+import { getDisabledReg } from "../../use-cases/get-disabled-reg";
+import { Report } from "@mui/icons-material";
 
 const userData = {
   firstName: "",
@@ -23,6 +25,7 @@ const userData = {
 };
 
 export default function SignUp() {
+  const [isRegDisabled, setIsRegDisabled] = React.useState(false);
   const [formData, setFormData] = React.useState({ ...userData });
   const [formErrorMessages, setFormErrorMessages] = React.useState({
     ...userData,
@@ -35,6 +38,12 @@ export default function SignUp() {
     if(ref) {
       setFormData(prev => ({...prev, userRef: ref}))
     }
+
+    getDisabledReg().then(response => {
+      if(response.data.value === 'TRUE') {
+        setIsRegDisabled(true);
+      }
+    });
   }, [])
 
   const handleSubmit = (event) => {
@@ -129,6 +138,14 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
+        {isRegDisabled && (
+          <Alert
+            color="error"
+            icon={<Report />}
+          >
+            New Registrations are hold for now!
+          </Alert>
+        )}
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
@@ -145,6 +162,7 @@ export default function SignUp() {
                 error={formErrorMessages.firstName !== ""}
                 helperText={formErrorMessages.firstName}
                 color="secondary"
+                disabled={isRegDisabled}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -160,6 +178,7 @@ export default function SignUp() {
                 error={formErrorMessages.lastName !== ""}
                 helperText={formErrorMessages.lastName}
                 color="secondary"
+                disabled={isRegDisabled}
               />
             </Grid>
             <Grid item xs={12}>
@@ -175,6 +194,7 @@ export default function SignUp() {
                 error={formErrorMessages.email !== ""}
                 helperText={formErrorMessages.email}
                 color="secondary"
+                disabled={isRegDisabled}
               />
             </Grid>
             <Grid item xs={12}>
@@ -191,6 +211,7 @@ export default function SignUp() {
                 error={formErrorMessages.password !== ""}
                 helperText={formErrorMessages.password}
                 color="secondary"
+                disabled={isRegDisabled}
               />
             </Grid>
             <Grid item xs={12}>
@@ -212,6 +233,7 @@ export default function SignUp() {
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
+            disabled={isRegDisabled}
           >
             Sign Up
           </Button>
