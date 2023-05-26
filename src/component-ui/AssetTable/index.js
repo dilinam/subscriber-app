@@ -31,17 +31,17 @@ const AssetTable = (props) => {
     
 
 return (
-    <MaterialReactTable
-      columns={columns}
-      data={data}
-      enableColumnActions={false}
-      enableColumnFilters={false}
-      enablePagination={false}
-      enableSorting={false}
-      enableBottomToolbar={false}
-      enableTopToolbar={false}
-      muiTableBodyRowProps={{ hover: false }}
-    />
-  );
+  <MaterialReactTable
+    columns={columns}
+    data={data}
+    enableColumnActions={false}
+    enableColumnFilters={false}
+    enablePagination={false}
+    enableSorting={false}
+    enableBottomToolbar={false}
+    enableTopToolbar={false}
+    muiTableBodyRowProps={{ hover: false }}
+  />
+);
 }
 export default AssetTable;

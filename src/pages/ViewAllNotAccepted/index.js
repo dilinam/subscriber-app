@@ -1,58 +1,48 @@
 import React, { useState } from "react";
 import Table from "../../component-ui/Table";
-import { getUsers } from "../../use-cases/get-users";
-import EditUser from "../../component-ui/EditUser";
+import { getAllNotAcceptedAssets } from "../../use-cases/get-all-not-accepted-assets";
+import { Button } from "@mui/material";
+import { AssetApprovalButton } from "../../component-ui/AssetApprovalButton";
 
 const columns = [
   {
-    accessorKey: "firstName",
+    accessorKey: "user.firstName",
     header: "First Name",
   },
   {
-    accessorKey: "lastName",
+    accessorKey: "user.lastName",
     header: "Last Name",
   },
   {
-    accessorKey: "email",
+    accessorKey: "user.email",
     header: "Email",
   },
   {
-    accessorKey: "registeredDateTime",
-    header: "Registered Date",
+    accessorKey: "dateTime",
+    header: "Date",
   },
   {
-    accessorKey: "totalBalance",
-    header: "Total Balance",
+    accessorKey: "amount",
+    header: "Amount",
     Cell: ({ cell }) => "$ " + cell.getValue(),
-  },
+  }
 ];
 
 const ViewAllNotAccepted = () => {
-    const [editingUser, setEditingUser] = useState(null);
     const [tableRefreshFlag, setTableRefreshFlag] = useState(false);
 
-    const setEditingRow = (row) => {
-      setEditingUser(row);
-    };
+    const rowActions = (row) => {
+      return <AssetApprovalButton row={row} setTableRefreshFlag={setTableRefreshFlag} />
+    }
 
-    // const handleStatus = async (id) => {
-    //   await changeUserStatus(id);
-    //   setTableRefreshFlag((prev) => !prev);
-    // };
   return (
     <div>
       <Table
-        fetchDataList={getUsers}
+        fetchDataList={getAllNotAcceptedAssets}
         headers={columns}
         rowIdField={"id"}
-        setEditingRow={setEditingRow}
-        // handleStatus={handleStatus}
         tableRefreshFlag={tableRefreshFlag}
-      />
-      <EditUser
-        editingUser={editingUser}
-        setEditingUser={setEditingUser}
-        setTableRefreshFlag={setTableRefreshFlag}
+        rowActions={rowActions}
       />
     </div>
   );

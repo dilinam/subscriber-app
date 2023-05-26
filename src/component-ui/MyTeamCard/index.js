@@ -5,7 +5,6 @@ import Avatar from "@mui/material/Avatar";
 
 const MyTeamCard = (props) => {
     const randomColor ="#"+ Math.floor(Math.random() * 16777215).toString(16);
-    props.size
   return (
     <div>
       <Card

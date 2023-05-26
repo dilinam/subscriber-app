@@ -52,7 +52,14 @@ const TableToCard = (props) => {
     
   return (
     <div>
-      <Card sx={{ m: 1, borderRadius: 3, border: "1px solid #f2e22c" }}>
+      <Card
+        sx={{
+          m: 1,
+          borderRadius: 3,
+          border: "1px solid #f2e22c",
+          backgroundColor: "transparent",
+        }}
+      >
         <CardContent>
           <Box sx={{ display: "flex" }}>
             <Avatar

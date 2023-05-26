@@ -14,6 +14,7 @@ const Table = ({
   handleStatus,
   setEditingRow,
   tableRefreshFlag,
+  rowActions
 }) => {
   //data and fetching state
   const [data, setData] = useState([]);
@@ -104,7 +105,8 @@ const Table = ({
             pagination,
             showAlertBanner: isError,
           }}
-          enableEditing
+          enableEditing={setEditingRow !== undefined || handleStatus !== undefined || rowActions !== undefined}
+          // enableEditing
           renderRowActions={({ row }) => (
             <Box sx={{ display: "flex", gap: "1rem" }}>
               {setEditingRow && (
@@ -132,6 +134,7 @@ const Table = ({
                   </IconButton>
                 </Tooltip>
               )}
+              {rowActions && rowActions(row.original)}
             </Box>
           )}
         />
