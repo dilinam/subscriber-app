@@ -35,7 +35,14 @@ const Profile = () => {
   console.log(packageUser.activePackage?.price);
   return (
     <div>
-      <Card sx={{ m: 1, borderRadius: 3, border: "1px solid #f2e22c" }}>
+      <Card
+        sx={{
+          m: 1,
+          borderRadius: 3,
+          border: "1px solid #f2e22c",
+          backgroundColor: "transparent",
+        }}
+      >
         <CardContent>
           <Box
             sx={{
@@ -75,7 +82,14 @@ const Profile = () => {
           </Button>
         </CardActions>
       </Card>
-      <Card sx={{ m: 1, borderRadius: 3, border: "1px solid #f2e22c" }}>
+      <Card
+        sx={{
+          m: 1,
+          borderRadius: 3,
+          border: "1px solid #f2e22c",
+          backgroundColor: "transparent",
+        }}
+      >
         <CardContent sx={{ ml: 5 }}>
           <Typography sx={{ fontSize: 18 }} color="Subtitle1">
             Your Package

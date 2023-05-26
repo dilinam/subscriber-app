@@ -14,7 +14,7 @@ const CardForHome = (props) => {
    
 
   return (
-    <Card sx={{ m: 2, borderRadius: 5, border: "1px solid #f2e22c" }}>
+    <Card sx={{ m: 2, borderRadius: 5, border: "1px solid #f2e22c",backgroundColor : 'transparent'}}>
       <CardContent>
         <Typography sx={{ fontSize: 18 }} color="subtitle1" align="center">
           {props.name} (USDT)

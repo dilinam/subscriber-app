@@ -57,7 +57,7 @@ const CardManagement = () => {
     console.log(values);
   };
   return (
-    <Card>
+    <Card sx={{ backgroundColor: "transparent" }}>
       <CardHeader title="Card Management" align="center" />
       <CardContent sx={{ pt: 0 }}>
         <Box sx={{ mb: 5 }}>

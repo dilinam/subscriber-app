@@ -53,10 +53,10 @@ const RechargeQR = () => {
     },[]);
   return (
     <div>
-      <Card sx={{ m: 1, borderRadius: 5 }}>
+      <Card sx={{ m: 1, borderRadius: 5, backgroundColor: "transparent" }}>
         <CardContent>
           <Typography color="text.secondary" variant="h5">
-            Deposit USDT 
+            Deposit USDT
           </Typography>
           <br />
           <Box align="center">
