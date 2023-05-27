@@ -25,6 +25,8 @@ const style = {
 const TableToCard = (props) => {
   const [open, setOpen] = useState(false);
   const [packageId,setPackageId] = useState();
+  const [disabledPack, isDisabledPack] = useState();
+  const [packageUser, setPackageUser] = useState({});
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const save = () =>{
@@ -36,18 +38,18 @@ const TableToCard = (props) => {
       packageActive(packageId);
     }
   }, [packageId]);
-  const disabled = () =>{
 
+  useEffect(() => {
     if (packageUser.id == props.id) {
-      return true;
+      isDisabledPack(true);
     } else {
-      return false;
-    };
-  }
-    const [packageUser, setPackageUser] = useState({});
+      isDisabledPack(false);
+    }
+  }, [packageUser]);
+
     useEffect(() => {
       getPackageUser()
-        .then((res) => setPackageUser(res.data.activePackage))
+        .then((res) => setPackageUser(res.data.activePackage)); 
     }, []); 
     
   return (
@@ -101,7 +103,7 @@ const TableToCard = (props) => {
             onClick={handleOpen}
             variant="contained"
             sx={{ marginLeft: "auto", order: "2", border: "1px solid #fff" }}
-            disabled={disabled()}
+            disabled={disabledPack}
           >
             Join
           </Button>

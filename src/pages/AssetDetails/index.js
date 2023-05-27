@@ -31,7 +31,7 @@ const AssetDetails = () => {
    }
 
    useEffect(()=>{
-    getTotalRev(1).then((rev)=>setTotal(rev.data))
+    getTotalRev().then((rev)=>setTotal(rev.data))
    },[])
    console.log(getLastDate());
   return (

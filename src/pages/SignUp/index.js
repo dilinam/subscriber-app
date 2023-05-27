@@ -86,9 +86,8 @@ export default function SignUp() {
     const requestData = {...formData, userRef: undefined}
 
     if(formData.userRef !== "") {
-      requestData.parentRef = {
-        ref: formData.userRef
-      }
+      requestData.parentRef = formData.userRef
+      
     }
 
     registerUser(requestData)
