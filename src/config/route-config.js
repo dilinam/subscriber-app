@@ -77,7 +77,10 @@ const routeConfig = [
     id: 7,
     path: "/users",
     element: <UserList />,
-    noAuth: true,
+    icon: <HomeIcon fontSize="large" />,
+    menu: true,
+    label: 'Users',
+    roles: ["ADMIN", "USER"]
   },
   {
     id: 8,
@@ -97,8 +100,8 @@ const routeConfig = [
     element: <Assets />,
     icon: <PaidIcon fontSize="large" />,
     label: "Assets",
-    noAuth: true,
     menu: true,
+    roles: ['USER']
   },
   {
     id: 11,
@@ -106,8 +109,8 @@ const routeConfig = [
     element: <SubPackages />,
     icon: <Inventory2OutlinedIcon fontSize="large" />,
     label: "Packages",
-    noAuth: true,
     menu: true,
+    roles: ['USER']
   },
   {
     id: 12,

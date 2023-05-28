@@ -64,6 +64,7 @@ export default function SignIn() {
     loginUser(formData)
       .then((response) => {
         window.sessionStorage.setItem("TOKEN", response.data.token);
+        window.sessionStorage.setItem("ROLE", response.data.role);
         navigate("/home");
       })
       .catch((error) => {
