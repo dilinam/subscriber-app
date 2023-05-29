@@ -60,11 +60,11 @@ const routeConfig = [
   },
   {
     id: 4,
-    path: "/home",
+    path: "/",
     element: <HomePage />,
     icon: <HomeIcon fontSize="large" />,
     label: "Home",
-    noAuth: true,
+    roles: ["ADMIN", "USER"],
     menu: true,
   },
   {

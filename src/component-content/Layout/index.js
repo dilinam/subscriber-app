@@ -6,7 +6,8 @@ import routeConfig from "../../config/route-config";
 import { useNavigate } from "react-router";
 
 const Layout = (props) => {
-  const menuRoutes = routeConfig.filter((route) => route.menu);
+  const role = sessionStorage.getItem("ROLE");
+  const menuRoutes = routeConfig.filter((route) => route.menu && route?.roles?.find(routeRole => routeRole === role));
 
   const navigate = useNavigate();
 
