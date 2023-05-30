@@ -78,7 +78,7 @@ const TopBar = (props) => {
               >
                 <MenuItem>
                   <Link
-                    href="http://localhost:3000/profile"
+                    href="/profile"
                     underline="none"
                     color="#fff"
                   >
@@ -87,7 +87,7 @@ const TopBar = (props) => {
                 </MenuItem>
                 <MenuItem>
                   <Link
-                    href="http://localhost:3000/login"
+                    href="/login"
                     underline="none"
                     color="#fff"
                   >
