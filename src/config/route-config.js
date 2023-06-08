@@ -86,7 +86,6 @@ const routeConfig = [
     id: 8,
     path: "/rechargeQR",
     element: <RechargeQR />,
-    noAuth: true,
     roles: ["USER"],
   },
   {
