@@ -19,10 +19,10 @@ const ExpensesRecord = () => {
   };
   
   useEffect(() => {
-    getRechagesUser(1)
+    getRechagesUser()
       .then((res) => res.data)
       .then((data) => setRData(data));
-    getWithdrwalsUser(1)
+    getWithdrwalsUser()
       .then((res) => res.data)
       .then((data) => setWData(data));
     
