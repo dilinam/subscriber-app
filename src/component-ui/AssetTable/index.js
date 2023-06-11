@@ -12,7 +12,7 @@ const AssetTable = (props) => {
           size: 80,
         },
         {
-          accessorKey: "amount",
+          accessorKey: "revenue",
           header: "Daily Revenue",
           size: 40,
         },

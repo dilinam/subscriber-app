@@ -79,6 +79,9 @@ const Me = () => {
               justifyContent: "flex-start",
               fontSize: "20px",
             }}
+            onClick={() => {
+              routeChange(`/rules`);
+            }}
           >
             Rules
           </Button>

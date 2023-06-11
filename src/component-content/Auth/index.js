@@ -11,6 +11,15 @@ const Auth = (props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const userRole = props.roles?.find((role) => role === sessionStorage.getItem("ROLE"));
+
+  if (!userRole) {
+    console.log(userRole, sessionStorage.getItem("ROLE"), props.roles)
+    sessionStorage.removeItem("TOKEN");
+    sessionStorage.removeItem("ROLE");
+    navigate("/login?error=session-expired");
+  }
+  
     const requestInterceptor = server.interceptors.request.use(
       (config) => {
         config.headers.Authorization =
@@ -27,6 +36,7 @@ const Auth = (props) => {
       (error) => {
         if (error.response?.status === 403) {
           sessionStorage.removeItem("TOKEN");
+          sessionStorage.removeItem("ROLE");
           navigate("/login?error=session-expired");
         } else if (error.response.status === 404) {
           setGlobalError("Not Found");
@@ -53,15 +63,19 @@ const Auth = (props) => {
   return interceptorAdded ? (
     <>
       {props.children}
-        <Snackbar open={globalError !== ''} autoHideDuration={6000} onClose={() => setGlobalError('')}>
-          <Alert
-            onClose={() => setGlobalError('')}
-            severity="error"
-            sx={{ width: "100%" }}
-          >
-            {globalError}
-          </Alert>
-        </Snackbar>
+      <Snackbar
+        open={globalError !== ""}
+        autoHideDuration={6000}
+        onClose={() => setGlobalError("")}
+      >
+        <Alert
+          onClose={() => setGlobalError("")}
+          severity="error"
+          sx={{ width: "100%" }}
+        >
+          {globalError}
+        </Alert>
+      </Snackbar>
     </>
   ) : (
     ""

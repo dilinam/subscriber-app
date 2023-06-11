@@ -21,6 +21,7 @@ const userData = {
   lastName: "",
   email: "",
   password: "",
+  ComfirmPassword:"",
   userRef: ""
 };
 
@@ -77,6 +78,15 @@ export default function SignUp() {
       errorMessages.password = "Password is required";
       errors = true;
     }
+    if (formData.ComfirmPassword.trim() === "") {
+      errorMessages.ComfirmPassword = "Comfirm Password is required";
+      errors = true;
+    }else if (formData.ComfirmPassword.trim() !== formData.password.trim()) {
+        errorMessages.ComfirmPassword =
+          "Confirm Password is not match with Password";
+        errors = true;
+      }
+    
 
     if (errors) {
       setFormErrorMessages(errorMessages)
@@ -86,9 +96,8 @@ export default function SignUp() {
     const requestData = {...formData, userRef: undefined}
 
     if(formData.userRef !== "") {
-      requestData.parentRef = {
-        ref: formData.userRef
-      }
+      requestData.parentRef = formData.userRef
+      
     }
 
     registerUser(requestData)
@@ -139,10 +148,7 @@ export default function SignUp() {
           Sign up
         </Typography>
         {isRegDisabled && (
-          <Alert
-            color="error"
-            icon={<Report />}
-          >
+          <Alert color="error" icon={<Report />}>
             New Registrations are hold for now!
           </Alert>
         )}
@@ -210,6 +216,23 @@ export default function SignUp() {
                 onChange={handleFormValueChange}
                 error={formErrorMessages.password !== ""}
                 helperText={formErrorMessages.password}
+                color="secondary"
+                disabled={isRegDisabled}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                required
+                fullWidth
+                name="ComfirmPassword"
+                label="Comfirm Password"
+                type="password"
+                id="Comfirm password"
+                autoComplete="new-password"
+                value={formData.ComfirmPassword}
+                onChange={handleFormValueChange}
+                error={formErrorMessages.ComfirmPassword !== ""}
+                helperText={formErrorMessages.ComfirmPassword}
                 color="secondary"
                 disabled={isRegDisabled}
               />

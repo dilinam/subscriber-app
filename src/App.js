@@ -20,12 +20,12 @@ function App() {
               element={
                 route.hideLayout ? (
                   !route.noAuth ? (
-                    <Auth>{route.element}</Auth>
+                    <Auth roles={route.roles}>{route.element}</Auth>
                   ) : (
                     route.element
                   )
                 ) : !route.noAuth ? (
-                  <Auth>
+                  <Auth roles={route.roles}>
                     <Layout>{route.element}</Layout>
                   </Auth>
                 ) : (

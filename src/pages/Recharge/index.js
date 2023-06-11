@@ -26,10 +26,10 @@ const Recharge = () => {
       },
     });
   };
-  useEffect(() => {
-    const data = getRechagesUser(1);
-    console.log(data);
-  }, []);
+  // useEffect(() => {
+  //   const data = getRechagesUser(1);
+  //   console.log(data);
+  // }, []);
   return (
     <div>
       <Grid

@@ -26,7 +26,6 @@ import TotalWithdrawals from "../pages/TotalWithdrawals";
 import PromotionCode from "../pages/PromotionCode";
 import MyTeam from "../pages/MyTeam";
 import CustomerService from "../pages/CustomerService";
-
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import PaidIcon from "@mui/icons-material/Paid";
@@ -35,6 +34,7 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import ViewAllNotAccepted from "../pages/ViewAllNotAccepted";
 import UserList from "../pages/ViewAllUsers";
 import PendingWithdraw from "../pages/PendingWithdraw";
+import Rules from "../pages/Rules";
 
 const routeConfig = [
   {
@@ -60,36 +60,39 @@ const routeConfig = [
   },
   {
     id: 4,
-    path: "/home",
+    path: "/",
     element: <HomePage />,
     icon: <HomeIcon fontSize="large" />,
     label: "Home",
-    noAuth: true,
     menu: true,
+    roles: ["USER", "ADMIN"],
   },
   {
     id: 5,
     path: "/share",
     element: <Share />,
-    noAuth: true,
+    roles: ["USER"],
   },
   {
     id: 7,
     path: "/users",
     element: <UserList />,
-    noAuth: true,
+    icon: <HomeIcon fontSize="large" />,
+    menu: true,
+    label: "Users",
+    roles: ["ADMIN"],
   },
   {
     id: 8,
     path: "/rechargeQR",
     element: <RechargeQR />,
-    noAuth: true,
+    roles: ["USER"],
   },
   {
     id: 9,
     path: "/pendingWithdraw",
     element: <PendingWithdraw />,
-    noAuth: true,
+    roles: ["ADMIN"],
   },
   {
     id: 10,
@@ -97,8 +100,8 @@ const routeConfig = [
     element: <Assets />,
     icon: <PaidIcon fontSize="large" />,
     label: "Assets",
-    noAuth: true,
     menu: true,
+    roles: ["USER"],
   },
   {
     id: 11,
@@ -106,14 +109,14 @@ const routeConfig = [
     element: <SubPackages />,
     icon: <Inventory2OutlinedIcon fontSize="large" />,
     label: "Packages",
-    noAuth: true,
     menu: true,
+    roles: ["USER"],
   },
   {
     id: 12,
     path: "/userDetails",
     element: <UserDetails />,
-    noAuth: true,
+    roles: ["USER", "ADMIN"],
   },
   {
     id: 13,
@@ -121,98 +124,100 @@ const routeConfig = [
     element: <Me />,
     icon: <DescriptionIcon fontSize="large" />,
     label: "Me",
-    noAuth: true,
     menu: true,
+    roles: ["USER"],
   },
   {
     id: 14,
     path: "/expensesRecord",
     element: <ExpensesRecord />,
-    noAuth: true,
+    roles: ["USER"],
   },
   {
     id: 15,
     path: "/withdraw",
     element: <Withdraw />,
     noAuth: true,
+    roles: ["USER"],
   },
   {
     id: 16,
     path: "/recharge",
     element: <Recharge />,
-    noAuth: true,
+    roles: ["USER"],
   },
   {
     id: 17,
     path: "/activityIncome",
     element: <ActivityIncome />,
-    noAuth: true,
+    roles: ["USER"],
   },
   {
     id: 18,
     path: "/assetDetails",
     element: <AssetDetails />,
-    noAuth: true,
+    roles: ["USER"],
   },
   {
     id: 19,
     path: "/aboutUs",
     element: <AboutUs />,
-    noAuth: true,
+    roles: ["USER"],
   },
   {
     id: 20,
     path: "/cardManagement",
     element: <CardManagement />,
-    noAuth: true,
+    roles: ["USER"],
   },
   {
     id: 21,
     path: "/teamActivity",
     element: <TeamActivity />,
-    noAuth: true,
+    roles: ["USER"],
   },
   {
     id: 22,
     path: "/promotionBonus",
     element: <PromotionBonus />,
-    noAuth: true,
+    roles: ["USER"],
   },
   {
     id: 23,
     path: "/newRegistration",
     element: <NewRegistration />,
-    noAuth: true,
+    roles: ["USER"],
   },
   {
     id: 24,
     path: "/newTopUps",
     element: <NewTopUps />,
-    noAuth: true,
+    roles: ["USER"],
   },
   {
     id: 25,
     path: "/totalWithdrawals",
     element: <TotalWithdrawals />,
-    noAuth: true,
+    roles: ["USER"],
   },
   {
     id: 26,
     path: "/promotionCode",
     element: <PromotionCode />,
-    noAuth: true,
+    roles: ["USER"],
   },
   {
     id: 27,
     path: "/myTeam",
     element: <MyTeam />,
-    noAuth: true,
+    roles: ["USER"],
   },
+
   {
     id: 28,
     path: "/customerService",
     element: <CustomerService />,
-    noAuth: true,
+    roles: ["USER", "ADMIN"],
   },
   {
     id: 29,
@@ -220,14 +225,23 @@ const routeConfig = [
     element: <Profile />,
     icon: <AccountCircleIcon fontSize="large" />,
     label: "Profile",
-    noAuth: true,
     menu: true,
+    roles: ["USER", "ADMIN"],
   },
   {
     id: 30,
     path: "/viewAllNotAccepted",
     element: <ViewAllNotAccepted />,
-    noAuth: true,
+    roles: ["ADMIN"],
+    menu: true,
+    icon: <AccountCircleIcon fontSize="large" />,
+    label: "Not Accepted",
+  },
+  {
+    id: 31,
+    path: "/rules",
+    element: <Rules />,
+    roles: ["USER"],
   },
 ];
 
