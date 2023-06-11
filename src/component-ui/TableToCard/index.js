@@ -1,4 +1,4 @@
-import {useEffect,useState} from 'react'
+import { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Avatar from "@mui/material/Avatar";
@@ -7,8 +7,8 @@ import Button from "@mui/material/Button";
 import { CardActions } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
-import { packageActive } from '../../use-cases/package-activate';
-import { getPackageUser } from "../../use-cases/get-package-user";
+import { packageActive } from "../../use-cases/package-activate";
+
 
 const style = {
   position: "absolute",
@@ -24,34 +24,30 @@ const style = {
 
 const TableToCard = (props) => {
   const [open, setOpen] = useState(false);
-  const [packageId,setPackageId] = useState();
+  const [packageId, setPackageId] = useState();
   const [disabledPack, isDisabledPack] = useState();
-  const [packageUser, setPackageUser] = useState({});
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const save = () =>{
-    setOpen(false); 
-    setPackageId(props.id)
-  }
+  const save = () => {
+    setOpen(false);
+    setPackageId(props.id);
+  };
   useEffect(() => {
-    if(packageId>0 ){
+    if (packageId > 0) {
       packageActive(packageId);
     }
   }, [packageId]);
 
   useEffect(() => {
-    if (packageUser.id == props.id) {
+    if (props.packageUser.id >= props.id) {
       isDisabledPack(true);
     } else {
       isDisabledPack(false);
     }
-  }, [packageUser]);
+  },);
 
-    useEffect(() => {
-      getPackageUser()
-        .then((res) => setPackageUser(res.data.activePackage)); 
-    }, []); 
-    
+
+
   return (
     <div>
       <Card
@@ -90,7 +86,7 @@ const TableToCard = (props) => {
                 {props.package} USDT
               </Typography>
               <Typography gutterBottom variant="body1">
-                5 x Revenue
+                4 x Revenue
               </Typography>
             </Box>
           </Box>
@@ -121,7 +117,7 @@ const TableToCard = (props) => {
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             1. Subscribe Browns 1 Package selling price is {props.package} USDT,
-            the income is 5 times the income can earn {props.package * 5}USDT,
+            the income is 4 times the income can earn {props.package * 4}USDT,
             you can receive 1 USDT per day. <br />
             2. The daily earnings are put in the equivalent value of USDT coins.{" "}
             <br />
@@ -149,6 +145,6 @@ const TableToCard = (props) => {
       </Modal>
     </div>
   );
-}
+};
 
-export default TableToCard
+export default TableToCard;

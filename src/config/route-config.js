@@ -34,6 +34,7 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import ViewAllNotAccepted from "../pages/ViewAllNotAccepted";
 import UserList from "../pages/ViewAllUsers";
 import PendingWithdraw from "../pages/PendingWithdraw";
+import Rules from "../pages/Rules";
 
 const routeConfig = [
   {
@@ -211,6 +212,7 @@ const routeConfig = [
     element: <MyTeam />,
     roles: ["USER"],
   },
+
   {
     id: 28,
     path: "/customerService",
@@ -234,6 +236,12 @@ const routeConfig = [
     menu: true,
     icon: <AccountCircleIcon fontSize="large" />,
     label: "Not Accepted",
+  },
+  {
+    id: 31,
+    path: "/rules",
+    element: <Rules />,
+    roles: ["USER"],
   },
 ];
 
