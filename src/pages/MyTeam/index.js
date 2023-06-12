@@ -9,10 +9,11 @@ import { getAllRefUser } from '../../use-cases/get-all-ref-users';
 
 const MyTeam = () => {
   const [dataList,setDataList]= useState([])
-  useEffect(async()=>{
-    await getAllRefUser().then((res)=>setDataList(res.data));
-    
+
+  useEffect(() => {
+    getAllRefUser().then((res)=>setDataList(res.data));
   },[]);
+
   return (
     <div>
       <Box sx={{ m: 3 }}>

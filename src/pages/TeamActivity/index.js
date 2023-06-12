@@ -15,10 +15,12 @@ import { useNavigate } from "react-router-dom";
 
 
 const TeamActivity = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+
   const routeChange = (value) => {
     navigate(value);
   };
+  
   return (
     <div>
       <Typography gutterBottom variant="h6" align="center">

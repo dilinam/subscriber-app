@@ -110,7 +110,7 @@ export default function SignIn() {
             Invalid Username or Password
           </Alert>
         )}
-        {setCommonError && (
+        {commonError && (
           <Alert
             color="error"
             icon={<Report />}
