@@ -39,7 +39,7 @@ import Rules from "../pages/Rules";
 const routeConfig = [
   {
     id: 1,
-    path: "/login",
+    path: "/",
     element: <Login />,
     hideLayout: true,
     noAuth: true,
@@ -60,7 +60,7 @@ const routeConfig = [
   },
   {
     id: 4,
-    path: "/",
+    path: "/home",
     element: <HomePage />,
     icon: <HomeIcon fontSize="large" />,
     label: "Home",

@@ -65,7 +65,7 @@ export default function SignIn() {
       .then((response) => {
         window.sessionStorage.setItem("TOKEN", response.data.token);
         window.sessionStorage.setItem("ROLE", response.data.role);
-        navigate("/");
+        navigate("/home");
       })
       .catch((error) => {
         setShowErrorMessage(true)
@@ -110,7 +110,7 @@ export default function SignIn() {
             Invalid Username or Password
           </Alert>
         )}
-        {setCommonError && (
+        {commonError && (
           <Alert
             color="error"
             icon={<Report />}
