@@ -9,9 +9,7 @@ const ActivityIncome = () => {
   const [data,setData] = useState([]);
   useEffect(()=>{
     getRefComUser(1).then((rev) => setData(rev.data));
-
   },[])
-  console.log(data)
   return (
     <div>
       <Typography variant="h5" gutterBottom align="center">

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -18,7 +18,21 @@ const ConfirmMsg = (props) => {
       const [user, setUser] = React.useState({});
 
       const handleClickOpen = () => {
-        setOpen(true);
+        let error ;
+         if (props.amount === "") {
+           error = "withdraw value should be not null";
+         }
+         if (props.amount <= 10) {
+           error = "withdraw value should more than 10 ";
+         }
+         if (props.amount > user.totalBalance) {
+           error = "not enough balace in you account";
+         }
+         if (!error) {
+          setOpen(true);
+        }else{
+          alert(error);
+         }
       };
 
       const handleClose = () => {

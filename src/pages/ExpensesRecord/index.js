@@ -46,9 +46,10 @@ const ExpensesRecord = () => {
          <TabPanel value="1">
            {rdata.map((rechargeData) => (
              <TabCard
-               date={rechargeData.dateTime}
+               date={rechargeData.dateTime.replace("T", " ")}
                order={rechargeData.id}
                value={rechargeData.amount}
+               isAccepted={rechargeData.isAccepted}
                type="Recharge"
              />
            ))}
@@ -59,6 +60,7 @@ const ExpensesRecord = () => {
                date={withdrawalData.dateTime.replace("T", " ")}
                order={withdrawalData.id}
                value={withdrawalData.amount}
+               isAccepted={withdrawalData.isAccepted}
                type="Withdrawal"
              />
            ))}

@@ -152,7 +152,7 @@ const RechargeQR = () => {
               save(amount);
             }}
           >
-            Recharge
+            Confirm Recharge
           </Button>
         </CardContent>
       </Card>
