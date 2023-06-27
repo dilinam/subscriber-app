@@ -18,7 +18,7 @@ const Promotion = (props) => {
             Accumilated members {props.members} successful promotions Active
             members and rewards. {props.value} USDT
           </Typography>
-          <Button variant="contained" onClick={() => claimBouns(false)}>
+          <Button variant="contained" onClick={() => claimBouns()} disabled = {!props.count}>
             Claim
           </Button>
         </CardContent>
