@@ -23,7 +23,7 @@ const TabCard = (props) => {
               This Transaction is pending....
             </Typography>
           ) : (
-            <Typography sx={{ fontSize: 18, mb: 2 }} color="success">
+            <Typography sx={{ fontSize: 18, mb: 2 }} color="#0BDA51">
               This Transaction is success
             </Typography>
           )}

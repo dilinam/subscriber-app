@@ -14,20 +14,6 @@ import {
   getCardDetails,
   saveCardDetails,
 } from "../../use-cases/get-Card-Details";
-const Accounts = [
-  {
-    value: "Binance",
-    label: "Binance",
-  },
-  {
-    value: "Huobi",
-    label: "Huobi",
-  },
-  {
-    value: "OKX",
-    label: "OKX",
-  },
-];
 
 const CardManagement = () => {
   const [values, setValues] = useState({
@@ -52,6 +38,9 @@ const CardManagement = () => {
       [event.target.name]: event.target.value,
     }));
   };
+  const handleChangeMenu = (e)=>{
+    values.accountType = e.target.value; 
+  }
   const save = () => {
     saveCardDetails(values);
     console.log(values);
@@ -68,14 +57,12 @@ const CardManagement = () => {
                 select
                 name="accountType"
                 fullWidth
-                defaultValue={values.accountType}
-                onchange={handleChange}
+                value={values.accountType}
+                onchange={handleChangeMenu}
               >
-                {Accounts.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
+                <MenuItem value="Binance">Binance</MenuItem>
+                <MenuItem value="Huobi">Huobi</MenuItem>
+                <MenuItem value="OKX">OKX</MenuItem>
               </TextField>
             </Grid>
             <Grid xs={12} md={6}>
@@ -94,7 +81,13 @@ const CardManagement = () => {
                 onChange={handleChange}
                 required
                 type="text"
-                value={values.receivingAddress}
+                // label="Receiving Address"
+                placeholder={
+                  values.receivingAddress
+                    ?""
+                    : "Receiving Address"
+                }
+                value={values.receivingAddress ? values.receivingAddress : null}
               />
             </Grid>
             <Grid xs={12} md={6}>

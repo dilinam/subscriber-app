@@ -14,7 +14,7 @@ const ImgStack = () => {
             alt={item.title}
             loading="lazy"
           />
-          <p>{item.description}</p>
+          <p style={{ textAlign: "justify"}}>{item.description}</p>
         </ImageListItem>
       ))}
     </ImageList>

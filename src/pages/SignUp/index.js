@@ -32,23 +32,23 @@ export default function SignUp() {
     ...userData,
   });
   const [isDialogBoxOpen, setIsDialogBoxOpen] = React.useState(false);
-  const [searchParams] = useSearchParams();
+  const [queryParameters] = useSearchParams();
+  // const queryParameters = new URLSearchParams(window.location.search);
 
   React.useEffect(() => {
-    const ref = searchParams.get("ref")
-    if(ref) {
-      setFormData(prev => ({...prev, userRef: ref}))
+    const ref = queryParameters.get("ref");
+    if (ref) {
+      setFormData((prev) => ({ ...prev, userRef: ref }));
     }
 
-    getDisabledReg().then(response => {
-      if(response.data.value === 'TRUE') {
+    getDisabledReg().then((response) => {
+      if (response.data.value === "TRUE") {
         setIsRegDisabled(true);
       }
     });
-  }, [])
+  }, []);
 
   const handleSubmit = (event) => {
-
     event.preventDefault();
 
     let errors = false;
@@ -81,38 +81,36 @@ export default function SignUp() {
     if (formData.ComfirmPassword.trim() === "") {
       errorMessages.ComfirmPassword = "Comfirm Password is required";
       errors = true;
-    }else if (formData.ComfirmPassword.trim() !== formData.password.trim()) {
-        errorMessages.ComfirmPassword =
-          "Confirm Password is not match with Password";
-        errors = true;
-      }
-    
+    } else if (formData.ComfirmPassword.trim() !== formData.password.trim()) {
+      errorMessages.ComfirmPassword =
+        "Confirm Password is not match with Password";
+      errors = true;
+    }
 
     if (errors) {
-      setFormErrorMessages(errorMessages)
+      setFormErrorMessages(errorMessages);
       return;
     }
 
-    const requestData = {...formData, userRef: undefined}
+    const requestData = { ...formData, userRef: undefined };
 
-    if(formData.userRef !== "") {
-      requestData.parentRef = formData.userRef
-      
+    if (formData.userRef !== "") {
+      requestData.parentRef = formData.userRef;
     }
 
     registerUser(requestData)
       .then((response) => {
         setIsDialogBoxOpen(true);
-        setFormData({...userData})
+        setFormData({ ...userData });
       })
       .catch((error) => {
-        if(error?.response?.data) {
-          setFormErrorMessages(prev => {
-            const newErrors = {...prev};
-            Object.keys(error.response.data).forEach(key => {
-              newErrors[key] = error.response.data[key]
+        if (error?.response?.data) {
+          setFormErrorMessages((prev) => {
+            const newErrors = { ...prev };
+            Object.keys(error.response.data).forEach((key) => {
+              newErrors[key] = error.response.data[key];
             });
-            return newErrors
+            return newErrors;
           });
         }
       });

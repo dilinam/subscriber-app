@@ -9,17 +9,29 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Grid } from "@mui/material";
 import ConfirmMsg from "../../component-ui/ConfirmMsg";
+import { getCardDetails } from "../../use-cases/get-Card-Details";
+import { useNavigate } from "react-router-dom";
 
 const Withdraw = () => {
+  let navigate = useNavigate();
+  const routeChange = (value) => {
+    navigate(value);
+  };
   const [amount, setAmount] = useState("");
+  const [isCard, setIsCard] = useState();
   const handleChange = (e) => {
     setAmount(e.target.value);
   };
   const handleClick = (e) => {
     setAmount((pre) => e.target.value);
   };
-
-  useEffect(() => {}, [amount]);
+useEffect(() => {
+  getCardDetails().then((res) =>{if (!res.data) {
+    alert("please add user card details first");
+    setIsCard(false);
+  }else{setIsCard(true);}} );
+  
+}, []);
 
   return (
     <div>
@@ -150,14 +162,24 @@ const Withdraw = () => {
           </div>
         </Box>
       </Grid>
-      <Box align="center" sx={{ m: "5%" }}>
-        <ConfirmMsg
-          buttonName="Withdraw"
-          title="Withdrawal Confirmation"
-          msg="This action activate within 24h in working days.Are you confirm this transation ?"
-          amount={amount}
-        />
-      </Box>
+      {isCard ? (
+        <Box align="center" sx={{ m: "5%" }}>
+          <ConfirmMsg
+            buttonName="Withdraw"
+            title="Withdrawal Confirmation"
+            msg="This action activate within 24h in working days.Are you confirm this transation ?"
+            amount={amount}
+          />
+        </Box>
+      ) : (
+        <Button
+          variant="contained"
+          fullWidth
+          onClick={() => {
+            routeChange(`/cardManagement`);
+          }}
+        >Add Card Details</Button>
+      )}
     </div>
   );
 };

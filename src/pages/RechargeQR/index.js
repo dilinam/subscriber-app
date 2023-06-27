@@ -13,7 +13,6 @@ import Checkbox from "@mui/material/Checkbox";
 import Modal from "@mui/material/Modal";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { getUserDetails } from '../../use-cases/get-user-details';
 import { saveAsset } from '../../use-cases/save-recharge';
 
 
@@ -32,7 +31,6 @@ const style = {
 const RechargeQR = () => {
     const [isCopied, setIsCopied] = useState(false);
     const [open, setOpen] = useState(false);
-    const [user,setUser] = useState({});
     const handleRecharge = () => {
       setOpen(true);
     };
@@ -44,13 +42,10 @@ const RechargeQR = () => {
 
     };
     const save = (amount) =>{
-        saveAsset(user,amount,2)
+        saveAsset(amount,2)
     };
     const location = useLocation();
     const amount = location.state.recharge;
-    useEffect(()=>{
-      getUserDetails().then((res)=>setUser(res.data));
-    },[]);
   return (
     <div>
       <Card sx={{ m: 1, borderRadius: 5, backgroundColor: "transparent" }}>

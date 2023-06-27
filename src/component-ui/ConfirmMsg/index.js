@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -14,37 +14,37 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const ConfirmMsg = (props) => {
-      const [open, setOpen] = React.useState(false);
-      const [user, setUser] = React.useState({});
+  const [open, setOpen] = React.useState(false);
+  const [user, setUser] = React.useState({});
+  // console.log(props.card);
+  const handleClickOpen = () => {
+    let error;
+    if (props.amount === "") {
+      error = "withdraw value should be not null";
+    }
+    if (props.amount <= 10) {
+      error = "withdraw value should more than 10 ";
+    }
+    if (props.amount > user.totalBalance) {
+      error = "not enough balace in you account";
+    }
+    if (!error) {
+      setOpen(true);
+    } else {
+      alert(error);
+    }
+  };
 
-      const handleClickOpen = () => {
-        let error ;
-         if (props.amount === "") {
-           error = "withdraw value should be not null";
-         }
-         if (props.amount <= 10) {
-           error = "withdraw value should more than 10 ";
-         }
-         if (props.amount > user.totalBalance) {
-           error = "not enough balace in you account";
-         }
-         if (!error) {
-          setOpen(true);
-        }else{
-          alert(error);
-         }
-      };
-
-      const handleClose = () => {
-        setOpen(false);
-      };
-      const save= () => {
-        setOpen(false);
-        saveAsset(user,props.amount, 1);
-      };
-      React.useEffect(() => {
-         getUserDetails().then((res) => setUser(res.data));
-       }, []);
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const save = () => {
+    setOpen(false);
+    saveAsset(props.amount, 1);
+  };
+  React.useEffect(() => {
+    getUserDetails().then((res) => setUser(res.data));
+  }, []);
   return (
     <div>
       <Button variant="contained" fullWidth onClick={handleClickOpen}>
@@ -64,20 +64,16 @@ const ConfirmMsg = (props) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button 
-          onClick={save} 
-          variant="contained">
+          <Button onClick={save} variant="contained">
             Yes
           </Button>
-          <Button 
-          onClick={handleClose} 
-          variant="contained">
+          <Button onClick={handleClose} variant="contained">
             No
           </Button>
         </DialogActions>
       </Dialog>
     </div>
   );
-}
+};
 
-export default ConfirmMsg
+export default ConfirmMsg;

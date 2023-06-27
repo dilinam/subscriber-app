@@ -39,8 +39,8 @@ const ExpensesRecord = () => {
              indicatorColor="secondary"
              aria-label="secondary tabs example"
            >
-             <Tab value="1" label="Recharge" sx={{ width: "50%" }} />
-             <Tab value="2" label="Withdraw" sx={{ width: "50%" }} />
+             <Tab value="1" label="Withdraw" sx={{ width: "50%" }} />
+             <Tab value="2" label="Recharge" sx={{ width: "50%" }} />
            </Tabs>
          </Box>
          <TabPanel value="1">
@@ -50,7 +50,7 @@ const ExpensesRecord = () => {
                order={rechargeData.id}
                value={rechargeData.amount}
                isAccepted={rechargeData.isAccepted}
-               type="Recharge"
+               type="Withdraw"
              />
            ))}
          </TabPanel>
@@ -61,7 +61,7 @@ const ExpensesRecord = () => {
                order={withdrawalData.id}
                value={withdrawalData.amount}
                isAccepted={withdrawalData.isAccepted}
-               type="Withdrawal"
+               type="Recharge"
              />
            ))}
          </TabPanel>
