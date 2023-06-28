@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Table from "../../component-ui/Table";
 import { getAllNotAcceptedAssets } from "../../use-cases/get-all-not-accepted-assets";
-import { Button } from "@mui/material";
 import { AssetApprovalButton } from "../../component-ui/AssetApprovalButton";
+import { AssetRejectButton } from "../../component-ui/AssetRejectButton";
 
 const columns = [
   {
@@ -32,7 +32,12 @@ const ViewAllNotAccepted = () => {
     const [tableRefreshFlag, setTableRefreshFlag] = useState(false);
 
     const rowActions = (row) => {
-      return <AssetApprovalButton row={row} setTableRefreshFlag={setTableRefreshFlag} />
+      return (
+        <>
+          <AssetApprovalButton row={row} setTableRefreshFlag={setTableRefreshFlag} />
+          <AssetRejectButton row={row} setTableRefreshFlag={setTableRefreshFlag} />
+        </>
+      )
     }
 
   return (
