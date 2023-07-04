@@ -15,6 +15,7 @@ import { Alert, Dialog, DialogActions, DialogContent, DialogContentText, DialogT
 import { useSearchParams } from "react-router-dom";
 import { getDisabledReg } from "../../use-cases/get-disabled-reg";
 import { Report } from "@mui/icons-material";
+import Background from "hero-slider/dist/components/Slide/Background";
 
 const userData = {
   firstName: "",
@@ -133,14 +134,22 @@ export default function SignUp() {
       <CssBaseline />
       <Box
         sx={{
-          marginTop: 8,
+          marginTop: 4,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          border: "1px solid grey",
+          paddingTop:1,
+          padding: 3,
+          backgroundColor: "black",
+          borderRadius: "10px"
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <LockOutlinedIcon />
+        <Avatar
+          sx={{width: 100, height: 100 }}
+          alt="Remy Sharp"
+          src="logo.jpg"
+        >
         </Avatar>
         <Typography component="h1" variant="h5">
           Sign up
@@ -253,7 +262,7 @@ export default function SignUp() {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            sx={{ mt: 3 }}
             disabled={isRegDisabled}
           >
             Sign Up
@@ -282,7 +291,9 @@ export default function SignUp() {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setIsDialogBoxOpen(false)}>Ok</Button>
+          <Button onClick={() => setIsDialogBoxOpen(false)} variant="contained">
+            Ok
+          </Button>
         </DialogActions>
       </Dialog>
     </Container>

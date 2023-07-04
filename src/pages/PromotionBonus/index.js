@@ -5,20 +5,31 @@ import { getcountRefUser } from "../../use-cases/get-count-ref-user";
 import { getUserBonus } from "../../use-cases/get-bonus-user";
 let bonusTypeList = [];
 const PromotionBonus = () => {
-  const [count, setCount] = useState(50);
+  const [count, setCount] = useState(0);
   const [claimedList, setClaimedList] = useState([]);
 
-  useEffect(() => {
-    getUserBonus().then((res) => {
-      setClaimedList(res.data);
-      console.log(res.data);
+  useEffect(async() => {
+    getcountRefUser().then((res) => {
+      setCount(res.data);
     });
+    const response = await getUserBonus()
+      setClaimedList(response.data);
+      console.log(response.data);
   }, []);
   {
     claimedList.map((bonus) => {
       bonusTypeList.push(bonus.bonusType.id);
     });
   }
+  const resetTable = async()=>{
+    getcountRefUser().then((res) => {
+      setCount(res.data);
+    });
+    const response = await getUserBonus()
+      setClaimedList(response.data);
+      console.log(response.data);
+  }
+  console.log(count);
   return (
     <div>
       <Typography gutterBottom variant="h5" align="center">
@@ -30,32 +41,38 @@ const PromotionBonus = () => {
       <Promotion
         members="5"
         value="50"
-        count={count >= 5 && !bonusTypeList.includes(1)}
+        isdisabled={count >= 5 && !bonusTypeList.includes(1)}
+        resetT={resetTable}
       />
       <Promotion
         members="10"
         value="100"
-        count={count >= 10 && !bonusTypeList.includes(2)}
+        isdisabled={count >= 10 && !bonusTypeList.includes(2)}
+        resetT={resetTable}
       />
       <Promotion
         members="20"
         value="200"
-        count={count >= 20 && !bonusTypeList.includes(3)}
+        isdisabled={count >= 20 && !bonusTypeList.includes(3)}
+        resetT={resetTable}
       />
       <Promotion
         members="30"
         value="300"
-        count={count >= 30 && !bonusTypeList.includes(4)}
+        isdisabled={count >= 30 && !bonusTypeList.includes(4)}
+        resetT={resetTable}
       />
       <Promotion
         members="50"
         value="500"
-        count={count >= 50 && !bonusTypeList.includes(5)}
+        isdisabled={count >= 50 && !bonusTypeList.includes(5)}
+        resetT={resetTable}
       />
       <Promotion
         members="100"
         value="1000"
-        count={count >= 100 && !bonusTypeList.includes(6)}
+        isdisabled={count >= 100 && !bonusTypeList.includes(6)}
+        resetT={resetTable}
       />
     </div>
   );

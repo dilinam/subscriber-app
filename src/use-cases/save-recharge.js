@@ -8,3 +8,5 @@ export const saveAsset = ( amount, paymentType) =>
       "/"+
       amount
   );
+export const saveBonus = (amount) =>
+  server.post(process.env.REACT_APP_API_BASE_URL + "/Assets/Bonus/" + amount);

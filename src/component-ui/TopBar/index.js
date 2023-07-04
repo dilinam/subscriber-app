@@ -77,20 +77,12 @@ const TopBar = (props) => {
                 onClose={handleClose}
               >
                 <MenuItem>
-                  <Link
-                    href="/profile"
-                    underline="none"
-                    color="#fff"
-                  >
+                  <Link href="/profile" underline="none" color="#fff">
                     Profile
                   </Link>
                 </MenuItem>
                 <MenuItem>
-                  <Link
-                    href="/"
-                    underline="none"
-                    color="#fff"
-                  >
+                  <Link href="/" underline="none" color="#fff">
                     Logout
                   </Link>
                 </MenuItem>

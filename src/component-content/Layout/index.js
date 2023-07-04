@@ -22,7 +22,7 @@ const Layout = (props) => {
       </Box>
       <header>
         <Box sx={{ visibility: { xs: "visible", md: "hidden" } }}>
-          <TopBar name="hasitha" />
+          <TopBar/>
         </Box>
       </header>
       <Box sx={{ float: "right", width: { xs: "100%", md: "100%" ,mb:10} }}>

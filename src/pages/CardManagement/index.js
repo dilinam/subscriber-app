@@ -38,9 +38,12 @@ const CardManagement = () => {
       [event.target.name]: event.target.value,
     }));
   };
-  const handleChangeMenu = (e)=>{
-    values.accountType = e.target.value; 
-  }
+  const handleChangeMenu = (e) => {
+    setValues((prev) => ({
+      ...prev,
+      accountType: e.target.value,
+    }));
+  };
   const save = () => {
     saveCardDetails(values);
     console.log(values);
@@ -58,11 +61,14 @@ const CardManagement = () => {
                 name="accountType"
                 fullWidth
                 value={values.accountType}
-                onchange={handleChangeMenu}
+                onChange={handleChangeMenu}
               >
                 <MenuItem value="Binance">Binance</MenuItem>
                 <MenuItem value="Huobi">Huobi</MenuItem>
                 <MenuItem value="OKX">OKX</MenuItem>
+                <MenuItem value="Coinbase">Coinbase</MenuItem>
+                <MenuItem value="KuCoin">KuCoin</MenuItem>
+                <MenuItem value="Bybit">Bybit</MenuItem>
               </TextField>
             </Grid>
             <Grid xs={12} md={6}>
@@ -82,11 +88,7 @@ const CardManagement = () => {
                 required
                 type="text"
                 // label="Receiving Address"
-                placeholder={
-                  values.receivingAddress
-                    ?""
-                    : "Receiving Address"
-                }
+                placeholder={values.receivingAddress ? "" : "Receiving Address"}
                 value={values.receivingAddress ? values.receivingAddress : null}
               />
             </Grid>

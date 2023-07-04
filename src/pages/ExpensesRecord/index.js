@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 import { getWithdrwalsUser } from "../../use-cases/get-withdrwals-user";
 
 const ExpensesRecord = () => {
-  const [value, setValue] = useState("1");
+  const [value, setValue] = useState("2");
   const [rdata,setRData] = useState([]);
   const [wdata,setWData] = useState([]);
 
@@ -39,8 +39,8 @@ const ExpensesRecord = () => {
              indicatorColor="secondary"
              aria-label="secondary tabs example"
            >
-             <Tab value="1" label="Withdraw" sx={{ width: "50%" }} />
              <Tab value="2" label="Recharge" sx={{ width: "50%" }} />
+             <Tab value="1" label="Withdraw" sx={{ width: "50%" }} />
            </Tabs>
          </Box>
          <TabPanel value="1">

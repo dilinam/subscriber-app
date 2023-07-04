@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import { getRefUsersByPrevioudayAndLevel } from "../../use-cases/get-refusers-bydate-level";
+import { getRefUsersByPrevioudayAndLevel, getRefUsersByPrevioudayWidthdrawalByLvel } from "../../use-cases/get-refusers-bydate-level";
 import { getNewTops } from "../../use-cases/getNewTops";
 
 const TeamActivityBelowButtons = (props) => {
@@ -13,6 +13,10 @@ const TeamActivityBelowButtons = (props) => {
       getRefUsersByPrevioudayAndLevel(props.level).then((res) =>
         setValue(res.data)
       );
+    }else if (props.page == "3") {
+      getRefUsersByPrevioudayWidthdrawalByLvel(props.level).then((res) => {
+        setValue(res.data);
+      });
     } else {
       getNewTops(props.level).then((res) => setValue(res.data));
     }

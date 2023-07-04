@@ -22,7 +22,6 @@ const BottomNav = ({ menuRoutes, handleRoute }) => {
           left: 0,
           right: 0,
         }}
-        //
       >
         <BottomNavigation
           value={value}

@@ -4,7 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { CardActions } from "@mui/material";
+import { CardActions, Stack } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { packageActive } from "../../use-cases/package-activate";
@@ -33,9 +33,13 @@ const TableToCard = (props) => {
     setPackageId(props.id);
   };
   useEffect(() => {
+    try{
     if (packageId > 0) {
       packageActive(packageId);
     }
+  }catch(e){
+    alert(e)
+  }
   }, [packageId]);
 
   useEffect(() => {
@@ -112,35 +116,45 @@ const TableToCard = (props) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
+          <Typography
+            id="modal-modal-title"
+            variant="h6"
+            component="h2"
+            color="secondary"
+            align="center"
+          >
+            Futher Details
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            1. Subscribe Browns 1 Package selling price is {props.package} USDT,
-            the income is 4 times the income can earn {props.package * 4}USDT,
-            you can receive 1 USDT per day. <br />
-            2. The daily earnings are put in the equivalent value of USDT coins.{" "}
+            1. Subscribe {props.name} Package selling price is {props.package}{" "}
+            USDT, the income is 4 times the income can earn {props.package * 4}
+            USDT, you can receive {props.package * 0.01} USDT per day. <br />
             <br />
+            2. The daily earnings are put in the equivalent value of USDT coins.{" "}
+            <br /> <br />
             3. You can upgrade to any higher package at any time while still in
             the purchased package <br />
-            4. Once this package is sold, it is non-refundable and
-            non- exchangeable.
             <br />
+            4. Once this package is sold, it is non-refundable and
+            non-exchangeable.
+            <br /> <br />
           </Typography>
-          <Button
-            onClick={save}
-            variant="contained"
-            sx={{ margin: "10", order: "2", border: "1px solid #fff" }}
-          >
-            Join
-          </Button>
-          <Button
-            onClick={handleClose}
-            variant="contained"
-            sx={{ marginLeft: "auto", order: "2", border: "1px solid #fff" }}
-          >
-            Cancel
-          </Button>
+          <Stack spacing={3} direction="row">
+            <Button
+              onClick={save}
+              variant="contained"
+              sx={{ marginRight: "10", border: "1px solid #fff" }}
+            >
+              Join
+            </Button>
+            <Button
+              onClick={handleClose}
+              variant="contained"
+              sx={{ marginLeft: "10", border: "1px solid #fff" }}
+            >
+              Cancel
+            </Button>
+          </Stack>
         </Box>
       </Modal>
     </div>

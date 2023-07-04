@@ -25,6 +25,14 @@ const images = [
     label: "Slide4",
     imgPath: "/img/slide4.jpeg",
   },
+  {
+    label: "Slide5",
+    imgPath: "/img/slide5.jpeg",
+  },
+  {
+    label: "Slide6",
+    imgPath: "/img/slide6.jpeg",
+  },
 ];
 
 const AutomaticSlider = () => {

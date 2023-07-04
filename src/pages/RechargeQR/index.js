@@ -72,7 +72,7 @@ const RechargeQR = () => {
               }, 1000);
             }}
           >
-            <Button size="small" endIcon={<ContentCopyIcon />} marginLeft="5">
+            <Button size="small" endIcon={<ContentCopyIcon />} marginLeft="5" >
               Copy
             </Button>
           </CopyToClipboard>
