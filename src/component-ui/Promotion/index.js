@@ -1,17 +1,16 @@
-import React from 'react'
-import {
-  Button,
-    Card,
-  CardContent,
-  Typography,
-} from "@mui/material";
-import {saveBonus } from '../../use-cases/save-recharge';
+import React, { useState } from "react";
+import { Button, Card, CardContent, Typography } from "@mui/material";
+import { saveBonus } from "../../use-cases/save-recharge";
 
 const Promotion = (props) => {
-  const claimBouns =async (value)=>{
-      await saveBonus(value);
-      props.resetT && props.resetT();
-  }
+  const [isLoading, setIsLoading] = useState(false);
+
+  const claimBouns = async (value) => {
+    setIsLoading(true);
+    await saveBonus(value);
+    (await props.resetT) && props.resetT();
+    setIsLoading(false);
+  };
   return (
     <div>
       <Card sx={{ borderRadius: 1, m: 2 }}>
@@ -23,7 +22,7 @@ const Promotion = (props) => {
           <Button
             variant="contained"
             onClick={() => claimBouns(props.value)}
-            disabled={!props.isdisabled}
+            disabled={!props.isdisabled || isLoading}
           >
             Claim
           </Button>
@@ -31,6 +30,6 @@ const Promotion = (props) => {
       </Card>
     </div>
   );
-}
+};
 
-export default Promotion
+export default Promotion;
