@@ -42,7 +42,7 @@ const TeamActivity = () => {
             routeChange(`/promotionBonus`);
           }}
         >
-          Promotion Bonous
+          Promotion Bonus
           <ArrowForwardIosIcon />
         </Button>
         <Button

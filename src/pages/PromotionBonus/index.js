@@ -8,19 +8,20 @@ const PromotionBonus = () => {
   const [count, setCount] = useState(0);
   const [claimedList, setClaimedList] = useState([]);
 
-  useEffect(async() => {
+  useEffect(() => {
     getcountRefUser().then((res) => {
       setCount(res.data);
     });
-    const response = await getUserBonus()
+    getUserBonus().then(response => {
       setClaimedList(response.data);
       console.log(response.data);
+    })
   }, []);
-  {
-    claimedList.map((bonus) => {
-      bonusTypeList.push(bonus.bonusType.id);
-    });
-  }
+
+  claimedList.forEach((bonus) => {
+    bonusTypeList.push(bonus.bonusType.id);
+  });
+
   const resetTable = async()=>{
     getcountRefUser().then((res) => {
       setCount(res.data);
