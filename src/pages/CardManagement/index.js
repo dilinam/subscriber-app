@@ -22,15 +22,19 @@ const CardManagement = () => {
     chainName: "TRC20",
     receivingAddress: "",
   });
+
   const [data, setData] = useState({});
-  useEffect(async () => {
-    await getCardDetails().then((res) => setData(res.data));
+
+  useEffect(() => {
+    getCardDetails().then((res) => setData(res.data));
   }, []);
+
   useEffect(() => {
     if (data.cardType) {
       setValues(data);
     }
   }, [data]);
+
   const handleChange = (event) => {
     console.log(values.user);
     setValues((prevState) => ({
@@ -45,8 +49,9 @@ const CardManagement = () => {
     }));
   };
   const save = () => {
-    saveCardDetails(values);
-    console.log(values);
+    saveCardDetails(values).then(res => {
+      getCardDetails().then((res) => setData(res.data));
+    });
   };
   return (
     <Card sx={{ backgroundColor: "transparent" }}>
