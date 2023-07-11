@@ -33,7 +33,7 @@ const AssetDetails = () => {
    useEffect(()=>{
     getTotalRev().then((rev)=>setTotal(rev.data))
    },[])
-   console.log(getLastDate());
+   
   return (
     <Box sx={{ width: "100%", typography: "body1" }}>
       <TabContext value={value}>
