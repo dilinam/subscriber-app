@@ -24,9 +24,8 @@ const AssetTable = (props) => {
       ],
       []
     );
-    useEffect(async ()=>{
-      await getRevenueDate(props.timeStamp).then((res)=>setData(res.data))
-      console.log(data);
+    useEffect(()=>{
+      getRevenueDate(props.timeStamp).then((res)=>setData(res.data));
     },[])
 
     // data.map((data)=>{
