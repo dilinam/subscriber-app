@@ -101,7 +101,7 @@ const Profile = () => {
         </CardContent>
         <CardContent sx={{ ml: 5 }}>
           <Typography sx={{ fontSize: 18 }} color="Subtitle1">
-            Availabale balance (USDT)
+            Available balance (USDT)
           </Typography>
           <Typography variant="h5" color="Subtitle1">
             {user.totalBalance} USDT
@@ -123,7 +123,7 @@ const Profile = () => {
             routeChange(`/expensesRecord`);
           }}
         >
-          Expences Record
+          Expenses Record
         </Button>
         <Button
           color="secondary"

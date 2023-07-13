@@ -8,7 +8,8 @@ import { CardActions, Stack } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { packageActive } from "../../use-cases/package-activate";
-
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const style = {
   position: "absolute",
@@ -22,12 +23,14 @@ const style = {
   p: 4,
 };
 
+
 const TableToCard = (props) => {
   const [open, setOpen] = useState(false);
   const [packageId, setPackageId] = useState();
   const [disabledPack, isDisabledPack] = useState();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const MySwal = withReactContent(Swal);
   const save = () => {
     setOpen(false);
     setPackageId(props.id);
@@ -35,7 +38,7 @@ const TableToCard = (props) => {
   useEffect(() => {
     try{
     if (packageId > 0) {
-      packageActive(packageId);
+      packageActive(packageId).then(()=>{ MySwal.fire("success!", "Package added successful....!", "success");}).catch(()=>{MySwal.fire("ERROR", "Please contact admin", "error");});
     }
   }catch(e){
     alert(e)
