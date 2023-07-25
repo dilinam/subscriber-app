@@ -13,9 +13,9 @@ import Checkbox from "@mui/material/Checkbox";
 import Modal from "@mui/material/Modal";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { getUserDetails } from '../../use-cases/get-user-details';
 import { saveAsset } from '../../use-cases/save-recharge';
-
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content"
 
 const style = {
   position: "absolute",
@@ -30,9 +30,9 @@ const style = {
 };
 
 const RechargeQR = () => {
+  const MySwal = withReactContent(Swal);
     const [isCopied, setIsCopied] = useState(false);
     const [open, setOpen] = useState(false);
-    const [user,setUser] = useState({});
     const handleRecharge = () => {
       setOpen(true);
     };
@@ -43,14 +43,17 @@ const RechargeQR = () => {
       navigate(value);
 
     };
-    const save = (amount) =>{
-        saveAsset(user,amount,2)
+    const save = async(amount) =>{
+        saveAsset(amount, 2)
+          .then(()=>{MySwal.fire(
+            "Good job!",
+            "Present your USDT deposit receipt to customer services and comfrom the deposit.",
+            "success"
+          );})
+          .catch(()=>{MySwal.fire("ERROR!", "Somthing Went Wrong", "error");});
     };
     const location = useLocation();
     const amount = location.state.recharge;
-    useEffect(()=>{
-      getUserDetails().then((res)=>setUser(res.data));
-    },[]);
   return (
     <div>
       <Card sx={{ m: 1, borderRadius: 5, backgroundColor: "transparent" }}>
@@ -77,7 +80,7 @@ const RechargeQR = () => {
               }, 1000);
             }}
           >
-            <Button size="small" endIcon={<ContentCopyIcon />} marginLeft="5">
+            <Button size="small" endIcon={<ContentCopyIcon />} marginLeft="5" >
               Copy
             </Button>
           </CopyToClipboard>
@@ -152,7 +155,7 @@ const RechargeQR = () => {
               save(amount);
             }}
           >
-            Recharge
+            Confirm Recharge
           </Button>
         </CardContent>
       </Card>

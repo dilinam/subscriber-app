@@ -11,8 +11,7 @@ const CustomerService = () => {
         If you have any questions or are in need for help please contact
         customer service
       </Typography>
-      <ContactCustomer name="Dilini" url="https://www.w3schools.com/" />
-      <ContactCustomer name="Krishan" url="https://www.w3schools.com/" />
+      <ContactCustomer name="Andrew" url="https://t.me/DTFAndrew" />
     </div>
   );
 }

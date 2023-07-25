@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 import { getWithdrwalsUser } from "../../use-cases/get-withdrwals-user";
 
 const ExpensesRecord = () => {
-  const [value, setValue] = useState("1");
+  const [value, setValue] = useState("2");
   const [rdata,setRData] = useState([]);
   const [wdata,setWData] = useState([]);
 
@@ -39,17 +39,18 @@ const ExpensesRecord = () => {
              indicatorColor="secondary"
              aria-label="secondary tabs example"
            >
-             <Tab value="1" label="Recharge" sx={{ width: "50%" }} />
-             <Tab value="2" label="Withdraw" sx={{ width: "50%" }} />
+             <Tab value="2" label="Recharge" sx={{ width: "50%" }} />
+             <Tab value="1" label="Withdraw" sx={{ width: "50%" }} />
            </Tabs>
          </Box>
          <TabPanel value="1">
            {rdata.map((rechargeData) => (
              <TabCard
-               date={rechargeData.dateTime}
+               date={rechargeData.dateTime.replace("T", " ")}
                order={rechargeData.id}
                value={rechargeData.amount}
-               type="Recharge"
+               isAccepted={rechargeData.isAccepted}
+               type="Withdraw"
              />
            ))}
          </TabPanel>
@@ -59,7 +60,8 @@ const ExpensesRecord = () => {
                date={withdrawalData.dateTime.replace("T", " ")}
                order={withdrawalData.id}
                value={withdrawalData.amount}
-               type="Withdrawal"
+               isAccepted={withdrawalData.isAccepted}
+               type="Recharge"
              />
            ))}
          </TabPanel>

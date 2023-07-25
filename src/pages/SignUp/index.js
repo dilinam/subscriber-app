@@ -15,6 +15,9 @@ import { Alert, Dialog, DialogActions, DialogContent, DialogContentText, DialogT
 import { useSearchParams } from "react-router-dom";
 import { getDisabledReg } from "../../use-cases/get-disabled-reg";
 import { Report } from "@mui/icons-material";
+import Background from "hero-slider/dist/components/Slide/Background";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const userData = {
   firstName: "",
@@ -32,23 +35,23 @@ export default function SignUp() {
     ...userData,
   });
   const [isDialogBoxOpen, setIsDialogBoxOpen] = React.useState(false);
-  const [searchParams] = useSearchParams();
-
+  const [queryParameters] = useSearchParams();
+  // const queryParameters = new URLSearchParams(window.location.search);
+ const MySwal = withReactContent(Swal);
   React.useEffect(() => {
-    const ref = searchParams.get("ref")
-    if(ref) {
-      setFormData(prev => ({...prev, userRef: ref}))
+    const ref = queryParameters.get("ref");
+    if (ref) {
+      setFormData((prev) => ({ ...prev, userRef: ref }));
     }
 
-    getDisabledReg().then(response => {
-      if(response.data.value === 'TRUE') {
+    getDisabledReg().then((response) => {
+      if (response.data.value === "TRUE") {
         setIsRegDisabled(true);
       }
     });
-  }, [])
+  }, []);
 
   const handleSubmit = (event) => {
-
     event.preventDefault();
 
     let errors = false;
@@ -81,38 +84,41 @@ export default function SignUp() {
     if (formData.ComfirmPassword.trim() === "") {
       errorMessages.ComfirmPassword = "Comfirm Password is required";
       errors = true;
-    }else if (formData.ComfirmPassword.trim() !== formData.password.trim()) {
-        errorMessages.ComfirmPassword =
-          "Confirm Password is not match with Password";
-        errors = true;
-      }
-    
+    } else if (formData.ComfirmPassword.trim() !== formData.password.trim()) {
+      errorMessages.ComfirmPassword =
+        "Confirm Password is not match with Password";
+      errors = true;
+    }
 
     if (errors) {
-      setFormErrorMessages(errorMessages)
+      setFormErrorMessages(errorMessages);
       return;
     }
 
-    const requestData = {...formData, userRef: undefined}
+    const requestData = { ...formData, userRef: undefined };
 
-    if(formData.userRef !== "") {
-      requestData.parentRef = formData.userRef
-      
+    if (formData.userRef !== "") {
+      requestData.parentRef = formData.userRef;
     }
 
     registerUser(requestData)
       .then((response) => {
-        setIsDialogBoxOpen(true);
-        setFormData({...userData})
+        MySwal.fire(
+          "Good job!",
+          "Please verify your email using the link we sent to your email",
+          "success"
+        );
+        setFormData({ ...userData });
       })
       .catch((error) => {
-        if(error?.response?.data) {
-          setFormErrorMessages(prev => {
-            const newErrors = {...prev};
-            Object.keys(error.response.data).forEach(key => {
-              newErrors[key] = error.response.data[key]
+        if (error?.response?.data) {
+          setFormErrorMessages((prev) => {
+            const newErrors = { ...prev };
+            Object.keys(error.response.data).forEach((key) => {
+              newErrors[key] = error.response.data[key];
             });
-            return newErrors
+            MySwal.fire("ERROR!", "Somthing Went Wrong", "error");
+            return newErrors;
           });
         }
       });
@@ -135,14 +141,22 @@ export default function SignUp() {
       <CssBaseline />
       <Box
         sx={{
-          marginTop: 8,
+          marginTop: 4,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          border: "1px solid grey",
+          paddingTop:1,
+          padding: 3,
+          backgroundColor: "black",
+          borderRadius: "10px"
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <LockOutlinedIcon />
+        <Avatar
+          sx={{width: 100, height: 100 }}
+          alt="Remy Sharp"
+          src="logo.jpg"
+        >
         </Avatar>
         <Typography component="h1" variant="h5">
           Sign up
@@ -255,38 +269,20 @@ export default function SignUp() {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            sx={{ mt: 3 }}
             disabled={isRegDisabled}
           >
             Sign Up
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <Link href="/login" variant="body2" color="#fff">
+              <Link href="/" variant="body2" color="#fff">
                 Already have an account? Sign in
               </Link>
             </Grid>
           </Grid>
         </Box>
       </Box>
-      <Dialog
-        open={isDialogBoxOpen}
-        onClose={() => setIsDialogBoxOpen(false)}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          {"User Registration is Successful"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Please verify your email using the link we sent to your email.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setIsDialogBoxOpen(false)}>Ok</Button>
-        </DialogActions>
-      </Dialog>
     </Container>
   );
 }

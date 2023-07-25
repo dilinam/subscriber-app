@@ -17,7 +17,7 @@ const SubPackages = () => {
         setIsRegDisabled(true);
       }
     });
-    getPackageUser().then((res) => setPackageUser(res.data.activePackage));
+    getPackageUser().then((res) => setPackageUser(res?.data?.activePackage || {}));
   }, [])
 
   return (

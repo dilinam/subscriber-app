@@ -13,7 +13,7 @@ export default function EmailVerification() {
   React.useEffect(() => {
     verifyEmail(verificationToken).then((response) => {
       window.sessionStorage.setItem("TOKEN", response.data.token);
-      navigate("/subPakages")
+      navigate("/subPackages")
     })
     .catch(() => {
       navigate("/signup")

@@ -17,7 +17,7 @@ const Auth = (props) => {
     console.log(userRole, sessionStorage.getItem("ROLE"), props.roles)
     sessionStorage.removeItem("TOKEN");
     sessionStorage.removeItem("ROLE");
-    navigate("/login?error=session-expired");
+    navigate("/?error=session-expired");
   }
   
     const requestInterceptor = server.interceptors.request.use(
@@ -37,7 +37,7 @@ const Auth = (props) => {
         if (error.response?.status === 403) {
           sessionStorage.removeItem("TOKEN");
           sessionStorage.removeItem("ROLE");
-          navigate("/login?error=session-expired");
+          navigate("/?error=session-expired");
         } else if (error.response.status === 404) {
           setGlobalError("Not Found");
         } else if (error.response.status !== 400) {
@@ -57,7 +57,7 @@ const Auth = (props) => {
   }, []);
 
   if (!sessionStorage.getItem("TOKEN")) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/" />;
   }
 
   return interceptorAdded ? (

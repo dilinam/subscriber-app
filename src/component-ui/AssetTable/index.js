@@ -24,10 +24,15 @@ const AssetTable = (props) => {
       ],
       []
     );
-    useEffect(()=>{
-      getRevenueDate(props.timeStamp).then((res)=>setData(res.data))
+    useEffect(async ()=>{
+      await getRevenueDate(props.timeStamp).then((res)=>setData(res.data))
       console.log(data);
     },[])
+
+    // data.map((data)=>{
+    //   data.dateTime = data.dateTime.substr(0, 19).replace("T", " ");
+    //   console.log(data.dateTime);
+    // })
     
 
 return (

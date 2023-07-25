@@ -14,21 +14,8 @@ import {
   getCardDetails,
   saveCardDetails,
 } from "../../use-cases/get-Card-Details";
-const Accounts = [
-  {
-    value: "Binance",
-    label: "Binance",
-  },
-  {
-    value: "Huobi",
-    label: "Huobi",
-  },
-  {
-    value: "OKX",
-    label: "OKX",
-  },
-];
-
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 const CardManagement = () => {
   const [values, setValues] = useState({
     accountType: "Binance",
@@ -36,15 +23,19 @@ const CardManagement = () => {
     chainName: "TRC20",
     receivingAddress: "",
   });
+const MySwal = withReactContent(Swal);
   const [data, setData] = useState({});
-  useEffect(async () => {
-    await getCardDetails().then((res) => setData(res.data));
+
+  useEffect(() => {
+    getCardDetails().then((res) => setData(res.data));
   }, []);
+
   useEffect(() => {
     if (data.cardType) {
       setValues(data);
     }
   }, [data]);
+
   const handleChange = (event) => {
     console.log(values.user);
     setValues((prevState) => ({
@@ -52,9 +43,17 @@ const CardManagement = () => {
       [event.target.name]: event.target.value,
     }));
   };
+  const handleChangeMenu = (e) => {
+    setValues((prev) => ({
+      ...prev,
+      accountType: e.target.value,
+    }));
+  };
   const save = () => {
-    saveCardDetails(values);
-    console.log(values);
+    saveCardDetails(values).then(res => {
+      getCardDetails().then((res) => setData(res.data));
+      MySwal.fire("success!", "Card details save successful....!", "success");
+    }).catch(()=>{ MySwal.fire("ERROR", "Please contact admin", "error");});
   };
   return (
     <Card sx={{ backgroundColor: "transparent" }}>
@@ -68,14 +67,15 @@ const CardManagement = () => {
                 select
                 name="accountType"
                 fullWidth
-                defaultValue={values.accountType}
-                onchange={handleChange}
+                value={values.accountType}
+                onChange={handleChangeMenu}
               >
-                {Accounts.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
+                <MenuItem value="Binance">Binance</MenuItem>
+                <MenuItem value="Huobi">Huobi</MenuItem>
+                <MenuItem value="OKX">OKX</MenuItem>
+                <MenuItem value="Coinbase">Coinbase</MenuItem>
+                <MenuItem value="KuCoin">KuCoin</MenuItem>
+                <MenuItem value="Bybit">Bybit</MenuItem>
               </TextField>
             </Grid>
             <Grid xs={12} md={6}>
@@ -94,7 +94,9 @@ const CardManagement = () => {
                 onChange={handleChange}
                 required
                 type="text"
-                value={values.receivingAddress}
+                // label="Receiving Address"
+                placeholder={values.receivingAddress ? "" : "Receiving Address"}
+                value={values.receivingAddress ? values.receivingAddress : null}
               />
             </Grid>
             <Grid xs={12} md={6}>

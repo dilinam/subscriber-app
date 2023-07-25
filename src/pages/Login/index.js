@@ -65,7 +65,7 @@ export default function SignIn() {
       .then((response) => {
         window.sessionStorage.setItem("TOKEN", response.data.token);
         window.sessionStorage.setItem("ROLE", response.data.role);
-        navigate("/");
+        navigate("/home");
       })
       .catch((error) => {
         setShowErrorMessage(true)
@@ -93,11 +93,18 @@ export default function SignIn() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          border: "1px solid grey",
+          paddingTop: 1,
+          padding: 3,
+          backgroundColor: "black",
+          borderRadius: "10px",
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <LockOutlinedIcon />
-        </Avatar>
+        <Avatar
+          sx={{ width: 100, height: 100 }}
+          alt="Remy Sharp"
+          src="logo.jpg"
+        ></Avatar>
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
@@ -110,7 +117,7 @@ export default function SignIn() {
             Invalid Username or Password
           </Alert>
         )}
-        {setCommonError && (
+        {commonError && (
           <Alert
             color="error"
             icon={<Report />}
@@ -161,7 +168,7 @@ export default function SignIn() {
             Sign In
           </Button>
           <Grid container>
-            <Grid item xs>
+            <Grid item >
               <Link href="#" variant="body2" color="#fff">
                 Forgot password?
               </Link>

@@ -1,11 +1,12 @@
 import server from "../config/server";
 
-export const saveAsset = (user, amount, paymentType) =>
+export const saveAsset = ( amount, paymentType) =>
   server.post(
     process.env.REACT_APP_API_BASE_URL +
       "/Assets/" +
       paymentType +
       "/"+
-      amount,
-      user
+      amount
   );
+export const saveBonus = (amount) =>
+  server.post(process.env.REACT_APP_API_BASE_URL + "/Assets/Bonus/" + amount);

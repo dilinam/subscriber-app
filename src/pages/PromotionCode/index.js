@@ -51,14 +51,14 @@ const PromotionCode = () => {
             </CopyToClipboard>
             <Typography variant="h6">Promotional Link</Typography>
             <Link
-              href={`http://localhost:3000/signup/`}
+              href={`http://34.131.70.71/signup?ref=${ref}`}
               sx={{ color: "#49A8EF" }}
             >
-              http://localhost:3000/signup/{ref}
+              http://34.131.70.71/signup/{ref}
             </Link>
             <CopyToClipboard
               sx={{ color: "#49A8EF" }}
-              text={`http://localhost:3000/signup/`}
+              text={`http://34.131.70.71/signup?ref=${ref}`}
               onCopy={() => {
                 setIsCopied(true);
                 setTimeout(() => {

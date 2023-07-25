@@ -20,11 +20,23 @@ const Recharge = () => {
   };
   let navigate = useNavigate();
   const routeChange = (value, amount) => {
-    navigate(value, {
-      state: {
-        recharge: amount,
-      },
-    });
+    let error;
+    if (amount === ""){
+      error = "Recharge value should be not null"
+    }
+    if(amount <= 0 ){
+      error = "Recharge value should more than 0 ";
+    }
+    if (!error){
+        navigate(value, {
+          state: {
+            recharge: amount,
+          },
+        });
+    }else{
+      alert(error);
+    }
+   
   };
   // useEffect(() => {
   //   const data = getRechagesUser(1);

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Stack,
   Box,
@@ -12,17 +12,22 @@ import FolderSpecialIcon from "@mui/icons-material/FolderSpecial";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useNavigate } from "react-router-dom";
+import { getcountRefUserbylevel } from '../../use-cases/get-count-ref-user';
 
 
 const TeamActivity = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+  const [level1,setLevel1] = useState();
+  const [level2, setLevel2] = useState();
+  const [level3, setLevel3] = useState();
+
   const routeChange = (value) => {
     navigate(value);
   };
   return (
     <div>
       <Typography gutterBottom variant="h6" align="center">
-        250USDT
+        Team Activity
       </Typography>
       <Stack spacing={1} direction="column" sx={{ m: 2, mb: 10 }}>
         <Button
@@ -37,7 +42,7 @@ const TeamActivity = () => {
             routeChange(`/promotionBonus`);
           }}
         >
-          Promotion Bonous
+          Promotion Bonus
           <ArrowForwardIosIcon />
         </Button>
         <Button
@@ -77,7 +82,7 @@ const TeamActivity = () => {
                 sx={{ fontSize: 16, align: "center" }}
                 color="text.secondary"
               >
-                15
+                {level1}
               </Typography>
               <Typography sx={{ fontSize: 16 }} color="text.secondary">
                 Level - 1
@@ -90,7 +95,7 @@ const TeamActivity = () => {
                 sx={{ fontSize: 16, align: "center" }}
                 color="text.secondary"
               >
-                11
+                {level2}
               </Typography>
               <Typography sx={{ fontSize: 16 }} color="text.secondary">
                 Level - 2
@@ -103,7 +108,7 @@ const TeamActivity = () => {
                 sx={{ fontSize: 16, align: "center" }}
                 color="text.secondary"
               >
-                06
+                {level3}
               </Typography>
               <Typography sx={{ fontSize: 16 }} color="text.secondary">
                 Level - 3

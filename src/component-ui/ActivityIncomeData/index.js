@@ -9,8 +9,9 @@ const ActivityIncomeData = (props) => {
       <Box sx={{ width: "100%" }}>
         <Typography variant="subtitle1" gutterBottom>
           <Grid container justifyContent="space-between">
-            <Grid>{props.time}</Grid>
             <Grid>{props.date}</Grid>
+            <Grid>{props.time}</Grid>
+            <Grid>{props.type}</Grid>
             <Grid> + {props.amount}</Grid>
           </Grid>
         </Typography>

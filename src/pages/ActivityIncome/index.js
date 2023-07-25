@@ -8,10 +8,8 @@ import { getRefComUser } from "../../use-cases/get-RefCom-user";
 const ActivityIncome = () => {
   const [data,setData] = useState([]);
   useEffect(()=>{
-    getRefComUser(1).then((rev) => setData(rev.data));
-
+    getRefComUser().then((rev) => setData(rev.data));
   },[])
-  console.log(data)
   return (
     <div>
       <Typography variant="h5" gutterBottom align="center">
@@ -19,11 +17,13 @@ const ActivityIncome = () => {
       </Typography>
       <Divider sx={{ m: 3 }} />
       <Stack divider={<Divider />} spacing={2} sx={{ m: 3 }}>
-        {data.map((asset) => (
+        {data.map((asset,index) => (
           <ActivityIncomeData
+          key={index}
             time={asset.dateTime.split("T")[1]}
             date={asset.dateTime.split("T")[0]}
             amount={asset.amount}
+            type={asset.paymentType.type}
             description={asset.description}
           />
         ))}
