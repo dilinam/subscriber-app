@@ -13,9 +13,12 @@ import {
 import { getUserDetails } from "../../use-cases/get-user-details";
 import { editUser } from "../../use-cases/edit-user";
 import { Label } from "@mui/icons-material";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const UserDetails = () => {
   const [user, setUser] = useState({});
+   const MySwal = withReactContent(Swal);
   const handleChange = (event) => {
     setUser((prevState) => ({
       ...prevState,
@@ -33,7 +36,9 @@ const UserDetails = () => {
   //   []);
 console.log(user);
   const save = () => {
-    editUser(user);
+    editUser(user).then(()=>{MySwal.fire("success!", "Profile information update successful....!", "success");}).catch(()=>{
+       MySwal.fire("ERROR", "Please contact admin", "error");
+    });
     console.log(user)
   };
 

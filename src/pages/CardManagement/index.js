@@ -14,7 +14,8 @@ import {
   getCardDetails,
   saveCardDetails,
 } from "../../use-cases/get-Card-Details";
-
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 const CardManagement = () => {
   const [values, setValues] = useState({
     accountType: "Binance",
@@ -22,7 +23,7 @@ const CardManagement = () => {
     chainName: "TRC20",
     receivingAddress: "",
   });
-
+const MySwal = withReactContent(Swal);
   const [data, setData] = useState({});
 
   useEffect(() => {
@@ -51,7 +52,8 @@ const CardManagement = () => {
   const save = () => {
     saveCardDetails(values).then(res => {
       getCardDetails().then((res) => setData(res.data));
-    });
+      MySwal.fire("success!", "Card details save successful....!", "success");
+    }).catch(()=>{ MySwal.fire("ERROR", "Please contact admin", "error");});
   };
   return (
     <Card sx={{ backgroundColor: "transparent" }}>

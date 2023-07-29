@@ -46,7 +46,7 @@ const CardForHome = (props) => {
             routeChange(`/withdraw`);
           }}
         >
-          Withdraw
+          Withdrawal
         </Button>
       </CardActions>
     </Card>

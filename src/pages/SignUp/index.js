@@ -16,6 +16,8 @@ import { useSearchParams } from "react-router-dom";
 import { getDisabledReg } from "../../use-cases/get-disabled-reg";
 import { Report } from "@mui/icons-material";
 import Background from "hero-slider/dist/components/Slide/Background";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const userData = {
   firstName: "",
@@ -35,7 +37,7 @@ export default function SignUp() {
   const [isDialogBoxOpen, setIsDialogBoxOpen] = React.useState(false);
   const [queryParameters] = useSearchParams();
   // const queryParameters = new URLSearchParams(window.location.search);
-
+ const MySwal = withReactContent(Swal);
   React.useEffect(() => {
     const ref = queryParameters.get("ref");
     if (ref) {
@@ -101,7 +103,11 @@ export default function SignUp() {
 
     registerUser(requestData)
       .then((response) => {
-        setIsDialogBoxOpen(true);
+        MySwal.fire(
+          "Good job!",
+          "Please verify your email using the link we sent to your email",
+          "success"
+        );
         setFormData({ ...userData });
       })
       .catch((error) => {
@@ -111,6 +117,7 @@ export default function SignUp() {
             Object.keys(error.response.data).forEach((key) => {
               newErrors[key] = error.response.data[key];
             });
+            MySwal.fire("ERROR!", "Somthing Went Wrong", "error");
             return newErrors;
           });
         }
@@ -276,26 +283,6 @@ export default function SignUp() {
           </Grid>
         </Box>
       </Box>
-      <Dialog
-        open={isDialogBoxOpen}
-        onClose={() => setIsDialogBoxOpen(false)}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          {"User Registration is Successful"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Please verify your email using the link we sent to your email.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setIsDialogBoxOpen(false)} variant="contained">
-            Ok
-          </Button>
-        </DialogActions>
-      </Dialog>
     </Container>
   );
 }

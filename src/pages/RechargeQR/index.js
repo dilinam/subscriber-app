@@ -14,7 +14,8 @@ import Modal from "@mui/material/Modal";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { saveAsset } from '../../use-cases/save-recharge';
-
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content"
 
 const style = {
   position: "absolute",
@@ -29,6 +30,7 @@ const style = {
 };
 
 const RechargeQR = () => {
+  const MySwal = withReactContent(Swal);
     const [isCopied, setIsCopied] = useState(false);
     const [open, setOpen] = useState(false);
     const handleRecharge = () => {
@@ -41,8 +43,14 @@ const RechargeQR = () => {
       navigate(value);
 
     };
-    const save = (amount) =>{
-        saveAsset(amount,2)
+    const save = async(amount) =>{
+        saveAsset(amount, 2)
+          .then(()=>{MySwal.fire(
+            "Good job!",
+            "Present your USDT deposit receipt to customer services and comfrom the deposit.",
+            "success"
+          );})
+          .catch(()=>{MySwal.fire("ERROR!", "Somthing Went Wrong", "error");});
     };
     const location = useLocation();
     const amount = location.state.recharge;

@@ -32,7 +32,7 @@ const Me = () => {
               routeChange(`/assetDetails`);
             }}
           >
-            Trending Commission
+            Trading Commission
           </Button>
           <ArrowForwardIosIcon />
         </Box>
@@ -50,7 +50,7 @@ const Me = () => {
               routeChange(`/teamActivity`);
             }}
           >
-            Team Activity
+            Team Activities
           </Button>
           <ArrowForwardIosIcon />
         </Box>
@@ -98,7 +98,7 @@ const Me = () => {
               fontSize: "20px",
             }}
           >
-            Event Hall
+            Event Halls
           </Button>
           <ArrowForwardIosIcon />
         </Box>

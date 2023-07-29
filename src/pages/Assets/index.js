@@ -49,7 +49,7 @@ const Assets = () => {
             routeChange(`/expensesRecord`);
           }}
         >
-          Expences Record
+          Expenses Record
         </Button>
         <Button
           variant="outlined"
