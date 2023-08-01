@@ -18,7 +18,7 @@ import withReactContent from "sweetalert2-react-content";
 
 const UserDetails = () => {
   const [user, setUser] = useState({});
-   const MySwal = withReactContent(Swal);
+  const MySwal = withReactContent(Swal);
   const handleChange = (event) => {
     setUser((prevState) => ({
       ...prevState,
@@ -34,12 +34,20 @@ const UserDetails = () => {
   //     event.preventDefault();
   //   },
   //   []);
-console.log(user);
+  console.log(user);
   const save = () => {
-    editUser(user).then(()=>{MySwal.fire("success!", "Profile information update successful....!", "success");}).catch(()=>{
-       MySwal.fire("ERROR", "Please contact admin", "error");
-    });
-    console.log(user)
+    editUser(user)
+      .then(() => {
+        MySwal.fire(
+          "success!",
+          "Profile information update successful....!",
+          "success"
+        );
+      })
+      .catch(() => {
+        MySwal.fire("ERROR", "Please contact admin", "error");
+      });
+    console.log(user);
   };
 
   return (
@@ -173,7 +181,7 @@ console.log(user);
                 <Button
                   variant="contained"
                   size="medium"
-                  value="50"
+                  sx={{ color: "#000" }}
                   onClick={save}
                 >
                   Save details

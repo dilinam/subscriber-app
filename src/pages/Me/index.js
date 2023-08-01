@@ -105,8 +105,13 @@ const Me = () => {
       </Stack>
       <Box align="center">
         <Button
-          sx={{ mt: "10%", width: "80%", border: "1px solid #fff" }}
-          variant="contained"
+          sx={{
+            mt: "10%",
+            width: "80%",
+          }}
+          variant="outlined"
+          size="large"
+          color="primaryVariant"
           onClick={() => {
             routeChange(`/login`);
           }}

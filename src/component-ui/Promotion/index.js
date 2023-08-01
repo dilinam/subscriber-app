@@ -21,6 +21,7 @@ const Promotion = (props) => {
           </Typography>
           <Button
             variant="contained"
+            sx={{ color: "#000" }}
             onClick={() => claimBouns(props.value)}
             disabled={!props.isdisabled || isLoading}
           >

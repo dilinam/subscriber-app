@@ -9,9 +9,12 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import { getRechagesUser } from "../../use-cases/get-recharges-user";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const Recharge = () => {
   const [amount, setAmount] = useState("");
+   const MySwal = withReactContent(Swal);
   const handleChange = (e) => {
     setAmount(e.target.value);
   };
@@ -25,7 +28,7 @@ const Recharge = () => {
       error = "Recharge value should be not null"
     }
     if(amount <= 0 ){
-      error = "Recharge value should more than 0 ";
+      error = "Recharge value should more than or equal 1 ";
     }
     if (!error){
         navigate(value, {
@@ -34,7 +37,7 @@ const Recharge = () => {
           },
         });
     }else{
-      alert(error);
+      MySwal.fire("Cancelled", error, "error");
     }
    
   };
@@ -167,7 +170,7 @@ const Recharge = () => {
       </Grid>
       <Box align="center">
         <Button
-          sx={{ mt: "10%", width: "80%" }}
+          sx={{ mt: "10%", width: "80%" ,color:"#000"}}
           variant="contained"
           onClick={() => {
             routeChange(`/rechargeQR`, amount);

@@ -15,6 +15,9 @@ import { loginUser } from "../../use-cases/login-user";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Alert } from "@mui/material";
 import { Report } from "@mui/icons-material";
+import { resetPasswordVerifyMail } from "../../use-cases/reset-password";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const userData = {
   email: "",
@@ -31,6 +34,7 @@ export default function SignIn() {
 
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const MySwal = withReactContent(Swal);
 
   React.useEffect(() => {
     const error = searchParams.get("error")
@@ -82,6 +86,28 @@ export default function SignIn() {
       ...prev,
       [event.target.name]: "",
     }));
+  };
+  const forgetpassword = async()=>{
+    if (formData.email){
+        resetPasswordVerifyMail(formData.email)
+          .then((res) => {
+            MySwal.fire(
+              "Good job!",
+              "Please verify your email using the link we sent to your email",
+              "success"
+            );
+          })
+          .catch((res) => {
+            MySwal.fire("ERROR!", "Please contact Admin", "error");
+          });
+    }else{
+       MySwal.fire(
+         "ERROR!",
+         "Please Add user Email Address...",
+         "error"
+       );
+    }
+      
   };
 
   return (
@@ -135,6 +161,7 @@ export default function SignIn() {
             label="Email Address"
             name="email"
             autoComplete="email"
+            color="primaryVariant"
             autoFocus
             value={formData.email}
             onChange={handleFormValueChange}
@@ -149,6 +176,7 @@ export default function SignIn() {
             label="Password"
             type="password"
             id="password"
+            color="primaryVariant"
             autoComplete="current-password"
             value={formData.password}
             onChange={handleFormValueChange}
@@ -163,14 +191,20 @@ export default function SignIn() {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            color="primaryVariant"
+            sx={{ mt: 3, mb: 2, color:"#000" }}
           >
-            Sign In
+              Sign in
           </Button>
           <Grid container>
-            <Grid item >
-              <Link href="#" variant="body2" color="#fff">
-                Forgot password?
+            <Grid item>
+              <Link
+                href="#"
+                variant="body2"
+                color="#fff"
+                onClick={forgetpassword}
+              >
+                Forget password?
               </Link>
             </Grid>
             <Grid item>

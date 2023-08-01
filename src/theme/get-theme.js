@@ -6,18 +6,18 @@ export const getTheme = (mode) => {
     palette: {
       mode,
       primary: {
-        main: deepPurple[900],
+        main: "#FCD535",
         // main: "#f2ef2c",
         dark: "#ba000d",
         contrastText: "#fff",
       },
       primaryVariant: {
-        main: "#f2ef2c",
+        main: "#FCD535",
         contrastText: "#fff",
       },
       secondary: {
         light: "#ff7961",
-        main: "#f2ef2c",
+        main: "#FCD535",
         dark: "#ba000d",
         contrastText: "#000",
       },

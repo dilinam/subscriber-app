@@ -80,7 +80,7 @@ const RechargeQR = () => {
               }, 1000);
             }}
           >
-            <Button size="small" endIcon={<ContentCopyIcon />} marginLeft="5" >
+            <Button size="small" endIcon={<ContentCopyIcon />} marginLeft="5">
               Copy
             </Button>
           </CopyToClipboard>
@@ -150,6 +150,7 @@ const RechargeQR = () => {
           <Button
             fullWidth
             variant="contained"
+            sx={{ color:"#000" }}
             onClick={() => {
               routeChange(`/recharge`);
               save(amount);

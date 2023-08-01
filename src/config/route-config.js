@@ -35,6 +35,8 @@ import ViewAllNotAccepted from "../pages/ViewAllNotAccepted";
 import UserList from "../pages/ViewAllUsers";
 import PendingWithdraw from "../pages/PendingWithdraw";
 import Rules from "../pages/Rules";
+import ResetPassword from "../pages/ResetPassoword";
+import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 
 const routeConfig = [
   {
@@ -58,6 +60,7 @@ const routeConfig = [
     hideLayout: true,
     noAuth: true,
   },
+
   {
     id: 4,
     path: "/home",
@@ -77,7 +80,7 @@ const routeConfig = [
     id: 7,
     path: "/users",
     element: <UserList />,
-    icon: <HomeIcon fontSize="large" />,
+    icon: <AccountCircleIcon fontSize="large" />,
     menu: true,
     label: "Users",
     roles: ["ADMIN"],
@@ -226,7 +229,7 @@ const routeConfig = [
     icon: <AccountCircleIcon fontSize="large" />,
     label: "Profile",
     menu: true,
-    roles: ["USER", "ADMIN"],
+    roles: ["USER"],
   },
   {
     id: 30,
@@ -234,7 +237,7 @@ const routeConfig = [
     element: <ViewAllNotAccepted />,
     roles: ["ADMIN"],
     menu: true,
-    icon: <AccountCircleIcon fontSize="large" />,
+    icon: <CurrencyExchangeIcon fontSize="large" />,
     label: "Not Accepted",
   },
   {
@@ -242,6 +245,13 @@ const routeConfig = [
     path: "/rules",
     element: <Rules />,
     roles: ["USER"],
+  },
+  {
+    id: 32,
+    path: "/reset-password-verification",
+    element: <ResetPassword />,
+    hideLayout: true,
+    noAuth: true,
   },
 ];
 

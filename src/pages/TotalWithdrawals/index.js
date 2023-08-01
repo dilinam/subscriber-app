@@ -13,7 +13,7 @@ const TotalWithdrawals = () => {
         Total Withdrawals
       </Typography>
       <Typography gutterBottom variant="h6" align="center">
-        Total Withdrawals {value}
+        Total Withdraw = {value}
       </Typography>
       <TeamActivityBelowButtons level="1" page="3" total={data} />
       <TeamActivityBelowButtons level="2" page="3" total={data} />

@@ -27,8 +27,8 @@ const ConfirmMsg = (props) => {
     if (props.amount === "") {
       error = "withdraw value should be not null";
     }
-    if (props.amount <= 10) {
-      error = "withdraw value should more than 10 ";
+    if (props.amount < 10) {
+      error = "Withdraw value should more than or equal 10 USDT.";
     }
     if (props.amount > user.totalBalance) {
       error = "not enough balace in you account";
@@ -36,7 +36,7 @@ const ConfirmMsg = (props) => {
     if (!error) {
       MySwal.fire({
         title: "Are you sure?",
-        text: "You won't be able to revert this!",
+        text: props.msg,
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -71,7 +71,12 @@ const ConfirmMsg = (props) => {
   }, []);
   return (
     <div>
-      <Button variant="contained" fullWidth onClick={handleClickOpen}>
+      <Button
+        variant="contained"
+        fullWidth
+        sx={{color:"#000" }}
+        onClick={handleClickOpen}
+      >
         {props.buttonName}
       </Button>
       <Dialog

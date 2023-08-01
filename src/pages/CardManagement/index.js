@@ -114,7 +114,7 @@ const MySwal = withReactContent(Swal);
                 <Button
                   variant="contained"
                   size="medium"
-                  value="50"
+                  sx={{ color: "#000" }}
                   onClick={save}
                 >
                   Save details

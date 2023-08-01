@@ -10,6 +10,7 @@ import Box from "@mui/material/Box";
 import { packageActive } from "../../use-cases/package-activate";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { useNavigate } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -31,6 +32,12 @@ const TableToCard = (props) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const MySwal = withReactContent(Swal);
+
+   let navigate = useNavigate();
+  const routeChange = (value) => {
+    navigate(value);
+  };
+
   const save = () => {
     setOpen(false);
     setPackageId(props.id);
@@ -38,7 +45,8 @@ const TableToCard = (props) => {
   useEffect(() => {
     try{
     if (packageId > 0) {
-      packageActive(packageId).then(()=>{ MySwal.fire("success!", "Package added successful....!", "success");}).catch(()=>{MySwal.fire("ERROR", "Please contact admin", "error");});
+      packageActive(packageId).then(()=>{ MySwal.fire("success!", "Package added successful....!", "success");
+     window.location.reload(); }).catch(()=>{MySwal.fire("ERROR", "Please contact admin", "error");});
     }
   }catch(e){
     alert(e)
@@ -93,19 +101,20 @@ const TableToCard = (props) => {
                 {props.package} USDT
               </Typography>
               <Typography gutterBottom variant="body1">
-                4 x Revenue
+                2 x Revenue
               </Typography>
             </Box>
           </Box>
         </CardContent>
         <Box sx={{ display: "flex", mr: 3, m: 2 }}>
           <Typography color="subtiltle1" variant="body2">
-            Daily Revenue : {props.package * 0.01} USDT
+            Daily Revenue : {props.package * 0.005} USDT
           </Typography>
           <Button
             onClick={handleOpen}
-            variant="contained"
-            sx={{ marginLeft: "auto", order: "2", border: "1px solid #fff" }}
+            variant="outlined"
+            color="primaryVariant"
+            sx={{ marginLeft: "auto", order: "2" }}
             disabled={disabledPack}
           >
             Join
@@ -126,12 +135,12 @@ const TableToCard = (props) => {
             color="secondary"
             align="center"
           >
-            Futher Details
+            Package Details
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             1. Subscribe {props.name} Package selling price is {props.package}{" "}
-            USDT, the income is 4 times the income can earn {props.package * 4}
-            USDT, you can receive {props.package * 0.01} USDT per day. <br />
+            USDT, the income is 2 times the income can earn {props.package * 2}
+            USDT, you can receive {props.package * 0.005} USDT per day. <br />
             <br />
             2. The daily earnings are put in the equivalent value of USDT coins.{" "}
             <br /> <br />
@@ -146,6 +155,7 @@ const TableToCard = (props) => {
             <Button
               onClick={save}
               variant="contained"
+              color="success"
               sx={{ marginRight: "10", border: "1px solid #fff" }}
             >
               Join
@@ -153,7 +163,8 @@ const TableToCard = (props) => {
             <Button
               onClick={handleClose}
               variant="contained"
-              sx={{ marginLeft: "10", border: "1px solid #fff" }}
+              color="error"
+              sx={{ marginLeft: "10", border: "1px solid #fff",color:"#000" }}
             >
               Cancel
             </Button>

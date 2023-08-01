@@ -15,11 +15,11 @@ const images = [
   },
   {
     label: "Slide2",
-    imgPath: "/img/slide2.jpeg",
+    imgPath: "/img/slide2.jpg",
   },
   {
     label: "Slide3",
-    imgPath: "/img/slide3.jpeg",
+    imgPath: "/img/slide3.jpg",
   },
   {
     label: "Slide4",

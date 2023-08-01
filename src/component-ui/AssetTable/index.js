@@ -28,10 +28,10 @@ const AssetTable = (props) => {
       getRevenueDate(props.timeStamp).then((res)=>setData(res.data))
     },[])
 
-    // data.map((data)=>{
-    //   data.dateTime = data.dateTime.substr(0, 19).replace("T", " ");
-    //   console.log(data.dateTime);
-    // })
+    data.map((data)=>{
+      data.dateTime = data.dateTime.substr(0, 10);
+      console.log(data.dateTime);
+    })
     
 
 return (

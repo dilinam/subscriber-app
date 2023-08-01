@@ -6,16 +6,12 @@ import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import validateEmail from "../../utils/validate-email";
 import { registerUser } from "../../use-cases/register-user";
-import { Alert, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
 import { useSearchParams } from "react-router-dom";
 import { getDisabledReg } from "../../use-cases/get-disabled-reg";
-import { Report } from "@mui/icons-material";
-import Background from "hero-slider/dist/components/Slide/Background";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
@@ -34,7 +30,6 @@ export default function SignUp() {
   const [formErrorMessages, setFormErrorMessages] = React.useState({
     ...userData,
   });
-  const [isDialogBoxOpen, setIsDialogBoxOpen] = React.useState(false);
   const [queryParameters] = useSearchParams();
   // const queryParameters = new URLSearchParams(window.location.search);
  const MySwal = withReactContent(Swal);
@@ -161,11 +156,9 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        {isRegDisabled && (
-          <Alert color="error" icon={<Report />}>
-            New Registrations are hold for now!
-          </Alert>
-        )}
+        {isRegDisabled && 
+          MySwal.fire("REALLY SORRY...!", "New Registrations are hold for now..!", "error")
+        }
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
@@ -269,7 +262,7 @@ export default function SignUp() {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3 }}
+            sx={{ mt: 3,color:"#000" }}
             disabled={isRegDisabled}
           >
             Sign Up

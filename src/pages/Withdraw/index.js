@@ -25,13 +25,15 @@ const Withdraw = () => {
   const handleClick = (e) => {
     setAmount((pre) => e.target.value);
   };
-useEffect(() => {
-  getCardDetails().then((res) =>{if (!res.data) {
-    alert("please add user card details first");
-    setIsCard(false);
-  }else{setIsCard(true);}} );
-  
-}, []);
+  useEffect(() => {
+    getCardDetails().then((res) => {
+      if (!res.data) {
+        setIsCard(false);
+      } else {
+        setIsCard(true);
+      }
+    });
+  }, []);
 
   return (
     <div>
@@ -175,10 +177,13 @@ useEffect(() => {
         <Button
           variant="contained"
           fullWidth
+          sx={{ color:"#000" }}
           onClick={() => {
             routeChange(`/cardManagement`);
           }}
-        >Add Card Details</Button>
+        >
+          Add Card Details
+        </Button>
       )}
     </div>
   );
