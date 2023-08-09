@@ -46,7 +46,7 @@ const TableToCard = (props) => {
     try{
     if (packageId > 0) {
       packageActive(packageId).then(()=>{ MySwal.fire("success!", "Package added successful....!", "success");
-     window.location.reload(); }).catch(()=>{MySwal.fire("ERROR", "Please contact admin", "error");});
+     window.location.reload(); }).catch((e)=>{MySwal.fire("ERROR", e.response.data, "error");});
     }
   }catch(e){
     alert(e)

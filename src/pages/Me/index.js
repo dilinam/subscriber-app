@@ -113,7 +113,7 @@ const Me = () => {
           size="large"
           color="primaryVariant"
           onClick={() => {
-            routeChange(`/login`);
+            routeChange(`/`);
           }}
         >
           Logout

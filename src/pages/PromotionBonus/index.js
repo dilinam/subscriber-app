@@ -43,36 +43,42 @@ const PromotionBonus = () => {
         members="5"
         value="50"
         isdisabled={count >= 5 && !bonusTypeList.includes(1)}
+        isClaimed={bonusTypeList.includes(1)}
         resetT={resetTable}
       />
       <Promotion
         members="10"
         value="100"
         isdisabled={count >= 10 && !bonusTypeList.includes(2)}
+        isClaimed={bonusTypeList.includes(2)}
         resetT={resetTable}
       />
       <Promotion
         members="20"
         value="200"
         isdisabled={count >= 20 && !bonusTypeList.includes(3)}
+         isClaimed = {bonusTypeList.includes(3)}
         resetT={resetTable}
       />
       <Promotion
         members="30"
         value="300"
         isdisabled={count >= 30 && !bonusTypeList.includes(4)}
+         isClaimed = {bonusTypeList.includes(4)}
         resetT={resetTable}
       />
       <Promotion
         members="50"
         value="500"
         isdisabled={count >= 50 && !bonusTypeList.includes(5)}
+         isClaimed = {bonusTypeList.includes(5)}
         resetT={resetTable}
       />
       <Promotion
         members="100"
         value="1000"
         isdisabled={count >= 100 && !bonusTypeList.includes(6)}
+         isClaimed = {bonusTypeList.includes(6)}
         resetT={resetTable}
       />
     </div>

@@ -16,7 +16,7 @@ const TabCard = (props) => {
             Order number : {props.order}
           </Typography>
           <Typography sx={{ fontSize: 18, mb: 2 }} color="text.secondary">
-            Amount to be Recived : <br /> {props.value} USDT
+            Amount : <br /> {props.value} USDT
           </Typography>
           {!props.isAccepted ? (
             <Typography sx={{ fontSize: 18, mb: 2 }} color="error">
@@ -24,7 +24,7 @@ const TabCard = (props) => {
             </Typography>
           ) : (
             <Typography sx={{ fontSize: 18, mb: 2 }} color="#0BDA51">
-              This Transaction is success
+              This transaction is successful
             </Typography>
           )}
         </CardContent>

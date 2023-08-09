@@ -16,6 +16,8 @@ import {
 } from "../../use-cases/get-Card-Details";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+
+
 const CardManagement = () => {
   const [values, setValues] = useState({
     accountType: "Binance",
@@ -24,8 +26,8 @@ const CardManagement = () => {
     receivingAddress: "",
   });
 const MySwal = withReactContent(Swal);
-  const [data, setData] = useState({});
-
+const [data, setData] = useState({});
+const [formErrorMessages, setFormErrorMessages] = useState({});
   useEffect(() => {
     getCardDetails().then((res) => setData(res.data));
   }, []);
@@ -49,11 +51,25 @@ const MySwal = withReactContent(Swal);
       accountType: e.target.value,
     }));
   };
+
   const save = () => {
-    saveCardDetails(values).then(res => {
-      getCardDetails().then((res) => setData(res.data));
-      MySwal.fire("success!", "Card details save successful....!", "success");
-    }).catch(()=>{ MySwal.fire("ERROR", "Please contact admin", "error");});
+        
+    if (values.receivingAddress.trim() === "") {
+      setFormErrorMessages({receivingAddress : "Receiving Address is required"});
+    }else{
+      saveCardDetails(values)
+        .then((res) => {
+          getCardDetails().then((res) => setData(res.data));
+          MySwal.fire(
+            "success!",
+            "Card details save successful....!",
+            "success"
+          );
+          setFormErrorMessages({})
+        })
+        .catch(() => {
+          MySwal.fire("ERROR", "Please contact admin", "error");
+        });}
   };
   return (
     <Card sx={{ backgroundColor: "transparent" }}>
@@ -92,6 +108,9 @@ const MySwal = withReactContent(Swal);
                 fullWidth
                 name="receivingAddress"
                 onChange={handleChange}
+                autoFocus
+                error={formErrorMessages.receivingAddress}
+                helperText={formErrorMessages.receivingAddress}
                 required
                 type="text"
                 // label="Receiving Address"

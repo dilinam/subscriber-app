@@ -35,6 +35,24 @@ export default function ResetPassword() {
     if (formData.password.trim() === "") {
       errorMessages.password = "Password is required";
       errors = true;
+    } else {
+      let passwordValue = formData.password.trim();
+      if (!(passwordValue.length >= 8)) {
+        errorMessages.password = "Password should contain 8 characters";
+        errors = true;
+      }
+      if (!/[a-z]+/.test(passwordValue)) {
+        errorMessages.password = "At leat one simple letter";
+        errors = true;
+      }
+      if (!/[A-Z]+/.test(passwordValue)) {
+        errorMessages.password = "At leat one Capital letter";
+        errors = true;
+      }
+      if (!/[0-9]+/.test(passwordValue)) {
+        errorMessages.password = "At leat one number";
+        errors = true;
+      }
     }
     if (formData.ComfirmPassword.trim() === "") {
       errorMessages.ComfirmPassword = "Comfirm Password is required";

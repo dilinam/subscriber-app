@@ -8,8 +8,9 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import LinearProgress from "@mui/material/LinearProgress";
 import validateEmail from "../../utils/validate-email";
-import { registerUser } from "../../use-cases/register-user";
+import { getMaxRef, registerUser } from "../../use-cases/register-user";
 import { useSearchParams } from "react-router-dom";
 import { getDisabledReg } from "../../use-cases/get-disabled-reg";
 import Swal from "sweetalert2";
@@ -26,11 +27,14 @@ const userData = {
 
 export default function SignUp() {
   const [isRegDisabled, setIsRegDisabled] = React.useState(false);
+  const [maxRef, setMaxRef] = React.useState(0);
   const [formData, setFormData] = React.useState({ ...userData });
   const [formErrorMessages, setFormErrorMessages] = React.useState({
     ...userData,
   });
   const [queryParameters] = useSearchParams();
+  const [progress, setProgress] = React.useState(10);
+  const [pColor, setPColor] = React.useState("error");
   // const queryParameters = new URLSearchParams(window.location.search);
  const MySwal = withReactContent(Swal);
   React.useEffect(() => {
@@ -45,6 +49,16 @@ export default function SignUp() {
       }
     });
   }, []);
+
+  React.useEffect(()=>{
+        getMaxRef().then((res)=>{
+            setMaxRef(res.data);
+            
+       });
+       
+  },[])
+
+  // alert(maxRef)
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -71,10 +85,48 @@ export default function SignUp() {
       errorMessages.email = "Email is not valid";
       errors = true;
     }
+    if (formData.userRef > maxRef || formData.userRef <= 0)  {
+      errorMessages.userRef = "Refferal ID Does Not Exists";
+      errors = true;
+    }
 
     if (formData.password.trim() === "") {
       errorMessages.password = "Password is required";
       errors = true;
+    }else{
+      let passwordValue = formData.password.trim();
+      let progressValue = 100;
+      if(!(passwordValue.length >= 8)){
+        errorMessages.password = "Password should contain 8 characters";
+        progressValue = progressValue - 25;
+        errors = true;
+      }
+      if (!(/[a-z]+/.test(passwordValue))) {
+        errorMessages.password = "At leat one simple letter";
+        progressValue = progressValue - 25;
+        errors = true;
+      }
+      if (!(/[A-Z]+/.test(passwordValue))) {
+        errorMessages.password = "At leat one Capital letter";
+        progressValue = progressValue - 25;
+        errors = true;
+      }
+      if (!(/[0-9]+/.test(passwordValue))) {
+        errorMessages.password = "At leat one number";
+        progressValue = progressValue - 25;
+        errors = true;
+      }
+      setProgress(progressValue);
+      if(progressValue === 100){
+        setPColor("success");
+      }else if (progressValue === 75){
+        setPColor("primary");
+      }else if (progressValue === 50){
+        setPColor("secondary");
+      }else{
+        setPColor("error");
+      }
+
     }
     if (formData.ComfirmPassword.trim() === "") {
       errorMessages.ComfirmPassword = "Comfirm Password is required";
@@ -130,7 +182,6 @@ export default function SignUp() {
       [event.target.name]: "",
     }));
   };
-
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -141,24 +192,26 @@ export default function SignUp() {
           flexDirection: "column",
           alignItems: "center",
           border: "1px solid grey",
-          paddingTop:1,
+          paddingTop: 1,
           padding: 3,
           backgroundColor: "black",
-          borderRadius: "10px"
+          borderRadius: "10px",
         }}
       >
         <Avatar
-          sx={{width: 100, height: 100 }}
+          sx={{ width: 100, height: 100 }}
           alt="Remy Sharp"
           src="logo.jpg"
-        >
-        </Avatar>
+        ></Avatar>
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        {isRegDisabled && 
-          MySwal.fire("REALLY SORRY...!", "New Registrations are hold for now..!", "error")
-        }
+        {isRegDisabled &&
+          MySwal.fire(
+            "REALLY SORRY...!",
+            "New Registrations are hold for now..!",
+            "error"
+          )}
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
@@ -226,6 +279,9 @@ export default function SignUp() {
                 color="secondary"
                 disabled={isRegDisabled}
               />
+              <Box sx={{ width: "100%" }}>
+                <LinearProgress variant="determinate" value={progress} color={pColor} />
+              </Box>
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -249,6 +305,7 @@ export default function SignUp() {
                 fullWidth
                 id="userRef"
                 label="Referral"
+                type="number"
                 name="userRef"
                 value={formData.userRef}
                 onChange={handleFormValueChange}
@@ -262,7 +319,7 @@ export default function SignUp() {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3,color:"#000" }}
+            sx={{ mt: 3, color: "#000" }}
             disabled={isRegDisabled}
           >
             Sign Up

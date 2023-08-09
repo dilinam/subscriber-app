@@ -63,16 +63,20 @@ const RechargeQR = () => {
           </Typography>
           <br />
           <Box align="center">
-            <img src="QR.jpg" />
+            <img
+              src="QR.jpg"
+              height="50%"
+               width="50%"
+            />
           </Box>
           <br />
           <Typography color="text.secondary">Wallet Address : </Typography>
 
           <Typography color="text.secondary" variant="caption">
-            TPXqEvFBzYi5tBwViGtFu6dTeKZEgS3qeU
+            TF9p4qd3yyoPMZnfkpWsomKkNoCThjLw3a
           </Typography>
           <CopyToClipboard
-            text={"TPXqEvFBzYi5tBwViGtFu6dTeKZEgS3qeU"}
+            text={"TF9p4qd3yyoPMZnfkpWsomKkNoCThjLw3a"}
             onCopy={() => {
               setIsCopied(true);
               setTimeout(() => {
@@ -90,7 +94,7 @@ const RechargeQR = () => {
           <Typography color="text.secondary">Network : </Typography>
 
           <Typography color="text.secondary" variant="caption">
-            Tron(TRC20-2)
+            USDT (TRC20)
           </Typography>
           <br />
           <br />
@@ -120,9 +124,9 @@ const RechargeQR = () => {
                 Details
               </Typography>
               <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                1. Subscribe Browns 1 Package selling price is 100 USDT, the
-                income is 5 times the income can earn 500 USDT, you can receive
-                1 USDT per day. <br />
+                1. IF Subscribe Browns 1 Package selling price is 100 USDT, the
+                income is X2 the income can earn up to 400 USDT, you can receive
+                0.5 USDT per day. <br />
                 <br />
                 2. The daily earnings are put in the equivalent value of USDT
                 coins. <br />
@@ -141,7 +145,12 @@ const RechargeQR = () => {
                   label="I have read in details "
                 />
               </FormGroup>
-              <Button fullWidth variant="contained" onClick={handleClose}>
+              <Button
+                fullWidth
+                variant="contained"
+                sx={{ color: "#000" }}
+                onClick={handleClose}
+              >
                 Done
               </Button>
             </Box>
@@ -150,7 +159,7 @@ const RechargeQR = () => {
           <Button
             fullWidth
             variant="contained"
-            sx={{ color:"#000" }}
+            sx={{ color: "#000" }}
             onClick={() => {
               routeChange(`/recharge`);
               save(amount);

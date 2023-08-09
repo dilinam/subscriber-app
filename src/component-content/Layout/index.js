@@ -29,7 +29,7 @@ const Layout = (props) => {
         {props.children}
       </Box>
       <footer>
-        <Box sx={{ display: { xs: "flex", md: "none" } }}>
+        <Box sx={{ display: { xs: "flex", md: "none" } ,mt:"10%"}}>
           <BottomNav menuRoutes={menuRoutes} handleRoute={handleRoute} />
         </Box>
       </footer>

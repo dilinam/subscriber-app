@@ -25,7 +25,7 @@ const Promotion = (props) => {
             onClick={() => claimBouns(props.value)}
             disabled={!props.isdisabled || isLoading}
           >
-            Claim
+            {props.isClaimed ? "Claimed":"Claim"}
           </Button>
         </CardContent>
       </Card>

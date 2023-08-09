@@ -46,7 +46,7 @@ const Withdraw = () => {
       >
         <Box>
           <Typography variant="subtitle1" gutterBottom>
-            USDT(TRC20-2)
+            USDT (TRC20)
           </Typography>
           <div>
             <FormControl sx={{ m: 2 }}>
@@ -67,7 +67,7 @@ const Withdraw = () => {
             </FormControl>
           </div>
           <Typography variant="subtitle1" gutterBottom>
-            widthdrwal Fee (5%) : {amount * 0.05}
+            Withdrawal Fee (5%) : {amount * 0.05}
           </Typography>
           <Typography variant="subtitle1" gutterBottom>
             Receive Amount : {amount - amount * 0.05}

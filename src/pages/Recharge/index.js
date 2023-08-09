@@ -56,7 +56,7 @@ const Recharge = () => {
       >
         <Box>
           <Typography variant="subtitle1" gutterBottom>
-            USDT(TRC20-2)
+            USDT (TRC20)
           </Typography>
           <div>
             <FormControl sx={{ m: 2 }}>

@@ -25,7 +25,7 @@ const PromotionCode = () => {
           Invitaion to get Promotion Rewards
         </Typography>
         <Typography gutterBottom variant="subtitle1">
-          The more people invited, the higher the rewards
+          Invite more people to get higher rewards
         </Typography>
       </Box>
       <Card sx={{ borderRadius: 1, m: 2 }}>
