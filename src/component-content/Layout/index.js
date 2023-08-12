@@ -25,7 +25,7 @@ const Layout = (props) => {
           <TopBar/>
         </Box>
       </header>
-      <Box sx={{ float: "right", width: { xs: "100%", md: "100%" ,mb:10} }}>
+      <Box sx={{ float: "right", width: { xs: "100%", md: "100%"}, mb: {xs: 5, md: 3} }}>
         {props.children}
       </Box>
       <footer>
