@@ -85,7 +85,8 @@ export default function SignUp() {
       errorMessages.email = "Email is not valid";
       errors = true;
     }
-    if (formData.userRef > maxRef || formData.userRef <= 0)  {
+    
+    if (formData.userRef.slice(3) > maxRef || formData.userRef <= 0)  {
       errorMessages.userRef = "Refferal ID Does Not Exists";
       errors = true;
     }
@@ -145,9 +146,10 @@ export default function SignUp() {
     const requestData = { ...formData, userRef: undefined };
 
     if (formData.userRef !== "") {
-      requestData.parentRef = formData.userRef;
+      requestData.parentRef = formData.userRef.slice(3);
     }
-
+    requestData.parentRef = formData.userRef.slice(3);
+    // alert(JSON.stringify(requestData));
     registerUser(requestData)
       .then((response) => {
         MySwal.fire(

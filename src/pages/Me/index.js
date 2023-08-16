@@ -64,6 +64,9 @@ const Me = () => {
               justifyContent: "flex-start",
               fontSize: "20px",
             }}
+            onClick={() => {
+              routeChange(`/bulletBoard`);
+            }}
           >
             Bulletin Board
           </Button>
@@ -96,6 +99,9 @@ const Me = () => {
               display: "flex",
               justifyContent: "space-between",
               fontSize: "20px",
+            }}
+            onClick={() => {
+              routeChange(`/events`);
             }}
           >
             Event Halls

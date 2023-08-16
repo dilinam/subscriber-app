@@ -51,14 +51,14 @@ const PromotionCode = () => {
             </CopyToClipboard>
             <Typography variant="h6">Promotional Link</Typography>
             <Link
-              href={`http://34.131.70.71/signup?ref=${ref}`}
+              href={`http://dreamthefuturetrading.com/signup?ref=100${ref}`}
               sx={{ color: "#49A8EF" }}
             >
-              http://34.131.70.71/signup/{ref}
+              http://dreamthefuturetrading.com/signup/100{ref}
             </Link>
             <CopyToClipboard
               sx={{ color: "#49A8EF" }}
-              text={`http://34.131.70.71/signup?ref=${ref}`}
+              text={`http://dreamthefuturetrading.com/signup?ref=100${ref}`}
               onCopy={() => {
                 setIsCopied(true);
                 setTimeout(() => {

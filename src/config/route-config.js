@@ -37,6 +37,9 @@ import PendingWithdraw from "../pages/PendingWithdraw";
 import Rules from "../pages/Rules";
 import ResetPassword from "../pages/ResetPassoword";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
+import BulletingBoard from "../pages/BulletingBoard";
+import EventHalls from "../pages/EventHalls";
+import AdminAction from "../pages/AdminAction";
 
 const routeConfig = [
   {
@@ -252,6 +255,27 @@ const routeConfig = [
     element: <ResetPassword />,
     hideLayout: true,
     noAuth: true,
+  },
+  {
+    id: 33,
+    path: "/events",
+    element: <EventHalls />,
+    roles: ["USER"],
+  },
+  {
+    id: 34,
+    path: "/bulletBoard",
+    element: <BulletingBoard />,
+    roles: ["USER"],
+  },
+  {
+    id: 35,
+    path: "/adminAction",
+    element: <AdminAction />,
+    icon: <AccountCircleIcon fontSize="large" />,
+    menu: true,
+    label: "Action",
+    roles: ["ADMIN"],
   },
 ];
 
