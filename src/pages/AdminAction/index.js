@@ -1,22 +1,25 @@
-import { Box, Button } from '@mui/material';
-import React, { useEffect } from 'react'
+import { Box, Button } from "@mui/material";
+import React, { useEffect } from "react";
 import Typography from "@mui/material/Typography";
-import { getDisabledReg, setDisabledReg } from '../../use-cases/get-disabled-reg';
+import {
+  getDisabledReg,
+  setDisabledReg,
+} from "../../use-cases/get-disabled-reg";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 const AdminAction = () => {
   const [isRegDisabled, setIsRegDisabled] = React.useState(false);
-    const MySwal = withReactContent(Swal);
-  useEffect(async () => {
-    getDisabledReg().then(response => {
-      if(response.data.value === 'TRUE') {
+  const MySwal = withReactContent(Swal);
+  useEffect(() => {
+    getDisabledReg().then((response) => {
+      if (response.data.value === "TRUE") {
         setIsRegDisabled(true);
       }
     });
-  }, [])
+  }, []);
 
-  const setDisabled = () =>{
+  const setDisabled = () => {
     MySwal.fire({
       title: "Are You Sure This Action?",
       text: "",
@@ -27,22 +30,24 @@ const AdminAction = () => {
       confirmButtonText: "Yes",
     }).then((result) => {
       if (result.isConfirmed) {
-        if(isRegDisabled){
-         setDisabledReg("FALSE")
-           .then(
-             MySwal.fire("success!", "Deactivation successful....!", "success")
-           )
-           .catch((e) => {
-             MySwal.fire("ERROR", e.response.data, "error");
-           });}else{
+        setIsRegDisabled(prev => !prev);
+        if (isRegDisabled) {
+          setDisabledReg("FALSE")
+            .then(
+              MySwal.fire("success!", "Deactivation successful....!", "success")
+            )
+            .catch((e) => {
+              MySwal.fire("ERROR", e.response.data, "error");
+            });
+        } else {
           setDisabledReg("TRUE")
             .then(
               MySwal.fire("success!", "Activation successful....!", "success")
             )
             .catch((e) => {
               MySwal.fire("ERROR", e.response.data, "error");
-            });;
-         }
+            });
+        }
       } else if (
         /* Read more about handling dismissals below */
         result.dismiss === Swal.DismissReason.cancel
@@ -50,8 +55,7 @@ const AdminAction = () => {
         MySwal.fire("Cancelled", "Action is cancelled", "error");
       }
     });
-   
-  }
+  };
   return (
     <div>
       <Box sx={{ m: 3 }}>
@@ -68,9 +72,11 @@ const AdminAction = () => {
           variant="outlined"
           size="large"
           color="primaryVariant"
-          onClick={()=>{setDisabled()}}
+          onClick={() => {
+            setDisabled();
+          }}
         >
-          {isRegDisabled?"Disable":"Enable"} Reg & Package Active
+          {isRegDisabled ? "Enable" : "Disable"} Reg & Package Active
         </Button>
       </Box>
     </div>

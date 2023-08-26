@@ -21,8 +21,8 @@ const userData = {
   lastName: "",
   email: "",
   password: "",
-  ComfirmPassword:"",
-  userRef: ""
+  ComfirmPassword: "",
+  userRef: "",
 };
 
 export default function SignUp() {
@@ -33,10 +33,10 @@ export default function SignUp() {
     ...userData,
   });
   const [queryParameters] = useSearchParams();
-  const [progress, setProgress] = React.useState(10);
+  const [progress, setProgress] = React.useState(0);
   const [pColor, setPColor] = React.useState("error");
   // const queryParameters = new URLSearchParams(window.location.search);
- const MySwal = withReactContent(Swal);
+  const MySwal = withReactContent(Swal);
   React.useEffect(() => {
     const ref = queryParameters.get("ref");
     if (ref) {
@@ -46,17 +46,20 @@ export default function SignUp() {
     getDisabledReg().then((response) => {
       if (response.data.value === "TRUE") {
         setIsRegDisabled(true);
+        MySwal.fire(
+          "REALLY SORRY...!",
+          "New Registrations are hold for now..!",
+          "error"
+        );
       }
     });
   }, []);
 
-  React.useEffect(()=>{
-        getMaxRef().then((res)=>{
-            setMaxRef(res.data);
-            
-       });
-       
-  },[])
+  React.useEffect(() => {
+    getMaxRef().then((res) => {
+      setMaxRef(res.data);
+    });
+  }, []);
 
   // alert(maxRef)
 
@@ -85,8 +88,8 @@ export default function SignUp() {
       errorMessages.email = "Email is not valid";
       errors = true;
     }
-    
-    if (formData.userRef.slice(3) > maxRef || formData.userRef <= 0)  {
+
+    if (formData.userRef.slice(3) > maxRef || formData.userRef <= 0) {
       errorMessages.userRef = "Refferal ID Does Not Exists";
       errors = true;
     }
@@ -94,40 +97,39 @@ export default function SignUp() {
     if (formData.password.trim() === "") {
       errorMessages.password = "Password is required";
       errors = true;
-    }else{
+    } else {
       let passwordValue = formData.password.trim();
       let progressValue = 100;
-      if(!(passwordValue.length >= 8)){
+      if (!(passwordValue.length >= 8)) {
         errorMessages.password = "Password should contain 8 characters";
         progressValue = progressValue - 25;
         errors = true;
       }
-      if (!(/[a-z]+/.test(passwordValue))) {
+      if (!/[a-z]+/.test(passwordValue)) {
         errorMessages.password = "At leat one simple letter";
         progressValue = progressValue - 25;
         errors = true;
       }
-      if (!(/[A-Z]+/.test(passwordValue))) {
+      if (!/[A-Z]+/.test(passwordValue)) {
         errorMessages.password = "At leat one Capital letter";
         progressValue = progressValue - 25;
         errors = true;
       }
-      if (!(/[0-9]+/.test(passwordValue))) {
+      if (!/[0-9]+/.test(passwordValue)) {
         errorMessages.password = "At leat one number";
         progressValue = progressValue - 25;
         errors = true;
       }
       setProgress(progressValue);
-      if(progressValue === 100){
+      if (progressValue === 100) {
         setPColor("success");
-      }else if (progressValue === 75){
+      } else if (progressValue === 75) {
         setPColor("primary");
-      }else if (progressValue === 50){
+      } else if (progressValue === 50) {
         setPColor("secondary");
-      }else{
+      } else {
         setPColor("error");
       }
-
     }
     if (formData.ComfirmPassword.trim() === "") {
       errorMessages.ComfirmPassword = "Comfirm Password is required";
@@ -183,7 +185,35 @@ export default function SignUp() {
       ...prev,
       [event.target.name]: "",
     }));
+
+    if (event.target.name === "password") {
+      let passwordValue = formData.password.trim();
+      let progressValue = 100;
+      if (!(passwordValue.length >= 8)) {
+        progressValue = progressValue - 25;
+      }
+      if (!/[a-z]+/.test(passwordValue)) {
+        progressValue = progressValue - 25;
+      }
+      if (!/[A-Z]+/.test(passwordValue)) {
+        progressValue = progressValue - 25;
+      }
+      if (!/[0-9]+/.test(passwordValue)) {
+        progressValue = progressValue - 25;
+      }
+      setProgress(progressValue);
+      if (progressValue === 100) {
+        setPColor("success");
+      } else if (progressValue === 75) {
+        setPColor("primary");
+      } else if (progressValue === 50) {
+        setPColor("secondary");
+      } else {
+        setPColor("error");
+      }
+    }
   };
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -208,12 +238,6 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        {isRegDisabled &&
-          MySwal.fire(
-            "REALLY SORRY...!",
-            "New Registrations are hold for now..!",
-            "error"
-          )}
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
@@ -281,8 +305,14 @@ export default function SignUp() {
                 color="secondary"
                 disabled={isRegDisabled}
               />
-              <Box sx={{ width: "100%" }}>
-                <LinearProgress variant="determinate" value={progress} color={pColor} />
+              <Box sx={{ width: "100%", mt: 1 }}>
+                {(progress !== 0) && (
+                  <LinearProgress
+                    variant="determinate"
+                    value={progress}
+                    color={pColor}
+                  />
+                )}
               </Box>
             </Grid>
             <Grid item xs={12}>

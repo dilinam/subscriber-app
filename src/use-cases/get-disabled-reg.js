@@ -1,9 +1,9 @@
 import axios from "axios";
 
 export const getDisabledReg = () =>
-  axios.get(process.env.REACT_APP_API_BASE_URL + "/app-config/DISABLE_REG_AND_NEW_PKG");
+  axios.get(
+    process.env.REACT_APP_API_BASE_URL + "/app-config/DISABLE_REG_AND_NEW_PKG"
+  );
 
 export const setDisabledReg = (appConfig) =>
-  axios.post(
-    // process.env.REACT_APP_API_BASE_URL + "/app-config/"+appConfig
-  );
+  axios.post(process.env.REACT_APP_API_BASE_URL + "/app-config/" + appConfig);
