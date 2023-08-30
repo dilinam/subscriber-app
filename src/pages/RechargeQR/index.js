@@ -47,7 +47,7 @@ const RechargeQR = () => {
         saveAsset(amount, 2)
           .then(()=>{MySwal.fire(
             "Good job!",
-            "Present your USDT deposit receipt to customer services and comfrom the deposit.",
+            "Present your USDT deposit receipt to customer services and confrim the deposit.",
             "success"
           );})
           .catch(()=>{MySwal.fire("ERROR!", "Somthing Went Wrong", "error");});

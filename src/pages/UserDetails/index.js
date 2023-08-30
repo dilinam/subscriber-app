@@ -54,7 +54,7 @@ const UserDetails = () => {
     <Card>
       <CardHeader title="Profile" />
       <Typography variant="h5" color={"GrayText"} gutterBottom marginLeft={"3"}>
-        Genaral Informations
+        Genaral Information
       </Typography>
       <CardContent sx={{ pt: 0 }}>
         <Box sx={{ mb: 5 }}>
@@ -125,7 +125,7 @@ const UserDetails = () => {
             </Grid>
             <Grid xs={12} md={12}>
               <Typography variant="h5" color={"GrayText"} gutterBottom>
-                Address Informations
+                Address Information
               </Typography>
             </Grid>
             <Grid xs={12} md={12}>
