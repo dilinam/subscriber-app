@@ -4,12 +4,14 @@ import React from 'react'
 const RulesComponent = (props) => {
   return (
     <Box sx={{ m: "20px" }}>
-      <Typography color="text.secondary" variant="h5">
-       {props.title}
+      <Typography color="text.secondary" variant="h5" align="center">
+        {props.title}
       </Typography>
-      <Typography color="text.secondary" variant="p">
+      <p
+        style={{ textAlign: "justify" }}
+      >
         {props.description}
-      </Typography>
+      </p>
     </Box>
   );
 }
