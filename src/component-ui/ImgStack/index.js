@@ -29,26 +29,27 @@ const itemData = [
     img: "/img/home1.jpeg",
     title: "Breakfast",
     description:
-      "Mining is the process of creating new Bitcoin and  other cryptocurrencies and verifying transactions involving those coins. It involves vast, distributed networks of computers that check and secure blockchains, which are digital ledgers that track cryptocurrency transactions.",
+      "Crypto mining, short for cryptocurrency mining, is the process by which new units of a cryptocurrency are created and transactions are verified and added to the blockchain. Cryptocurrencies like Bitcoin and Ethereum use a decentralized ledger technology called blockchain to record and validate transactions. Miners play a crucial role in this process by solving complex mathematical problems that validate transactions and secure the network.",
   },
   {
     heading: "Crypto & Forex Trading",
     img: "/img/home2.jpeg",
     title: "Burger",
     description:
-      "Dubai and australia is the country that uses cryptocurrency trading the most, thus we collaborate with the two most well-known companies, IC Markets and Binance. OnmaxDT is prepared to spread its wings over numerous nations, paving the way for numerous trading prospects. You can now rely on our firm, DTF, to receive an effective, equitable, and trustworthy service.",
+      "Crypto and Forex trading are both types of financial trading that involve the buying and selling of assets to make a profit. However, they operate in different markets and involve different types of assets.",
   },
   {
     heading: "Crypto Education",
     img: "/img/home3.jpeg",
     title: "Camera",
     description:
-      "The Dream the future education program focuses on harnessing the power of optimistic thinking to create a better world. We make sure that our clients are aware of the financial potential and rewards available through modern web marketing.",
+      "In fact, we at Dream the Future are happy to provide you with some information about cryptocurrencies and their underlying technology, blockchain.Cryptocurrencies have gained significant attention in recent years as a new form of digital currency and a potential alternative to traditional financial systems.",
   },
   {
     heading: "Crypto investment",
     img: "/img/home4.jpeg",
     title: "Coffee",
-    description: "Cryptocurrency is digital currency secured by blockchain technology. Cryptocurrency investing can take many forms, from buying cryptocurrency directly to investing in crypto currencies and companies. A crypto exchange may buy cryptocurrency through us or other brokers when prices are low and resell them when prices rise",
+    description:
+      "Cryptocurrency investment involves buying and holding digital currencies with the expectation of making a profit. While some individuals have achieved significant gains through crypto investments, it's important to note that the crypto market is highly volatile and risky. Here are some key points to consider if you're thinking about investing in cryptocurrencies. (Research, Diversification, Risk Management, Long-Term Perspective, Regulation and Legal Considerations, Wallet Security, Market Volatility, Scams and Fraud, Market Sentiment, Stay Updated, Professional Advice).",
   },
 ];
