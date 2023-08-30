@@ -89,10 +89,11 @@ export default function SignUp() {
       errors = true;
     }
 
-    if (formData.userRef.slice(3) > maxRef || formData.userRef <= 0) {
-      errorMessages.userRef = "Refferal ID Does Not Exists";
-      errors = true;
-    }
+    if (formData.userRef !== ""){
+      if (formData.userRef.slice(3) > maxRef || formData.userRef <= 0) {
+        errorMessages.userRef = "Refferal ID Does Not Exists";
+        errors = true;
+      }}
 
     if (formData.password.trim() === "") {
       errorMessages.password = "Password is required";
